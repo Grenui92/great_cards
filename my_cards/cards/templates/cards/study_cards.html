@@ -1,0 +1,27 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+
+<nav>
+    <button><a class="nav-link" href="{% url 'cards:create_card' %}">Create card</a></button>
+    <button><a class="nav-link" href="{% url 'cards:create_collection' %}">Create collection</a></button>
+</nav>
+<div class="table-responsive">
+    <table class="table">
+        <tbody>
+        {% for collection in collections %}
+        <tr>
+            <td><img src="{{ collection.img.url }}" alt="Image"> {{ collection.name }}</td>
+            <td><a href="{% url 'cards:open_collection' collection_id=collection.id %}"
+                   class="btn btn-primary btn-sm">Open Collection</a></td>
+            <td><a href="{% url 'cards:edit_collection' collection_id=collection.id %}"
+                   class="btn btn-primary btn-sm">Edit Collection</a></td>
+            <td><a href="{% url 'cards:delete_collection' collection_id=collection.id %}" class="btn btn-primary btn-sm"
+                   style="background-color: red;">Delete Collection</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

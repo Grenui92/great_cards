@@ -1,0 +1,23 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'cards:create_collection' %}">
+    {% csrf_token %}
+    <div>
+        <label>Name of collection
+            {{ form.name }}
+        </label>
+        <span> {{ form.errors.name }}</span>
+    </div>
+    <div>
+        <label>Collection image:
+            {{ form.img }}
+        </label>
+        <span> {{form.errors.img }}</span>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+{% endblock %}

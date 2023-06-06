@@ -1,0 +1,40 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+
+<form method="post" action="{% url 'cards:create_card' %}" class="choice-list">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div>{{ form.non_field_errors }}</div>
+    {% endif %}
+    <div>
+        <label>English word:</label>
+        <br>
+        {{ form.english_word }}
+        <span> {{ form.errors.english_word }} </span>
+    </div>
+    <div>
+        <label>Russian word:</label>
+        <br>
+        {{ form.russian_word }}
+        <span> {{ form.errors.russian_word }}</span>
+    </div>
+    <span>{{ form.non_field_error }}</span>
+    <div>
+        <label>Usage:</label>
+        <br>
+        {{ form.word_usage }}
+        <span> {{ form.errors.word_usage }}</span>
+        <p>You can leave this field empty and I'll give you interest fact about China with this word.</p>
+    </div>
+    <div>
+        <label class="choice_list">Collection:</label>
+        <div class="choice-list"> {{ form.collection }}  </div>
+        <span> {{ form.errors.collection }} </span>
+    </div>
+    <div>
+        <button  class="choice_list" type="submit">Create card and add to collection</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+{% endblock %}

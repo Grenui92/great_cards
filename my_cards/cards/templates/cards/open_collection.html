@@ -1,0 +1,80 @@
+{% extends 'cards/base.html' %}
+{% block content %}
+
+
+<div class="container-fluent">
+    <div class="row">
+        <div class="col-md-6">
+            {% for word in page_obj %}
+            <div class="container my-5" id="sentence1">
+                <div class="row">
+                    <div class="col">
+                        <p>English word</p>
+                        <h4>{{ word.english_word }}</h4>
+                        <img src="{{ word.img.url }}" alt="description of the image">
+                        <p>{{ word.word_usage }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container my-5" id="sentence2" style="display:none;">
+                <div class="row">
+                    <div class="col">
+                        <p>Russian word</p>
+                        <h4>{{ word.russian_word }}</h4>
+                        <img src="{{ word.img.url }}" alt="description of the image">
+                        <p>{{ word.word_usage }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" id="toggleButton">
+                            Translation to other language
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение скриптов Bootstrap (jQuery и Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript-код для переключения предложений -->
+    <script>
+    $(document).ready(function() {
+      $('#toggleButton').click(function() {
+        if ($('#sentence1').is(':visible')) {
+          $('#sentence1').hide();
+          $('#sentence2').show();
+          $('#toggleButton').text('Translation to english');
+        } else {
+          $('#sentence2').hide();
+          $('#sentence1').show();
+          $('#toggleButton').text('Translation to russian');
+        }
+      });
+    });
+
+    </script>
+</div>
+<div>
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&lsaquo;&lsaquo; First </a>
+    <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Previous </a>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"> Next &rsaquo;</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">Last &rsaquo;&rsaquo;</a>
+    {% endif %}
+    <div>Collection name:
+        <h5>{{ collection.name }}</h5>
+    </div>
+</div>
+{% endblock %}

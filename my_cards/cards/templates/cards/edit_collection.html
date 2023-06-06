@@ -1,0 +1,28 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+<form method="POST" action="{% url 'cards:rename_collection' collection_id=collection_id %}">
+    {% csrf_token %}
+    <div>
+        <h2> Collection name : {{ collection.name }} </h2>
+        <label> New name: {{ form.name }} </label>
+        <span> {{form.errors.name }} </span>
+        <div>
+            <button type="submit">Rename collection</button>
+        </div>
+    </div>
+</form>
+<div>
+    <label>
+        <a href="{% url 'cards:create_card' %}">Add new card</a>
+    </label>
+</div>
+<form action="{% url cards:remove_card' card_id=word.id collection_id=collection_id %}" method="post">
+    {% for word in queryset %}
+    <div>{{ word.english_word }}, {{ word.russian_word }}
+        <a href="{% url 'cards:remove_card' card_id=word.id collection_id=collection_id %}">Delete card from collection</a>
+    </div>
+
+    {% endfor %}
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+
+<div>
+    <h2>Login</h2>
+</div>
+<form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    <div>
+        <label>Username:
+            {{ form.username }}
+        </label>
+        <span> {{ form.errors.username }} </span>
+    </div>
+    <div>
+        <label>Password:
+            {{ form.password }}
+        </label>
+        <span> {{ form.errors.password }}</span>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+{% endblock %}

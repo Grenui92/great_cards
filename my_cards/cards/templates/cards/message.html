@@ -1,0 +1,15 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+<div>
+    <h3 style="color: green;"> {{ message }} </h3>
+</div>
+<div>
+    <button class="btn btn-primary" style="background: #c5f2a2;"><a href="{% url 'cards:main' %}" class="nav-link">
+        Redirect to the main page
+    </a></button>
+    <button class="btn btn-primary" style="background: #c5f2a2;"><a href="{% url 'cards:study_cards' %}" class="nav-link">
+        Redirect to the study cards page
+    </a></button>
+</div>
+{% endblock %}
