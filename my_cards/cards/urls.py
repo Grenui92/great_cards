@@ -1,18 +1,18 @@
 from django.urls import path
 from .views.main import main
-from .views.collection_views import CollectionTools
-from .views.card_views import CardTools, CardsListView
+from .views.collection_views import CollectionEditView, CollectionRenameView, CollectionListView, CollectionCreateView, CollectionDeleteView
+from .views.card_views import CardsListView, CreateCardView, CardDeleteView
 
 app_name = 'cards'
 
 urlpatterns = [
     path('', main, name='main'),
-    path('create_card/', CardTools.create_card, name='create_card'),
-    path('create_collection/', CollectionTools.create_collection, name='create_collection'),
-    path('study_cards/', CollectionTools.collections_list, name='study_cards'),
+    path('create_card/', CreateCardView.as_view(), name='create_card'),
+    path('create_collection/', CollectionCreateView.as_view(), name='create_collection'),
+    path('study_cards/', CollectionListView.as_view(), name='study_cards'),
     path('open_collection/<int:collection_id>/', CardsListView.as_view(), name='open_collection'),
-    path('edit_collection/<int:collection_id>/', CollectionTools.edit_collection, name='edit_collection'),
-    path('remove_card/<int:card_id>/<int:collection_id>/', CardTools.remove_card_from_collection, name='remove_card'),
-    path('rename_collection/<int:collection_id>/', CollectionTools.rename_collection, name='rename_collection'),
-    path('delete_collection/<int:collection_id>/', CollectionTools.delete_collection, name='delete_collection'),
+    path('edit_collection/<int:collection_id>/', CollectionEditView.as_view(), name='edit_collection'),
+    path('remove_card/<int:card_id>/<int:collection_id>/', CardDeleteView.as_view(), name='remove_card'),
+    path('rename_collection/<int:collection_id>/', CollectionRenameView.as_view(), name='rename_collection'),
+    path('delete_collection/<int:collection_id>/', CollectionDeleteView.as_view(), name='delete_collection'),
 ]
