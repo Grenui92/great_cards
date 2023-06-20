@@ -1,0 +1,12 @@
+{% extends 'cards/base.html' %}
+
+{% block content %}
+<h4 class="text-center my-2 fs-4">Delete "{{collection.name}}"?</h4>
+<form method="post" action="{% url 'cards:delete_collection' collection_id=collection.id %}">
+    {% csrf_token %}
+    <div>
+        <button type="submit">Delete colleciton</button>
+        <a href="{% url 'cards:study_cards' %}" >Return to collections list</a>
+    </div>
+</form>
+{% endblock %}
