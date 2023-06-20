@@ -9,7 +9,7 @@
 <div class="table-responsive">
     <table class="table">
         <tbody>
-        {% for collection in collections %}
+        {% for collection in object_list %}
         <tr>
             <td><img src="{{ collection.img.url }}" alt="Image"> {{ collection.name }}</td>
             <td><a href="{% url 'cards:open_collection' collection_id=collection.id %}"
