@@ -1,112 +1,84 @@
 import logging
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, View
 
 from cards.forms import CollectionForm
 from cards.models import CardsCollections
 from cards.services.collections_services import CollectionSrvices
+from cards.services.abstract_class import MessageMixin
 
-class CollectionTools:
+class CollectionListView(ListView):
+    model = CardsCollections
+    template_name = 'cards/study_cards.html'
 
-    @staticmethod
-    @login_required
-    def collections_list(request):
-        """Открывает список коллекций карточек."""
+    def get_queryset(self):
+        collection = CardsCollections.objects.filter(owner=self.request.user.id)
+        return collection
 
-        if request.method == 'GET':
 
-            coll = CardsCollections.objects.filter(owner=request.user.id)
-            logging.info(f'Get collections owned by user -{request.user.id}- from DB ')
-            return render(request, 'cards/study_cards.html', context={'collections': coll})
+class CollectionCreateView(View, MessageMixin):
+    template_name = 'cards/create_collection.html'
 
-    @staticmethod
-    @login_required
-    def open_collection(request, collection_id):
-        """Открывает одну коллекцию на экран, выводя список карточек которые в ней есть. Ориентируется по айди коллекции."""
+    @method_decorator(login_required)
+    def get(self, request):
+        form = CollectionForm()
+        return render(request, self.template_name, context={'form': form})
 
-        if request.method == 'GET':
-            collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
-            words_list = collection.cards.all().order_by('id')
-            paginator = Paginator(words_list, 1)
-            page_number = request.GET.get('page')
-            page = paginator.get_page(page_number)
-            logging.info(f'User -{collection.owner.id}- open collection -{collection.id}-')
-            return render(request, 'cards/open_collection.html', context={'page': page, 'collection': collection})
+    def post(self, request):
+        form = CollectionForm(request.POST, request.FILES)
+        if form.is_valid():
+            collection = form.save(commit=False)
 
-    @staticmethod
-    @login_required
-    def create_collection(request):
-        if request.method == 'POST':
-            form = CollectionForm(request.POST, request.FILES)
+            if CardsCollections.objects.filter(name=collection.name).exists():
+                return render(request, self.message_template,
+                              context={'message': f'Collection with name "{collection.name}" already exist, '
+                                                  f'choice another name!'})
 
-            if form.is_valid():
-                collection = form.save(commit=False)
+            collection.owner = request.user
+            collection.save()
+            form.save_m2m()
 
-                # Проверяет существует ли уже коллекция с таким именемм.
-                if CardsCollections.objects.filter(name=collection.name).exists():
-                    logging.info(f'User -{request.user.id}- try to create collection with id -{collection.id}-'
-                                 f'but it already exist.')
+            return render(request, self.message_template,
+                          context={'message': f'Collection "{collection.name}" successfully created.'})
 
-                    return render(request, 'cards/message.html',
-                                  context={'message': f'Collection with name "{collection.name}" already exist, '
-                                                      f'choice another name!'})
+        return render(request, self.template_name, context={'form': form})
 
-                # Устанавливает текущего пользователя в поле Владелец
-                collection.owner = request.user
+class CollectionDeleteView(View):
+    template_name = 'cards/deleting_warning.html'
 
-                collection.save()
+    def get(self, request, collection_id):
+        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
+        return render(request, self.template_name, context={'collection': collection})
 
-                # Для проверки что отношения "многие ко многим" сохранились удачно
-                form.save_m2m()
-
-                logging.info(f'User -{request.user.id}- create collection -{collection.id}-')
-
-                return render(request, 'cards/message.html',
-                              context={'message': f'Collection "{collection.name}" successfully created.'})
-
-            logging.info(f'User -{request.user.id}- entered wrong information {form} to CardForm')
-            return render(request, 'cards/create_collection.html', context={'form': form})
-
-        return render(request, 'cards/create_collection.html', context={'form': CollectionForm()})
-
-    @staticmethod
-    @login_required
-    def delete_collection(request, collection_id):
-        collection = CollectionSrvices.get_collection_by_id(id=collection_id)
+    def post(self, request, collection_id):
+        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
         collection.delete()
-        collections = CardsCollections.objects.filter(owner=request.user.id)
-        logging.info(f'User -{request.user.id}- delete collection -{collection_id}-')
-        return render(request, 'cards/study_cards.html', context={'collections': collections})
+        return redirect(to='cards:study_cards')
 
-    @staticmethod
-    @login_required
-    def edit_collection(request, collection_id):
+class CollectionEditView(View):
+    template_name = 'cards/edit_collection.html'
+
+    def get(self, request, collection_id):
         collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
         queryset = collection.cards.all()
         logging.info(f'User -{request.user.id}- open editor for collection -{collection_id}- ')
-        return render(request, 'cards/edit_collection.html', context={'collection': collection,
+        return render(request, self.template_name, context={'collection': collection,
                                                                       'queryset': queryset,
-                                                                      'collection_id': collection_id,
-                                                                      'form': CollectionForm()})
+                                                                      'collection_id': collection_id})
 
-    @staticmethod
-    @login_required
-    def rename_collection(request, collection_id):
-        collection = CardsCollections.objects.get(id=collection_id)
-        queryset = collection.cards.all()
-        if request.method == 'POST':
-            form = CollectionForm(request.POST)
+class CollectionRenameView(View):
+    template_name = 'cards/edit_collection.html'
 
-            if form.is_valid():
-                form.save(commit=False)
-                new_name = form.cleaned_data['name']
-                collection.name = new_name
-                collection.save()
-                logging.info(f'User -{request.user.id}- rename collection -{collection_id}- to -{new_name}-')
+    def post(self, request, collection_id):
+        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
+        new_name = self.request.POST['new_name']
+        if new_name:
+            collection.name = new_name
+            collection.save()
 
-        return render(request, 'cards/edit_collection.html', context={'form': CollectionForm(),
-                                                                      'collection': collection,
-                                                                      'collection_id': collection_id,
-                                                                      'queryset': queryset})
+            return redirect(to='cards:edit_collection', collection_id=collection_id)
+        return render(request, self.template_name, context={'message': 'Field cant be empty',
+                                                            'collection_id': collection_id})
