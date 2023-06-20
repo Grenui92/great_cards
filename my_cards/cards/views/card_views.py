@@ -1,14 +1,15 @@
 import logging
 from django.shortcuts import render
+from django.views.generic import ListView, View
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
 
 from cards.services.cards_services import CardsServices
 from cards.forms import CardForm, CollectionForm
 from cards.models import EnglishCards, CardsCollections
 
 class CardsListView(ListView):
-
+    """Return all  cards when you open collection."""
     model = CardsCollections
     template_name = 'cards/open_collection.html'
     paginate_by = 1
@@ -28,35 +29,37 @@ class CardsListView(ListView):
 
         return context
 
+class CreateCardView(View):
+    template_name = 'cards/create_card.html'
 
-class CardTools:
+    @method_decorator(login_required)
+    def post(self, request):
+        form = CardForm(request.POST, user_id=request.user.id)
+        if form.is_valid():
+            form.save(commit=False)
+            message = CardsServices.get_new_card(form=form)
+            return render(request, 'cards/message.html',
+                          context=message)
 
-    @staticmethod
-    @login_required
-    def create_card(request):
-        """Создает новую карточку"""
+        return render(request, self.template_name, context={'form': form})
 
-        form = CardForm(user_id=request.user.id)
+    @method_decorator(login_required)
+    def get(self, request):
+        form = CardForm(user_id=self.request.user.id)
+        return render(self.request, self.template_name, context={'form': form})
 
-        if request.method == 'POST':
-            form = CardForm(request.POST, user_id=request.user.id)
+class CardDeleteView(View):
+    template_name = 'cards/edit_collection.html'
 
-            if form.is_valid():
-                form.save(commit=False)
-                message = CardsServices.get_new_card(form=form)
-                return render(request, 'cards/message.html',
-                              context=message)
-        return render(request, 'cards/create_card.html', context={'form': form})
-
-    @staticmethod
-    @login_required
-    def remove_card_from_collection(request, card_id, collection_id):
+    @method_decorator(login_required)
+    def post(self, request, card_id, collection_id):
         collection = CardsCollections.objects.get(id=collection_id)
         card = EnglishCards.objects.get(id=card_id)
         collection.cards.remove(card)
         queryset = collection.cards.all()
-        logging.info(f'User -{request.user.id}- delete card -{card_id}- from collection -{collection_id}-')
-        return render(request, 'cards/edit_collection.html', context={'collection': collection,
+        logging.info(f'User -{self.request.user.id}- delete card -{card_id}- from collection -{collection_id}-')
+        return render(self.request, 'cards/edit_collection.html', context={'collection': collection,
                                                                       'queryset': queryset,
                                                                       'collection_id': collection_id,
                                                                       'form': CollectionForm()})
+
