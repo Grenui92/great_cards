@@ -130,7 +130,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
 # Logger
-logging.basicConfig(filename='my_cards/logger/info.log',
+logging.basicConfig(filename=f'{BASE_DIR}/my_cards/logger/info.log',
                     # handlers=,
                     encoding='utf-8',
                     level=logging.INFO,

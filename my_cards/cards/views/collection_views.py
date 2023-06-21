@@ -7,7 +7,7 @@ from django.views.generic import ListView, View
 
 from cards.forms import CollectionForm
 from cards.models import CardsCollections
-from cards.services.collections_services import CollectionSrvices
+from cards.services.collections_services import CollectionServices
 from cards.services.abstract_class import MessageMixin
 
 class CollectionListView(ListView):
@@ -90,7 +90,7 @@ class CollectionDeleteView(View):
         :return: A render function
         """
 
-        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         return render(request, self.template_name, context={'collection': collection})
 
     def post(self, request, collection_id):
@@ -105,7 +105,7 @@ class CollectionDeleteView(View):
         :return: A redirect to the study_cards view
         """
 
-        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         collection.delete()
         return redirect(to='cards:study_cards')
 
@@ -127,7 +127,7 @@ class CollectionEditView(View):
         :return: A render function
         """
 
-        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         queryset = collection.cards.all()
         logging.info(f'User -{request.user.id}- open editor for collection -{collection_id}- ')
         return render(request, self.template_name, context={'collection': collection,
@@ -150,7 +150,7 @@ class CollectionRenameView(View):
         :return: The redirect to the edit_collection view
         """
 
-        collection = CollectionSrvices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         new_name = self.request.POST['new_name']
         if new_name:
             collection.name = new_name
