@@ -105,8 +105,6 @@
         <li><a href="modules/cards.html#module-cards.views.card_views">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     cards.views.collection_views
 
@@ -123,6 +121,8 @@
       </ul></li>
       <li><a href="modules/cards.html#cards.models.CardsCollections">CardsCollections (class in cards.models)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/cards.html#cards.models.CardsCollections.DoesNotExist">CardsCollections.DoesNotExist</a>
 </li>
       <li><a href="modules/cards.html#cards.models.CardsCollections.MultipleObjectsReturned">CardsCollections.MultipleObjectsReturned</a>
@@ -130,6 +130,38 @@
       <li><a href="modules/cards.html#cards.views.card_views.CardsListView">CardsListView (class in cards.views.card_views)</a>
 </li>
       <li><a href="modules/cards.html#cards.services.cards_services.CardsServices">CardsServices (class in cards.services.cards_services)</a>
+</li>
+      <li>
+    chat.services.checking_sentences
+
+      <ul>
+        <li><a href="modules/chat.html#module-chat.services.checking_sentences">module</a>
+</li>
+      </ul></li>
+      <li>
+    chat.services.conversation
+
+      <ul>
+        <li><a href="modules/chat.html#module-chat.services.conversation">module</a>
+</li>
+      </ul></li>
+      <li>
+    chat.views.chat_ai
+
+      <ul>
+        <li><a href="modules/chat.html#module-chat.views.chat_ai">module</a>
+</li>
+      </ul></li>
+      <li>
+    chat.views.text_correction
+
+      <ul>
+        <li><a href="modules/chat.html#module-chat.views.text_correction">module</a>
+</li>
+      </ul></li>
+      <li><a href="modules/chat.html#chat.services.conversation.chat_bot">chat_bot() (in module chat.services.conversation)</a>
+</li>
+      <li><a href="modules/chat.html#chat.views.chat_ai.ChatView">ChatView (class in chat.views.chat_ai)</a>
 </li>
       <li><a href="modules/cards.html#cards.views.collection_views.CollectionCreateView">CollectionCreateView (class in cards.views.collection_views)</a>
 </li>
@@ -144,6 +176,8 @@
       <li><a href="modules/cards.html#cards.views.collection_views.CollectionRenameView">CollectionRenameView (class in cards.views.collection_views)</a>
 </li>
       <li><a href="modules/cards.html#cards.services.collections_services.CollectionServices">CollectionServices (class in cards.services.collections_services)</a>
+</li>
+      <li><a href="modules/chat.html#chat.views.text_correction.CorrectorView">CorrectorView (class in chat.views.text_correction)</a>
 </li>
       <li><a href="modules/cards.html#cards.views.card_views.CreateCardView">CreateCardView (class in cards.views.card_views)</a>
 </li>
@@ -186,13 +220,17 @@
 </li>
         <li><a href="modules/cards.html#cards.views.collection_views.CollectionEditView.get">(cards.views.collection_views.CollectionEditView method)</a>
 </li>
+        <li><a href="modules/chat.html#chat.views.chat_ai.ChatView.get">(chat.views.chat_ai.ChatView method)</a>
+</li>
+        <li><a href="modules/chat.html#chat.views.text_correction.CorrectorView.get">(chat.views.text_correction.CorrectorView method)</a>
+</li>
       </ul></li>
       <li><a href="modules/cards.html#cards.services.collections_services.CollectionServices.get_all_cards">get_all_cards() (cards.services.collections_services.CollectionServices static method)</a>
 </li>
-      <li><a href="modules/cards.html#cards.services.cards_services.CardsServices.get_card_from_collection">get_card_from_collection() (cards.services.cards_services.CardsServices class method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/cards.html#cards.services.cards_services.CardsServices.get_card_from_collection">get_card_from_collection() (cards.services.cards_services.CardsServices class method)</a>
+</li>
       <li><a href="modules/cards.html#cards.services.collections_services.CollectionServices.get_collection_by_id">get_collection_by_id() (cards.services.collections_services.CollectionServices static method)</a>
 </li>
       <li><a href="modules/cards.html#cards.services.collections_services.CollectionServices.get_collections_by_owner">get_collections_by_owner() (cards.services.collections_services.CollectionServices static method)</a>
@@ -257,6 +295,14 @@
 </li>
         <li><a href="modules/cards.html#module-cards.views.main">cards.views.main</a>
 </li>
+        <li><a href="modules/chat.html#module-chat.services.checking_sentences">chat.services.checking_sentences</a>
+</li>
+        <li><a href="modules/chat.html#module-chat.services.conversation">chat.services.conversation</a>
+</li>
+        <li><a href="modules/chat.html#module-chat.views.chat_ai">chat.views.chat_ai</a>
+</li>
+        <li><a href="modules/chat.html#module-chat.views.text_correction">chat.views.text_correction</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -276,6 +322,10 @@
         <li><a href="modules/cards.html#cards.views.collection_views.CollectionDeleteView.post">(cards.views.collection_views.CollectionDeleteView method)</a>
 </li>
         <li><a href="modules/cards.html#cards.views.collection_views.CollectionRenameView.post">(cards.views.collection_views.CollectionRenameView method)</a>
+</li>
+        <li><a href="modules/chat.html#chat.views.chat_ai.ChatView.post">(chat.views.chat_ai.ChatView method)</a>
+</li>
+        <li><a href="modules/chat.html#chat.views.text_correction.CorrectorView.post">(chat.views.text_correction.CorrectorView method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -316,6 +366,8 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/chat.html#chat.services.checking_sentences.text_generator">text_generator() (in module chat.services.checking_sentences)</a>
+</li>
       <li><a href="modules/cards.html#cards.services.translator.translator">translator() (in module cards.services.translator)</a>
 </li>
   </ul></td>
@@ -342,6 +394,7 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules/cards.html">Cards functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/chat.html">GPTChat functionality</a></li>
 </ul>
 
 <div class="relations">

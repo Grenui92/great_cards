@@ -1,6 +1,12 @@
 import openai
 
 def text_generator(prompt):
+    """
+    The text_generator function takes a string as an argument and returns the same string with any spelling errors corrected.
+
+    :param prompt: Pass the text that needs to be corrected
+    :return: The corrected text
+    """
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f'Correct this to standard English:\n\n {prompt}',

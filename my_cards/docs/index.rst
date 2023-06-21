@@ -6,6 +6,7 @@ Welcome to Great Card's documentation!
    :caption: Contents:
 
    modules/cards.rst
+   modules/chat.rst
 
 
 Indices and tables
