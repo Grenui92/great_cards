@@ -23,5 +23,8 @@
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
     </div>
+    <div class="small text-left mt-2">
+        <a href="{% url 'users:password_reset' %}" class="text-center"><i>Forgot Password?</i></a>
+    </div>
 </form>
 {% endblock %}

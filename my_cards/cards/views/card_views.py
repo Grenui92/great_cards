@@ -29,7 +29,6 @@ class CardsListView(ListView):
         collection_id = self.kwargs['collection_id']
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         cards = CollectionServices.get_all_cards(collection=collection)
-
         return cards.order_by('id')
 
     def get_context_data(self, *_, object_list=None, **kwargs):

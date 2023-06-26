@@ -23,9 +23,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <div>
+            {% if user.is_authenticated %}
             <ul class="nav navbar-nav">
                 <li class="nav-link"><h6>Username: {{ user.username }}</h6></li>
             </ul>
+            {% endif %}
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'cards:main' %}" class="nav-link" style="margin-left: 0;"> MAIN </a></li>
                 {% if user.is_authenticated %}
