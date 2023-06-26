@@ -7,10 +7,10 @@ app_name = 'cards'
 
 urlpatterns = [
     path('', main, name='main'),
-    path('create_card/', CreateCardView.as_view(), name='create_card'),
-    path('create_collection/', CollectionCreateView.as_view(), name='create_collection'),
     path('study_cards/', CollectionListView.as_view(), name='study_cards'),
     path('open_collection/<int:collection_id>/', CardsListView.as_view(), name='open_collection'),
+    path('create_card/', CreateCardView.as_view(), name='create_card'),
+    path('create_collection/', CollectionCreateView.as_view(), name='create_collection'),
     path('edit_collection/<int:collection_id>/', CollectionEditView.as_view(), name='edit_collection'),
     path('remove_card/<int:card_id>/<int:collection_id>/', CardDeleteView.as_view(), name='remove_card'),
     path('rename_collection/<int:collection_id>/', CollectionRenameView.as_view(), name='rename_collection'),
