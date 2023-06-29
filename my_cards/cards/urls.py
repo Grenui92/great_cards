@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.main import main
-from .views.collection_views import CollectionEditView, CollectionRenameView, CollectionListView, CollectionCreateView, CollectionDeleteView
+from .views.collection_views import CollectionEditView, CollectionRenameView, CardRatingView, CollectionListView, CollectionCreateView, CollectionDeleteView
 from .views.card_views import CardsListView, CreateCardView, CardDeleteView
 
 app_name = 'cards'
@@ -15,4 +15,5 @@ urlpatterns = [
     path('remove_card/<int:card_id>/<int:collection_id>/', CardDeleteView.as_view(), name='remove_card'),
     path('rename_collection/<int:collection_id>/', CollectionRenameView.as_view(), name='rename_collection'),
     path('delete_collection/<int:collection_id>/', CollectionDeleteView.as_view(), name='delete_collection'),
+    path('rating/<int:collection_id>/<int:card_id>/', CardRatingView.as_view(), name='rating' )
 ]

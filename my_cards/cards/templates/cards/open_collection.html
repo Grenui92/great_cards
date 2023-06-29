@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col">
                         <p>English word</p>
-                        <h4>{{ word.english_word }}</h4>
+                        <h4>{{ word.card.english_word }}</h4>
                         <img src="{{ word.img.url }}" alt="description of the image">
                         <p>{{ word.word_usage }}</p>
                     </div>
@@ -21,19 +21,24 @@
                 <div class="row">
                     <div class="col">
                         <p>Russian word</p>
-                        <h4>{{ word.russian_word }}</h4>
+                        <h4>{{ word.card.russian_word }}</h4>
                         <img src="{{ word.img.url }}" alt="description of the image">
                         <p>{{ word.word_usage }}</p>
                     </div>
                 </div>
             </div>
+            <form method="post" action="{% url 'cards:rating' collection_id=collection.id card_id=word.card.id%}">
+                {% csrf_token %}
+                <button type="submit" name="rating_value" value="1">Napomnit</button>
+                <button type="submit" name="rating_value" value="-1">Zapomnil</button>
+            </form>
             {% endfor %}
 
             <div class="container my-5">
                 <div class="row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" id="toggleButton">
-                            Translation to other language
+                            Translate
                         </button>
                     </div>
                 </div>

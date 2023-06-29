@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
 from cards.forms import CardForm, CollectionForm
-from cards.models import Collections
+from cards.models import Collections, CardCollection
 from cards.services.abstract_class import MessageMixin
 
 class CardsListView(ListView):
@@ -28,8 +28,10 @@ class CardsListView(ListView):
 
         collection_id = self.kwargs['collection_id']
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
-        cards = CollectionServices.get_all_cards(collection=collection)
-        return cards.order_by('id')
+        cards = CardCollection.objects.filter(collection=collection)
+        # cards = CollectionServices.get_all_cards(collection=collection)
+        print(cards)
+        return cards.order_by('-rating')
 
     def get_context_data(self, *_, object_list=None, **kwargs):
         """
