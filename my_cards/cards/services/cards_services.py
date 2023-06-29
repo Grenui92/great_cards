@@ -106,6 +106,7 @@ class CardsServices:
 
         # Уведомление об спешном создании(нахождение существующей) карточки и добавлении ее в выбраную коллекцию
         # и в список сортировки
-        collection.order_list.append(card.id)
-        collection.save()
+        if card.id not in collection.order_list:
+            collection.order_list.append(card.id)
+            collection.save()
         return {'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'}
