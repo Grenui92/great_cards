@@ -1,4 +1,4 @@
-from cards.models import CardsCollections
+from cards.models import Collections
 
 
 class CollectionServices:
@@ -11,7 +11,7 @@ class CollectionServices:
         :param collection_id: Find the collection in the database
         :return: A collection object
         """
-        collection = CardsCollections.objects.get(id=collection_id)
+        collection = Collections.objects.get(id=collection_id)
         return collection
 
     @staticmethod
@@ -22,7 +22,7 @@ class CollectionServices:
         :param owner_id: Filter the collections by owner
         :return: A list of collections that belong to the owner with the given id
         """
-        collections = CardsCollections.objects.filter(owner=owner_id)
+        collections = Collections.objects.filter(owner=owner_id)
         return collections
 
     @staticmethod

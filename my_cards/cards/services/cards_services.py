@@ -1,4 +1,4 @@
-from cards.models import EnglishCards
+from cards.models import Cards, CardCollection
 from cards.services.collections_services import CollectionServices
 from cards.services.translator import translator, en, ru
 from cards.services.fact_generator import fact_generator
@@ -61,11 +61,11 @@ class CardsServices:
         :return: A card from the database
         """
         if english:
-            card = EnglishCards.objects.get(english_word=english)
+            card = Cards.objects.get(english_word=english)
         elif russian:
-            card = EnglishCards.objects.get(russian_word=russian)
+            card = Cards.objects.get(russian_word=russian)
         elif card_id:
-            card = EnglishCards.objects.get(id=card_id)
+            card = Cards.objects.get(id=card_id)
         else:
             raise ValueError('Empty fields "english word" or "russian word"')
 
@@ -86,15 +86,16 @@ class CardsServices:
             card = cls.get_card_from_collection(english=english, russian=russian)
             collection.cards.add(card)
 
+
             # Если не нашли - сохранем форму в БД
-        except EnglishCards.DoesNotExist as exc:
+        except Cards.DoesNotExist as exc:
 
             logging.info(exc)
             english_word, russian_word, word_usage = cls.generate_data(english, russian, usage)
 
-            card = EnglishCards.objects.create(english_word=english_word,
-                                               russian_word=russian_word,
-                                               word_usage=word_usage)
+            card = Cards.objects.create(english_word=english_word,
+                                        russian_word=russian_word,
+                                        word_usage=word_usage)
             collection.cards.add(card)
 
         except Exception as exc:
@@ -103,5 +104,8 @@ class CardsServices:
             return {'message': f'Something goes wrong!!!\n {exc}'}
 
         # Уведомление об спешном создании(нахождение существующей) карточки и добавлении ее в выбраную коллекцию
-        logging.info(f'Success')
+        CardCollection.objects.get_or_create(card=card, collection=collection, rating=10)
+        new = CardCollection.objects.all()
+        for n in new:
+            print(n)
         return {'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'}

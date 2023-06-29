@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
-from cards.models import CardsCollections, EnglishCards
+from cards.models import Collections, Cards
 from cards.forms import CardForm
 from cards.views.collection_views import CollectionListView
 from cards.views.card_views import CardsListView
@@ -14,16 +14,16 @@ class CardsStaticTestCase(TestCase):
     def setUpClass(cls) -> None:
         super().setUpClass()
         cls.user_1 = User.objects.create(username='TestUser_1', email='test@test.test')
-        cls.collection_u1_c1 = CardsCollections.objects.create(name='Test_1', owner=cls.user_1)
-        cls.collection_u1_c2 = CardsCollections.objects.create(name='Test_2', owner=cls.user_1)
+        cls.collection_u1_c1 = Collections.objects.create(name='Test_1', owner=cls.user_1)
+        cls.collection_u1_c2 = Collections.objects.create(name='Test_2', owner=cls.user_1)
 
         cls.user_2 = User.objects.create(username='TestUser_2', email='test@test.test')
-        cls.collection_u2_c1 = CardsCollections.objects.create(name='Test_3', owner=cls.user_2)
-        cls.collection_u2_c2 = CardsCollections.objects.create(name='Test_4', owner=cls.user_2)
+        cls.collection_u2_c1 = Collections.objects.create(name='Test_3', owner=cls.user_2)
+        cls.collection_u2_c2 = Collections.objects.create(name='Test_4', owner=cls.user_2)
 
-        cls.cards = [EnglishCards.objects.create(english_word=f'english_test_{n}',
-                                                 russian_word=f'russian_word_{n}',
-                                                 word_usage=f'test_usage_{n}') for n in range(3)]
+        cls.cards = [Cards.objects.create(english_word=f'english_test_{n}',
+                                          russian_word=f'russian_word_{n}',
+                                          word_usage=f'test_usage_{n}') for n in range(3)]
 
         cls.collection_u1_c1.cards.add(*cls.cards)
 
@@ -72,7 +72,7 @@ class CardsCreateTestCase(TestCase):
 
     def setUp(self) -> None:
         self.user = User.objects.create_user(username='Test_1', password='123', email='test@test.test')
-        self.collection = CardsCollections.objects.create(owner=self.user, name='Test')
+        self.collection = Collections.objects.create(owner=self.user, name='Test')
         self.url = reverse('cards:create_card')
 
     def test_get(self):
@@ -93,4 +93,4 @@ class CardsCreateTestCase(TestCase):
         self.assertTemplateUsed(response, 'cards/create_card.html')
         form = response.context['form']
         print(response.context['form'])
-        print(EnglishCards.objects.first())
+        print(Cards.objects.first())

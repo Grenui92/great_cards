@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import EnglishCards, CardsCollections
+from .models import Cards, Collections
 
 
 class CardForm(forms.ModelForm):
@@ -26,10 +26,10 @@ class CardForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if user_id:
             self.fields['collection'].choices = [(cc.id, cc.name) for cc in
-                                                 CardsCollections.objects.filter(owner=user_id)]
+                                                 Collections.objects.filter(owner=user_id)]
 
     class Meta:
-        model = EnglishCards
+        model = Cards
         fields = ['english_word', 'russian_word', 'word_usage', 'collection']
 
 
@@ -38,5 +38,5 @@ class CollectionForm(forms.ModelForm):
     img = forms.ImageField(required=False, widget=forms.FileInput())
 
     class Meta:
-        model = CardsCollections
+        model = Collections
         fields = ['name', 'img']

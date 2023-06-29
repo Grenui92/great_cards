@@ -6,12 +6,12 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View
 
 from cards.forms import CollectionForm
-from cards.models import CardsCollections
+from cards.models import Collections
 from cards.services.collections_services import CollectionServices
 from cards.services.abstract_class import MessageMixin
 
 class CollectionListView(ListView):
-    model = CardsCollections
+    model = Collections
     template_name = 'cards/study_cards.html'
 
     def get_queryset(self):
@@ -24,7 +24,7 @@ class CollectionListView(ListView):
         :return: A list of objects that match the given query parameters
         """
 
-        collection = CardsCollections.objects.filter(owner=self.request.user.id)
+        collection = Collections.objects.filter(owner=self.request.user.id)
         return collection
 
 
@@ -61,7 +61,7 @@ class CollectionCreateView(View, MessageMixin):
         if form.is_valid():
             collection = form.save(commit=False)
 
-            if CardsCollections.objects.filter(name=collection.name).exists():
+            if Collections.objects.filter(name=collection.name).exists():
                 return render(request, self.message_template,
                               context={'message': f'Collection with name "{collection.name}" already exist, '
                                                   f'choice another name!'})

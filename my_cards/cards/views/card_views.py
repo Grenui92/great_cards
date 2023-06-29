@@ -7,12 +7,12 @@ from django.contrib.auth.decorators import login_required
 from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
 from cards.forms import CardForm, CollectionForm
-from cards.models import CardsCollections
+from cards.models import Collections
 from cards.services.abstract_class import MessageMixin
 
 class CardsListView(ListView):
     """Return all  cards when you open collection."""
-    model = CardsCollections
+    model = Collections
     template_name = 'cards/open_collection.html'
     paginate_by = 1
 
