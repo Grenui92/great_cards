@@ -82,18 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'my_cards.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'mssql',
-#         'NAME': 'GreatCards',
-#         'USER': "CloudSAb70b4b64",
-#         'PASSWORD': '92062555Vv',
-#         'HOST': 'my-cards.database.windows.net',
-#         'PORT': '1433',
-#         'DRIVER': 'ODBC Driver 18 for SQL Server',
-#         },
-#     }
+# https://docs.djangoproject.com/en/4.2/ref/settings/#database
 
 
 DATABASES = {
