@@ -1,4 +1,4 @@
-import logging
+from django.db.models import Case, When
 from django.shortcuts import render
 from django.views.generic import ListView, View
 from django.utils.decorators import method_decorator
@@ -29,7 +29,7 @@ class CardsListView(ListView):
         collection_id = self.kwargs['collection_id']
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         cards = CollectionServices.get_all_cards(collection=collection)
-        return cards.order_by('id')
+        return cards.order_by(Case(*[When(id=card_id, then=pos) for pos, card_id in enumerate(collection.order_list)]))
 
     def get_context_data(self, *_, object_list=None, **kwargs):
         """
@@ -115,6 +115,8 @@ class CardDeleteView(View):
         card = CardsServices.get_card_from_collection(card_id=card_id)
 
         collection.cards.remove(card)
+        collection.order_list.remove(card.id)
+        collection.save()
 
         queryset = CollectionServices.get_all_cards(collection=collection)
 
@@ -122,4 +124,3 @@ class CardDeleteView(View):
                                                                       'queryset': queryset,
                                                                       'collection_id': collection_id,
                                                                       'form': CollectionForm()})
-

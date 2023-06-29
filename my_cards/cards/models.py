@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from PIL import Image
 
 
@@ -38,6 +39,7 @@ class Collections(models.Model):
     name = models.CharField(max_length=25)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cards = models.ManyToManyField('Cards', db_column='card_id')
+    order_list = ArrayField(models.IntegerField(), default=list)
     img = models.ImageField(default='1.png', upload_to='avatars')
 
     def save(self, *args, **kwargs):
@@ -62,9 +64,3 @@ class Collections(models.Model):
             new_img = (50, 50)
             img.thumbnail(new_img)
             img.save(self.img.path)
-
-class CardCollection(models.Model):
-
-    card = models.ForeignKey(Cards, on_delete=models.CASCADE)
-    collection = models.ForeignKey(Collections, on_delete=models.CASCADE)
-    rating = models.IntegerField()

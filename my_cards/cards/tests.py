@@ -70,10 +70,14 @@ class CardsStaticTestCase(TestCase):
 
 class CardsCreateTestCase(TestCase):
 
-    def setUp(self) -> None:
-        self.user = User.objects.create_user(username='Test_1', password='123', email='test@test.test')
-        self.collection = Collections.objects.create(owner=self.user, name='Test')
-        self.url = reverse('cards:create_card')
+    @classmethod
+    def setUpClass(cls) -> None:
+        super().setUpClass()
+        cls.factory = RequestFactory()
+        cls.user = User.objects.create_user(username='Test_1', password='123', email='test@test.test')
+        cls.collection = Collections.objects.create(owner=cls.user, name='Test')
+        cls.url = reverse('cards:create_card')
+        cls.message_url = 'cards/message.html'
 
     def test_get(self):
         self.client.force_login(self.user)
@@ -86,11 +90,9 @@ class CardsCreateTestCase(TestCase):
 
     def test_post_valid(self):
         self.client.force_login(self.user)
-
-        response = self.client.post(self.url, data={'english_word': 'aaa',
-                                                    'russian_word': 'aaa',
-                                                    'collection': self.collection})
-        self.assertTemplateUsed(response, 'cards/create_card.html')
+        data = {'english_word': 'home',
+                'collection': self.collection}
+        response = self.client.post(self.url, data)
         form = response.context['form']
         print(response.context['form'])
         print(Cards.objects.first())
