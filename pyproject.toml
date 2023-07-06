@@ -23,6 +23,7 @@ sphinx = "^7.0.1"
 uvicorn = "^0.22.0"
 environ = "^1.0"
 channels = "^4.0.0"
+daphne = "^4.0.0"
 
 
 [build-system]
