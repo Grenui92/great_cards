@@ -22,7 +22,7 @@ django-cors-headers = "^4.0.0"
 sphinx = "^7.0.1"
 uvicorn = "^0.22.0"
 environ = "^1.0"
-pyodbc = "^4.0.39"
+channels = "^4.0.0"
 
 
 [build-system]
