@@ -4,12 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View
-from django.http import HttpResponse
 
 from cards.forms import CollectionForm
-from cards.models import Collections, CardCollection
+from cards.models import Collections
 from cards.services.collections_services import CollectionServices
-from cards.services.cards_services import CardsServices
 from cards.services.abstract_class import MessageMixin
 
 class CollectionListView(ListView):
@@ -162,15 +160,18 @@ class CollectionRenameView(View):
         return render(request, self.template_name, context={'message': 'Field cant be empty',
                                                             'collection_id': collection_id})
 
-class CardRatingView(View):
-    template_name = 'cards/open_collection.html'
-    def post(self, request, collection_id, card_id):
-        value = int(self.request.POST.get('rating_value'))
+class CardPositionView(View):
+    template_name = 'cards:open_collection'
+    def post(self, request, collection_id: Collections, word_id):
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
-        card = CardsServices.get_card_from_collection(card_id=card_id)
+        replace = int(request.POST.get('replace'))
+        collection.order_list.remove(word_id)
 
-        rel = CardCollection.objects.get(collection=collection, card=card)
-        rel.rating += value
-        rel.save()
+        if replace:
+            collection.order_list.append(word_id)
+        else:
+            collection.order_list.insert(4, word_id)
 
-        return redirect(to='cards:open_collection', collection_id=collection_id)
+        collection.save()
+
+        return redirect(to=self.template_name, collection_id=collection_id)

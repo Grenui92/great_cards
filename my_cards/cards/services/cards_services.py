@@ -1,7 +1,8 @@
-from cards.models import Cards, CardCollection
+from cards.models import Cards
 from cards.services.collections_services import CollectionServices
 from cards.services.translator import translator, en, ru
 from cards.services.fact_generator import fact_generator
+
 import logging
 
 
@@ -104,8 +105,8 @@ class CardsServices:
             return {'message': f'Something goes wrong!!!\n {exc}'}
 
         # Уведомление об спешном создании(нахождение существующей) карточки и добавлении ее в выбраную коллекцию
-        CardCollection.objects.get_or_create(card=card, collection=collection, rating=10)
-        new = CardCollection.objects.all()
-        for n in new:
-            print(n)
+        # и в список сортировки
+        if card.id not in collection.order_list:
+            collection.order_list.append(card.id)
+            collection.save()
         return {'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'}

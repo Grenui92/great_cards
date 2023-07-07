@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col">
                         <p>English word</p>
-                        <h4>{{ word.card.english_word }}</h4>
+                        <h4>{{ word.english_word }}</h4>
                         <img src="{{ word.img.url }}" alt="description of the image">
                         <p>{{ word.word_usage }}</p>
                     </div>
@@ -21,19 +21,12 @@
                 <div class="row">
                     <div class="col">
                         <p>Russian word</p>
-                        <h4>{{ word.card.russian_word }}</h4>
+                        <h4>{{ word.russian_word }}</h4>
                         <img src="{{ word.img.url }}" alt="description of the image">
                         <p>{{ word.word_usage }}</p>
                     </div>
                 </div>
             </div>
-            <form method="post" action="{% url 'cards:rating' collection_id=collection.id card_id=word.card.id%}">
-                {% csrf_token %}
-                <button type="submit" name="rating_value" value="1">Napomnit</button>
-                <button type="submit" name="rating_value" value="-1">Zapomnil</button>
-            </form>
-            {% endfor %}
-
             <div class="container my-5">
                 <div class="row">
                     <div class="col">
@@ -43,6 +36,14 @@
                     </div>
                 </div>
             </div>
+            <form method="post" action="{% url 'cards:card_position' collection_id=collection.id word_id=word.id %}">
+                {% csrf_token %}
+                <button type="submit" name="replace" class="btn btn-primary" value="1">I know it</button>
+                <button type="submit" name="replace" class="btn btn-primary" value="0">Remind</button>
+            </form>
+            {% endfor %}
+
+
         </div>
     </div>
 
@@ -69,17 +70,7 @@
 
     </script>
 </div>
-<div>
-    {% if page_obj.has_previous %}
-    <a href="?page=1">&lsaquo;&lsaquo; First </a>
-    <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Previous </a>
-    {% endif %}
-    {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}"> Next &rsaquo;</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">Last &rsaquo;&rsaquo;</a>
-    {% endif %}
-    <div>Collection name:
-        <h5>{{ collection.name }}</h5>
-    </div>
+<div>Collection name:
+    <h5>{{ collection.name }}</h5>
 </div>
 {% endblock %}
