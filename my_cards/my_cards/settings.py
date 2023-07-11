@@ -1,13 +1,14 @@
-
-import environ
+import os.path
 from pathlib import Path
 
+import dotenv
+import environ
 import openai
 
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+dotenv.load_dotenv()
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / '.env')
 
@@ -15,6 +16,11 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY')
 openai.api_key = env('GPT_API_KEY')
 
+DROPBOX_APP_KEY=env('DROPBOX_APP_KEY')
+DROPBOX_APP_SECRET=env('DROPBOX_APP_SECRET')
+DROPBOX_OAUTH2_REFRESH_TOKEN=env('DROPBOX_OAUTH2_REFRESH_TOKEN')
+DROPBOX_ROOT_PATH = "/"
+DROPBOX_STORAGE = 'storages.backends.files_storage.DropBoxStorage'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = env('EMAIL_HOST')
@@ -47,6 +53,8 @@ INSTALLED_APPS = [
     'cards',
     'users',
     'chat',
+    'news',
+    'files_storage'
 ]
 CSRF_COOKIE_SECURE = False
 MIDDLEWARE = [
@@ -67,8 +75,8 @@ ROOT_URLCONF = 'my_cards.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

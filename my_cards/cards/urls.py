@@ -1,12 +1,10 @@
 from django.urls import path
-from .views.main import main
 from .views.collection_views import CollectionEditView, CollectionRenameView, CollectionListView, CollectionCreateView, CollectionDeleteView, CardPositionView
 from .views.card_views import CardsListView, CreateCardView, CardDeleteView
 
 app_name = 'cards'
 
 urlpatterns = [
-    path('', main, name='main'),
     path('study_cards/', CollectionListView.as_view(), name='study_cards'),
     path('open_collection/<int:collection_id>/', CardsListView.as_view(), name='open_collection'),
     path('create_card/', CreateCardView.as_view(), name='create_card'),
