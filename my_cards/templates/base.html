@@ -29,11 +29,12 @@
             </ul>
             {% endif %}
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'cards:main' %}" class="nav-link" style="margin-left: 0;"> MAIN </a></li>
+                <li><a href="{% url 'news:main' %}" class="nav-link" style="margin-left: 0;"> MAIN </a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'cards:study_cards' %}" class="nav-link"> Study cards </a></li>
                 <li><a href="{% url 'chat:text_correction' %}" class="nav-link"> English sentences </a></li>
                 <li><a href="{% url 'chat:chat_ai' %}" class="nav-link"> Chat with GPT-3 </a></li>
+                <li><a href="{% url 'files_storage:files_list' %}" class="nav-link"> Storage </a></li>
                 <li><a href="{% url 'users:logout' %}" class="nav-link"> LogOut </a></li>
                 {% else %}
                 <li><a href="{% url 'users:signup' %}" class="nav-link"> Registration </a></li>
