@@ -8,7 +8,7 @@ from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
 from cards.forms import CardForm, CollectionForm
 from cards.models import Collections
-from my_cards.mixins import MessageMixin
+from tools.mixins import MessageMixin
 
 class CardsListView(ListView):
     """Return all  cards when you open collection."""

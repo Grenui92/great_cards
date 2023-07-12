@@ -3,7 +3,7 @@ from django.views.generic import View, ListView
 
 from files_storage.models import File
 from files_storage.services import DropboxServices
-from my_cards.mixins import MessageMixin
+from tools.mixins import MessageMixin
 
 
 class FilesListView(ListView):

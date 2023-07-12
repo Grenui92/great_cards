@@ -8,7 +8,7 @@ from django.views.generic import ListView, View
 from cards.forms import CollectionForm
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
-from my_cards.mixins import MessageMixin
+from tools.mixins import MessageMixin
 
 class CollectionListView(ListView):
     model = Collections
