@@ -25,8 +25,8 @@ class CardsServices:
         collection = CollectionServices.get_collection_by_id(collection_id=form.cleaned_data['collection'])
         return english_word, russian_word, word_usage, collection
 
-    @staticmethod
-    def generate_data(english_word, russian_word, word_usage):
+    @classmethod
+    def get_card_data(cls, english_word, russian_word, word_usage):
         """
         The generate_data function takes in three arguments: english_word, russian_word, and word_usage.
         If the user does not provide an English word or a Russian word, the function will use Google Translate to translate
@@ -38,16 +38,22 @@ class CardsServices:
         :param word_usage: Pass a fact about the word to the function
         :return: A tuple of three values
         """
-        if not english_word:
-            english_word = translator(text=russian_word, from_l=ru, to_l=en).strip()
 
-        elif not russian_word:
-            russian_word = translator(text=english_word, from_l=en, to_l=ru).strip()
+        try:
+            card: Cards = cls.get_card_from_collection(english=english_word, russian=russian_word)
+            return card.english_word, card.russian_word, card.word_usage
 
-        if not word_usage:
-            word_usage = fact_generator(english_word).strip()
+        except ValueError:
+            if not english_word:
+                english_word = translator(text=russian_word, from_l=ru, to_l=en).strip()
 
-        return english_word, russian_word, word_usage
+            elif not russian_word:
+                russian_word = translator(text=english_word, from_l=en, to_l=ru).strip()
+
+            if not word_usage:
+                word_usage = fact_generator(english_word).strip()
+
+            return english_word, russian_word, word_usage
 
     @classmethod
     def get_card_from_collection(cls, english=None, russian=None, card_id=None):
@@ -68,12 +74,12 @@ class CardsServices:
         elif card_id:
             card = Cards.objects.get(id=card_id)
         else:
-            raise ValueError('Empty fields "english word" or "russian word"')
+            raise ValueError('Empty fields "english word" and "russian word"')
 
         return card
 
     @classmethod
-    def get_new_card(cls, form):
+    def get_new_card(cls, english, russian, usage, collection):
         """
         The get_new_card function takes a form and returns a message.
 
@@ -81,7 +87,7 @@ class CardsServices:
         :param form: Get the information from the form
         :return: A dictionary with a message
         """
-        english, russian, usage, collection = cls.get_information_from_forms(form)
+
         try:
 
             card = cls.get_card_from_collection(english=english, russian=russian)
@@ -91,22 +97,18 @@ class CardsServices:
             # Если не нашли - сохранем форму в БД
         except Cards.DoesNotExist as exc:
 
-            logging.info(exc)
-            english_word, russian_word, word_usage = cls.generate_data(english, russian, usage)
-
-            card = Cards.objects.create(english_word=english_word,
-                                        russian_word=russian_word,
-                                        word_usage=word_usage)
+            card = Cards.objects.create(english_word=english,
+                                        russian_word=russian,
+                                        word_usage=usage)
             collection.cards.add(card)
 
         except Exception as exc:
-
             logging.info(exc)
             return {'message': f'Something goes wrong!!!\n {exc}'}
 
-        # Уведомление об спешном создании(нахождение существующей) карточки и добавлении ее в выбраную коллекцию
-        # и в список сортировки
+
         if card.id not in collection.order_list:
             collection.order_list.append(card.id)
             collection.save()
+
         return {'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'}

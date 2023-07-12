@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'cards:create_card' %}">
+    {% csrf_token %}
+    <p>You want to create card with:</p>
+    <div><div style="font-weight: bold;">Russian: </div>{{russian}}</div>
+    <div><div style="font-weight: bold;">English: </div>{{english}}</div>
+    <div><div style="font-weight: bold;">Usage: </div>{{usage}}</div>
+    <div><div style="font-weight: bold;">Collection: </div>{{collection.name}}</div>
+
+    <input type="hidden" name="russian" value="{{ russian }}">
+    <input type="hidden" name="english" value="{{ english }}">
+    <input type="hidden" name="usage" value="{{ usage }}">
+    <input type="hidden" name="collection_id" value="{{ collection.id }}">
+
+    <button class="btn btn-primary" type="submit" style="background: #ff9cff;">
+        Confirm
+    </button>
+    <a class="btn btn-primary" style="background: #c5f2a2; color: black;" href="{% url 'cards:create_card' %}">
+        Back to the create form
+    </a>
+    <a class="btn btn-primary" style="background: #c5f2a2; color: black;" href="{% url 'cards:study_cards' %}">
+        To the study cards page
+    </a>
+</form>
+
+<div>
+
+</div>
+{% endblock %}

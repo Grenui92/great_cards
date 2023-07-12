@@ -3,6 +3,7 @@ from django.views.generic import View, ListView
 
 from files_storage.models import File
 from files_storage.services import DropboxServices
+from my_cards.mixins import MessageMixin
 
 
 class FilesListView(ListView):
@@ -11,10 +12,9 @@ class FilesListView(ListView):
 
     def get_queryset(self):
         files = File.objects.filter(owner=self.request.user.id)
-        print(files)
         return files
 
-class UploadFileView(View):
+class UploadFileView(View, MessageMixin):
     template_name = 'files_storage/upload_file.html'
 
     def get(self, request):
@@ -22,5 +22,8 @@ class UploadFileView(View):
 
     def post(self, request):
         file = request.FILES.get('file')
-        new_name = DropboxServices.upload_file(file=file)
-        print(new_name)
+
+        old_name, new_name = DropboxServices.upload_file(request=request, file=file)
+
+
+        return render(request, self.message_template, context={'message': f'File "{old_name}" saved to the dropbox as "{new_name}"'})

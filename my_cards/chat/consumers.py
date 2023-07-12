@@ -4,6 +4,7 @@ from channels.generic.websocket import WebsocketConsumer
 
 from chat.services.conversation import chat_bot
 from chat.services.checking_sentences import text_generator
+from chat.services.translate import translate_ru_en, translate_en_ru
 MAX_AI_PHRASES_MEMORY = 20
 
 class ChatConsumer(WebsocketConsumer):
@@ -49,3 +50,35 @@ class CorrectorConsumer(WebsocketConsumer):
         corrector_response = text_generator(message)
 
         self.send(text_data=json.dumps({'message': f'Correct: {corrector_response.strip()} \n \n'}))
+
+class RuEnTranslateConsumer(WebsocketConsumer):
+
+    def connect(self):
+        self.accept()
+
+    def disconnect(self, code):
+        pass
+
+    def receive(self, text_data=None, bytes_data=None):
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
+
+        corrector_response = translate_ru_en(message)
+
+        self.send(text_data=json.dumps({'message': f'Answer: {corrector_response.strip()} \n \n'}))
+
+class EnRuTranslateConsumer(WebsocketConsumer):
+
+    def connect(self):
+        self.accept()
+
+    def disconnect(self, code):
+        pass
+
+    def receive(self, text_data=None, bytes_data=None):
+        text_data_json = json.loads(text_data)
+        message = text_data_json['message']
+
+        corrector_response = translate_en_ru(message)
+
+        self.send(text_data=json.dumps({'message': f'Answer: {corrector_response.strip()} \n \n'}))

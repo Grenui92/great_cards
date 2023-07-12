@@ -8,7 +8,7 @@ from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
 from cards.forms import CardForm, CollectionForm
 from cards.models import Collections
-from cards.services.abstract_class import MessageMixin
+from my_cards.mixins import MessageMixin
 
 class CardsListView(ListView):
     """Return all  cards when you open collection."""
@@ -57,7 +57,7 @@ class CreateCardView(View, MessageMixin):
     template_name = 'cards/create_card.html'
 
     @method_decorator(login_required)
-    def post(self, request):
+    def get(self, request):
         """
         The post function is used to create a new card.
         It takes in the request and returns a rendered template with either an error message or success message.
@@ -69,29 +69,35 @@ class CreateCardView(View, MessageMixin):
         :param request: Get the information from the form
         :return: A render function
         """
-        form = CardForm(request.POST, user_id=request.user.id)
+        form = CardForm(request.GET, user_id=request.user.id)
 
         if form.is_valid():
             form.save(commit=False)
-            message = CardsServices.get_new_card(form=form)
-
-            return render(request, self.message_template, context=message)
+            english, russian, usage, collection = CardsServices.get_information_from_forms(form)
+            english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english,
+                                                                                 russian_word=russian,
+                                                                                 word_usage=usage)
+            message = {
+                'russian': russian_word,
+                'english': english_word,
+                'usage': word_usage,
+                'collection': collection
+            }
+            return render(request, 'cards/confirm_card_create.html', context=message)
 
         return render(request, self.template_name, context={'form': form})
 
-    @method_decorator(login_required)
-    def get(self, request):
+    def post(self, request):
 
-        """
-        The get function is used to render the form for a new card.
-        It takes in a request object and returns an HTML page with the form.
+        english = request.POST.get('english')
+        russian = request.POST.get('russian')
+        usage = request.POST.get('usage')
+        collection = CollectionServices.get_collection_by_id(int(request.POST.get('collection_id')))
 
-        :param self: Refer to the class itself
-        :param request: Get the user id
-        :return: The form object
-        """
-        form = CardForm(user_id=request.user.id)
-        return render(request, self.template_name, context={'form': form})
+        message = CardsServices.get_new_card(english=english, russian=russian, usage=usage, collection=collection)
+
+        return render(request, self.message_template, context= message)
+
 
 class CardDeleteView(View):
     template_name = 'cards/edit_collection.html'

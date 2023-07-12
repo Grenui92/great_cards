@@ -3,5 +3,8 @@
 {% block content %}
 
 <a class="btn btn-primary" href="{% url 'files_storage:upload_file' %}">Upload</a>
-
+{% for file in files %}
+<img src="{{ file.file_type.img.url }}">
+{{ file.file_name }}
+{% endfor %}
 {% endblock %}

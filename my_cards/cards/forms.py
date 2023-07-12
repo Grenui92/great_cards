@@ -7,8 +7,7 @@ class CardForm(forms.ModelForm):
     english_word = forms.CharField(max_length=50, widget=forms.TextInput(), required=False)
     russian_word = forms.CharField(max_length=50, widget=forms.TextInput(), required=False)
     word_usage = forms.CharField(required=False)
-    collection = forms.ChoiceField(choices=[], required=True, error_messages={'required': f'This field is required. '
-                                                                                          f'Turn back and create your first collection.'})
+    collection = forms.ChoiceField(choices=[], required=True, error_messages={'required': f'This field is required. '})
     img = forms.ImageField(required=False)
 
     def __init__(self, *args, user_id=None, **kwargs):

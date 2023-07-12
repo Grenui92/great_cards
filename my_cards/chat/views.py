@@ -26,3 +26,13 @@ class CorrectorView(View):
         :return: A rendered template chat/text_correction.html
         """
         return render(request, 'chat/corrector.html')
+
+class EnRuTranslateView(View):
+
+    def get(self, request):
+        return render(request, 'chat/en_ru_translate.html')
+
+class RuEnTranslateView(View):
+
+    def get(self, request):
+        return render(request, 'chat/ru_en_translate.html')

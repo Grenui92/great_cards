@@ -16,7 +16,7 @@ class MyRegistrationView(View):
             user = form.save()
 
             logging.info(f'User -{user}- created')
-            return redirect(to='cards:main')
+            return redirect(to='news:main')
         return render(request, 'users/signup.html', context={'form': form})
 
     def get(self, request):
@@ -24,10 +24,10 @@ class MyRegistrationView(View):
 
 class MyLoginView(LoginView):
     template_name = 'users/login.html'
-    next_page = reverse_lazy('cards:main')
+    next_page = reverse_lazy('news:main')
 
 class MyLogoutView(LogoutView):
-    next_page = reverse_lazy('cards:main')
+    next_page = reverse_lazy('news:main')
 
 class MyResetPasswordView(PasswordResetView):
     template_name = 'users/password_reset.html'
