@@ -43,7 +43,7 @@ class CardsServices:
             card: Cards = cls.get_card_from_collection(english=english_word, russian=russian_word)
             return card.english_word, card.russian_word, card.word_usage
 
-        except ValueError:
+        except Cards.DoesNotExist:
             if not english_word:
                 english_word = translator(text=russian_word, from_l=ru, to_l=en).strip()
 
@@ -53,7 +53,7 @@ class CardsServices:
             if not word_usage:
                 word_usage = fact_generator(english_word).strip()
 
-            return english_word, russian_word, word_usage
+            return english_word.lower(), russian_word.lower(), word_usage.lower()
 
     @classmethod
     def get_card_from_collection(cls, english=None, russian=None, card_id=None):
@@ -108,7 +108,7 @@ class CardsServices:
 
 
         if card.id not in collection.order_list:
-            collection.order_list.append(card.id)
+            collection.order_list.insert(0, card.id)
             collection.save()
 
         return {'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'}
