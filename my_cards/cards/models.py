@@ -5,8 +5,8 @@ from PIL import Image
 
 
 class Cards(models.Model):
-    english_word = models.CharField(max_length=25)
-    russian_word = models.CharField(max_length=25)
+    english_word = models.CharField(max_length=255)
+    russian_word = models.CharField(max_length=255)
     word_usage = models.TextField()
     img = models.ImageField(default='golub.jpg', upload_to='words_image')
 
