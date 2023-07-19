@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+<main>
 <ul class="collections-nav">
   <li>
     <a href="{% url 'cards:create_card' %}">Create card</a>
@@ -31,4 +31,5 @@
   </li>
   {% endfor %}
 </ul>
+</main>
 {% endblock %}

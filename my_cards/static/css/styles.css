@@ -190,6 +190,7 @@ header {
   display: flex;
   gap: 8px;
   list-style: none;
+  padding: 0;
 }
 .collections-nav li {
   background-color: rgba(180, 180, 180, 0.918);
@@ -216,6 +217,7 @@ header {
 .collections-list {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .collection:nth-child(2n+1) {
