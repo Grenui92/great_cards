@@ -1,27 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<ul class="collections-nav">
+  <li>
+    <a href="{% url 'cards:create_card' %}">Create card</a>
+  </li>
+  <li>
+    <a href="{% url 'cards:create_collection' %}">Create collection</a>
+  </li>
+</ul>
 
-<nav>
-    <button><a class="nav-link" href="{% url 'cards:create_card' %}">Create card</a></button>
-    <button><a class="nav-link" href="{% url 'cards:create_collection' %}">Create collection</a></button>
-</nav>
-<div class="table-responsive">
-    <table class="table">
-        <tbody>
-        {% for collection in object_list %}
-        <tr>
-            <td><img src="{{ collection.img.url }}" alt="Image"> {{ collection.name }}</td>
-            <td><a href="{% url 'cards:open_collection' collection_id=collection.id %}"
-                   class="btn btn-primary btn-sm">Open Collection</a></td>
-            <td><a href="{% url 'cards:edit_collection' collection_id=collection.id %}"
-                   class="btn btn-primary btn-sm">Edit Collection</a></td>
-            <td><a href="{% url 'cards:delete_collection' collection_id=collection.id %}" class="btn btn-primary btn-sm"
-                   style="background-color: red;">Delete Collection</a></td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
+<ul class="collections-list">
+  {% for collection in object_list %}
+  <li class="collection">
+    <div class="collection-info">
+      <img src="{{ collection.img.url }}" alt="Image" class="collection-img"/>
+      <p>{{ collection.name }}</p>
+      <p>{{ collection.order_list|length }}</p>
+    </div>
+    <div class="collection-act">
+      <a href="{% url 'cards:open_collection' collection_id=collection.id %}">
+        Open Collection
+      </a>
+      <a href="{% url 'cards:edit_collection' collection_id=collection.id %}">
+        Edit Collection
+      </a>
+      <a href="{% url 'cards:delete_collection' collection_id=collection.id %}">
+        Delete Collection
+      </a>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}

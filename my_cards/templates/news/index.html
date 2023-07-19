@@ -6,6 +6,9 @@
       {% for news in page_obj %}
       <li class="news-el">
         <img class="news-img" src="{{news.image}}" />
+        <a class="news-title" href="{{news.url}}" target="_blank">
+          {{news.title}}
+        </a>
         <p class="news-text">{{news.description}}</p>
         <a class="news-link" href="{{news.url}}" target="_blank">Link</a>
       </li>
@@ -13,40 +16,27 @@
     </ul>
   </section>
 
-  <div class="col-11">
-    <div class="row">
-      <div class="col-5 d-flex justify-content-start">
-        {% if page_obj.has_previous %}
-        <a class="btn btn-secondary col-6 p-2 m-2" href="?page=1"
-          >&lsaquo;&lsaquo; First
-        </a>
-        <a
-          class="btn btn-secondary col-6 p-2 m-2"
-          href="?page={{ page_obj.previous_page_number }}"
-          >&lsaquo; Previous
-        </a>
-        {% endif %}
-      </div>
-      <div class="col-2 d-flex justify-content-center mt-3">
-        <p>Pages</p>
-      </div>
-      <div class="col-5 d-flex justify-content-end">
-        {% if page_obj.has_next %}
-        <a
-          class="btn btn-secondary col-6 p-2 m-2"
-          href="?page={{ page_obj.next_page_number }}"
-        >
-          Next &rsaquo;</a
-        >
-        <a
-          class="btn btn-secondary col-6 p-2 m-2"
-          href="?page={{ page_obj.paginator.num_pages }}"
-          >Last &rsaquo;&rsaquo;</a
-        >
-        {% endif %}
-      </div>
+  <section class="pages">
+    <div class="pages-button">
+      {% if page_obj.has_previous %}
+      <a class="btn btn-secondary col-6 p-2 m-2" href="?page=1"
+        >&lsaquo;&lsaquo; First</a
+      >
+      <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Previous</a>
+      {% endif %}
     </div>
-  </div>
+    <p class="pages-text">
+      &lsaquo;&lsaquo; Page № {{ page_obj.number }} &rsaquo;&rsaquo;
+    </p>
+    <div class="pages-button">
+      {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}"> Next &rsaquo;</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}"
+        >Last &rsaquo;&rsaquo;</a
+      >
+      {% endif %}
+    </div>
+  </section>
 </main>
 
 {% endblock %}
