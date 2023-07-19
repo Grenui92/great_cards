@@ -1,0 +1,102 @@
+/* base.html */
+
+header {
+  background-color: rgb(224, 224, 224);
+  padding: 10px 25px;
+  box-shadow: 0px 3px 10px rgba(143, 141, 141, 0.356);
+  border-radius: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.username {
+  color: rgba(255, 0, 0, 0.247);
+  margin: 0px 0px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.nickname {
+  color: rgba(0, 17, 255, 0.418);
+}
+
+.navbar ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar li {
+  background-color: rgb(224, 224, 224);
+  height: auto;
+  width: 150px;
+  box-shadow: 1px 1px 3px rgba(102, 102, 102, 0.233);
+  border-width: 2px;
+  border-color: rgb(180, 180, 180);
+  border-radius: 8px;
+  border-style: solid;
+  position: relative;
+}
+.navbar li:hover {
+  box-shadow: 2px 3px 1px rgba(102, 102, 102, 0.6);
+}
+
+.nav-ul > li {
+  text-align: center;
+  float: left;
+  margin: 0px 10px;
+}
+
+.nav-dropdown-ul {
+  position: absolute;
+  height: auto;
+  display: none;
+}
+
+.nav-dropdown-ul > li {
+  margin-top: 6px;
+  display: block;
+}
+
+.nav-dropdown:hover .nav-dropdown-ul {
+  display: block;
+}
+
+/* base.html end */
+
+/* index.html */
+
+.news-el {
+  margin: 1px 1px;
+  display: flex;
+  flex-direction: column;
+  border-width: 0px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 2px rgba(3, 3, 3, 0.301);
+}
+
+.news-link {
+  text-decoration: none;
+  font-weight: 900;
+  margin: 3px 3px;
+}
+
+.news-list{
+  padding: 0px 0px;
+  margin-top: 5px;
+  list-style: none;
+}
+
+.news-img {
+  margin: 4px 2px;
+  border-style: solid;
+  border-width: 1px;
+  width: 200px
+}
