@@ -19,9 +19,7 @@
   <section class="pages">
     <div class="pages-button">
       {% if page_obj.has_previous %}
-      <a class="btn btn-secondary col-6 p-2 m-2" href="?page=1"
-        >&lsaquo;&lsaquo; First</a
-      >
+      <a href="?page=1">&lsaquo;&lsaquo; First</a>
       <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Previous</a>
       {% endif %}
     </div>
@@ -31,9 +29,7 @@
     <div class="pages-button">
       {% if page_obj.has_next %}
       <a href="?page={{ page_obj.next_page_number }}"> Next &rsaquo;</a>
-      <a href="?page={{ page_obj.paginator.num_pages }}"
-        >Last &rsaquo;&rsaquo;</a
-      >
+      <a href="?page={{ page_obj.paginator.num_pages }}">Last &rsaquo;&rsaquo;</a>
       {% endif %}
     </div>
   </section>

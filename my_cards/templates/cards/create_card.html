@@ -1,49 +1,53 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<main>
-<form method="get" action="{% url 'cards:create_card' %}">
+<main >
+<form class="form-class" method="get" action="{% url 'cards:create_card' %}">
 
   <label>{{ form.non_field_errors }}</label>
-  <div>
-    <label>
-      English word:
+  
+  <div class="form-sector">
+    <label class="form-label">
+      <span>English word:</span>
       <p>{{ form.english_word }}</p>
     </label>
-    <span> {{ form.errors.english_word }} </span>
   </div>
+
   <div>
-    <label>
-      Russian word:
+    <label class="form-label">
+      <span class="">Russian word:</span>
       <p>{{ form.russian_word }}</p>
     </label>
-    <span> {{ form.errors.russian_word }}</span>
   </div>
+
   <div>
     <label>
-      Usage:
+      <span class="form-label">Usage:</span>
       <p>{{ form.word_usage }}</p>
     </label>
-    <span> {{ form.errors.word_usage }}</span>
-    <p>
+    <p class="form-details">
       You can leave this field empty and I'll give you interest fact about China
       with this word.
     </p>
   </div>
+
   <div>
-    <label for="collection">Collection:</label>
+    <label class="form-label" for="collection">
+        <span>Collection:</span>
+    </label>
     <select name="collection" id="collection">
       {% for value, label in form.fields.collection.choices %} 
       <option value="{{ value }}" label="{{ label }}" {% if value == form.cleaned_data.collection %} selected {% endif %}> 
       {% endfor %}
+      <span> {{ form.errors.collection }} </span>
     </select>
-    <span> {{ form.errors.collection }} </span>
   </div>
 
-  <div>
-    <button type="submit">Create card and add to collection</button>
-    <button type="reset">Reset</button>
+  <div class="form-buttons">
+    <button class="submit-button" type="submit">Create card and add to collection</button>
+    <button class="reset-button" type="reset">Reset</button>
   </div>
+
 </form>
 </main>
 {% endblock %}

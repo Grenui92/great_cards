@@ -1,12 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<main class="message-main">
+    <h3 class="message">You want to delete collection "{{collection.name}}"?</h3>
+  <form class="delete-confirm-form"
+    method="post"
+    action="{% url 'cards:delete_collection' collection_id=collection.id %}">
 
-{% block content %}
-<h4 class="text-center my-2 fs-4">Delete "{{collection.name}}"?</h4>
-<form method="post" action="{% url 'cards:delete_collection' collection_id=collection.id %}">
     {% csrf_token %}
-    <div>
-        <button type="submit">Delete colleciton</button>
-        <a href="{% url 'cards:study_cards' %}" >Return to collections list</a>
+
+    <div class="form-buttons">
+      <button class="submit-button" type="submit">Delete colleciton</button>
+      <button class="reset-button" type="button">
+        <a href="{% url 'cards:study_cards' %}">Return to collections list</a>
+      </button>
     </div>
-</form>
+  </form>
+</main>
 {% endblock %}

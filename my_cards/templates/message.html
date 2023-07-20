@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h3 style="color: green;"> {{ message }} </h3>
-</div>
-<div>
-    <button class="btn btn-primary" style="background: #c5f2a2;"><a href="{% url 'news:main' %}" class="nav-link">
-        Redirect to the main page
-    </a></button>
-    <button class="btn btn-primary" style="background: #c5f2a2;"><a href="{% url 'cards:study_cards' %}" class="nav-link">
-        To the study cards page
-    </a></button>
-</div>
+<main class="message-main">
+    <h3 class="message"> {{ message }} </h3>
+    <div class="form-buttons">
+        <button class="submit-button"><a href="{% url 'news:main' %}">
+            Redirect to the main page
+        </a></button>
+        <button class="reset-button"><a href="{% url 'cards:study_cards' %}">
+            To the study cards page
+        </a></button>
+    </div>
+</main>
 {% endblock %}

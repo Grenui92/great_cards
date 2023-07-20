@@ -2,9 +2,20 @@
 
 header {
   background-color: rgb(224, 224, 224);
-  padding: 10px 25px;
+  padding: 10px 25px 10px 10px;
   box-shadow: 0px 3px 10px rgba(143, 141, 141, 0.356);
   border-radius: 10px;
+}
+button:hover {
+  cursor: pointer;
+}
+button a {
+  display: block;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 
 .username {
@@ -21,21 +32,17 @@ header {
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-content: center;
 }
 
-.navbar ul {
-  padding-left: 0px;
-  list-style: none;
+.nav {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  gap: 5px;
 }
 
-.navbar a {
-  color: black;
-  text-decoration: none;
-  padding: 8px 53px;
-}
-
-.navbar li {
+.nav li button {
+  width: 100%;
   background-color: rgb(224, 224, 224);
   width: 150px;
   box-shadow: 1px 1px 3px rgba(102, 102, 102, 0.233);
@@ -48,34 +55,26 @@ header {
   padding: 2px 0px;
 }
 
-.navbar li:hover {
-  box-shadow: 2px 3px 1px rgba(102, 102, 102, 0.6);
-}
-
-.nav-ul {
-  display: flex;
-  gap: 15px;
-}
-
-.nav-ul > li {
-  text-align: center;
+.navbar li button:hover {
+  box-shadow: 2px 3px 7px rgba(102, 102, 102, 0.6);
 }
 
 .nav-dropdown-ul {
   position: absolute;
   height: auto;
   display: none;
-}
-
-.nav-dropdown-ul a {
-  padding: 0px 20px;
+  padding-left: 0;
 }
 
 .nav-dropdown:hover .nav-dropdown-ul {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 6px;
+  margin-top: 4px;
+}
+
+.nav-dropdown-ul li {
+  width: 100%;
 }
 
 /* base.html end */
@@ -89,7 +88,7 @@ header {
   background-color: rgb(224, 224, 224);
   box-shadow: 0px 0px 2px 2px rgba(3, 3, 3, 0.493);
 }
-.news-el:nth-child(2n+1) {
+.news-el:nth-child(2n + 1) {
   background-color: rgb(255, 255, 255);
 }
 
@@ -103,7 +102,7 @@ header {
   text-shadow: 1px 1px 1px blue;
 }
 
-.news-list{
+.news-list {
   padding: 0px 0px;
   margin-top: 5px;
   list-style: none;
@@ -113,7 +112,7 @@ header {
   margin: 4px 2px;
   border-style: solid;
   border-width: 1px;
-  width: 200px
+  width: 200px;
 }
 
 .news-title {
@@ -131,10 +130,9 @@ header {
   justify-content: space-between;
   text-align: center;
   gap: 6px;
-  
-  margin-top: 0px;
-  font-size: 25px;
 
+  margin-top: 0px;
+  font-size: 18px;
 }
 
 .pages-text {
@@ -142,40 +140,43 @@ header {
   background-color: grey;
   width: fit-content;
   padding: 3px 3px;
-  border-radius: 10px
+  border-radius: 10px;
 }
-
 
 .pages-button {
   display: flex;
   flex-basis: 45%;
   height: fit-content;
   justify-content: space-between;
-  gap: 6px
+  gap: 6px;
 }
 
 .pages-button a {
   width: 50%;
-  text-decoration: none;
   padding: 3px 0px;
   color: black;
   border-style: solid;
   border-width: 1px;
   border-radius: 10px;
+  text-decoration: none;
 }
-.pages-button:nth-child(n+3) a {
+
+.pages-button:nth-child(n + 3) a {
   border-color: rgba(0, 255, 0, 0.395);
   background-color: rgba(0, 255, 0, 0.315);
 }
-.pages-button:nth-child(n+3) a:hover {
-  background-color: rgba(0, 255, 0, 0.395); 
+
+.pages-button:nth-child(n + 3) a:hover {
+  background-color: rgba(0, 255, 0, 0.395);
   box-shadow: 1px 1px 1px rgba(0, 255, 0, 0.595);
 }
-.pages-button:nth-child(-n+2) a {
+
+.pages-button:nth-child(-n + 2) a {
   border-color: rgba(255, 96, 96, 0.295);
   background-color: rgba(255, 96, 96, 0.116);
 }
-.pages-button:nth-child(-n+2) a:hover {
+
+.pages-button:nth-child(-n + 2) a:hover {
   background-color: rgba(255, 96, 96, 0.295);
   box-shadow: rgba(255, 96, 96, 0.495);
 }
@@ -202,6 +203,7 @@ header {
 }
 
 .collections-nav a {
+  padding: 5px 50px;
   color: black;
   text-decoration: none;
 }
@@ -220,13 +222,13 @@ header {
   padding: 0;
 }
 
-.collection:nth-child(2n+1) {
+.collection:nth-child(2n + 1) {
   background-color: rgba(128, 128, 128, 0.212);
 }
 
 .collection {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   border-radius: 10px;
 }
 
@@ -272,4 +274,112 @@ header {
   width: 7%;
   height: 70%;
   padding: 1%;
+}
+
+/* study_cards.html collections END */
+
+/* create_card.html */
+.form-class {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 8px;
+  margin-top: 1%;
+  padding: 3% 0% 3% 10%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
+}
+
+.form-class p {
+  margin: 0;
+}
+
+.text-input {
+  display: block;
+  width: 80%;
+  height: 20px;
+}
+
+.form-label {
+  font-weight: 900;
+}
+
+.form-details {
+  color: rgba(0, 0, 0, 0.212);
+}
+
+.form-details:hover {
+  color: black;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 5px;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.form-buttons button {
+  width: 50%;
+  padding: 5px 0px;
+  border: 1px solid grey;
+  border-radius: 7px;
+}
+
+.submit-button {
+  background-color: rgba(1, 255, 1, 0.308);
+}
+
+.submit-button:hover {
+  background-color: rgba(1, 255, 1, 0.5);
+}
+
+.reset-button {
+  background-color: rgba(255, 0, 0, 0.185);
+}
+
+.reset-button:hover {
+  background-color: rgba(255, 0, 0, 0.295);
+}
+
+/* create_card.html END */
+
+/* confirm_create_card.html */
+
+.form-class .confirm-label span {
+  font-weight: 900;
+}
+
+.form-class .confirm-label p {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+}
+
+/* confirm_create_card.html END */
+
+/* message.html */
+
+.message-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  color: green;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
+
+/* message.html END */
+
+/* delete_warning.html */
+
+.delete-confirm-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding-left: 18%;
 }

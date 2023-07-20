@@ -22,46 +22,52 @@
       {% endif %}
 
       <nav class="navbar">
-        <ul class="nav-ul">
+        <ul class="nav">
           <li>
-            <a href="{% url 'news:main' %}" class="nav-link">NEWS</a>
+            <button><a href="{% url 'news:main' %}">NEWS</a></button>
           </li>
           {% if user.is_authenticated %}
           <li>
-            <a href="{% url 'cards:study_cards' %}" class="nav-link"> Cards </a>
+            <button><a href="{% url 'cards:study_cards' %}" class="nav-link">Cards</a></button>
           </li>
           <li class="nav-dropdown">
-            <a class="nav-dropdown-link" href="#"> GPT </a>
+            <button><a class="nav-dropdown-link" href="#"> GPT </a></button>
             <ul class="nav-dropdown-ul">
               <li>
-                <a href="{% url 'chat:text_correction' %}"> Sentences </a>
+                <button><a href="{% url 'chat:text_correction' %}">Sentences</a></button>
               </li>
               <li>
-                <a href="{% url 'chat:chat_ai' %}"> Chat with GPT-3 </a>
+                <button><a href="{% url 'chat:chat_ai' %}">Chat with GPT-3</a></button>
               </li>
               <li>
-                <a href="{% url 'chat:to_ru_translate' %}"> To Russian </a>
+                <button><a href="{% url 'chat:to_ru_translate' %}">To Russian</a></button>
               </li>
               <li>
-                <a href="{% url 'chat:to_en_translate' %}"> To English </a>
+                <button><a href="{% url 'chat:to_en_translate' %}">To English</a></button>
               </li>
             </ul>
           </li>
           <li>
+            <button>
             <a href="{% url 'users:logout' %}" class="" style="color: red">
               LogOut
             </a>
+            </button>
           </li>
           {% else %}
           <li>
+            <button>
             <a href="{% url 'users:signup' %}" class="" style="color: green">
               Registration
             </a>
+            </button>
           </li>
           <li>
+            <button>
             <a href="{% url 'users:login' %}" class="" style="color: blue">
               LogIn
             </a>
+            </button>
           </li>
           {% endif %}
         </ul>

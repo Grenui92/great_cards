@@ -4,9 +4,9 @@ from .models import Cards, Collections
 
 
 class CardForm(forms.ModelForm):
-    english_word = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'col-5'}), required=False)
-    russian_word = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'col-5'}), required=False)
-    word_usage = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'col-5'}))
+    english_word = forms.CharField(max_length=255, widget=forms.Textarea(attrs={'class': 'text-input'}), required=False)
+    russian_word = forms.CharField(max_length=255, widget=forms.Textarea(attrs={'class': 'text-input'}), required=False)
+    word_usage = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'text-input'}))
     collection = forms.ChoiceField(choices=[], required=True, error_messages={'required': f'This field is required. '})
     img = forms.ImageField(required=False)
 
@@ -33,7 +33,7 @@ class CardForm(forms.ModelForm):
 
 
 class CollectionForm(forms.ModelForm):
-    name = forms.CharField(max_length=50, widget=forms.TextInput(), required=True)
+    name = forms.CharField(max_length=255, widget=forms.Textarea(attrs={'class': 'text-input'}), required=True)
     img = forms.ImageField(required=False, widget=forms.FileInput())
 
     class Meta:
