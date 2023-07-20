@@ -55,6 +55,7 @@ class CardsListView(ListView):
 
 class CreateCardView(View, MessageMixin):
     template_name = 'cards/create_card.html'
+    confirm_create_template = 'cards/confirm_card_create.html'
 
     @method_decorator(login_required)
     def get(self, request):
@@ -73,17 +74,21 @@ class CreateCardView(View, MessageMixin):
 
         if form.is_valid():
             form.save(commit=False)
-            english, russian, usage, collection = CardsServices.get_information_from_forms(form)
-            english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english,
-                                                                                 russian_word=russian,
-                                                                                 word_usage=usage)
+            try:
+                english, russian, usage, collection = CardsServices.get_information_from_forms(form)
+                english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english,
+                                                                                    russian_word=russian,
+                                                                                    word_usage=usage)
+            except ValueError as exc:
+                return render(request, self.message_template, context={'message': exc})
+            
             message = {
                 'russian': russian_word,
                 'english': english_word,
                 'usage': word_usage,
-                'collection': collection
-            }
-            return render(request, 'cards/confirm_card_create.html', context=message)
+                'collection': collection}
+
+            return render(request, self.confirm_create_template, context=message)
 
         return render(request, self.template_name, context={'form': form})
 
@@ -96,7 +101,7 @@ class CreateCardView(View, MessageMixin):
 
         message = CardsServices.get_new_card(english=english, russian=russian, usage=usage, collection=collection)
 
-        return render(request, self.message_template, context= message)
+        return render(request, self.message_template, context=message)
 
 
 class CardDeleteView(View):

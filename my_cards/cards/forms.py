@@ -24,8 +24,8 @@ class CardForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         if user_id:
-            self.fields['collection'].choices = [(cc.id, cc.name) for cc in
-                                                 Collections.objects.filter(owner=user_id)]
+            self.fields['collection'].choices = [(cc.id, cc.name) for num, cc in
+                                                 enumerate(Collections.objects.filter(owner=user_id))]
 
     class Meta:
         model = Cards

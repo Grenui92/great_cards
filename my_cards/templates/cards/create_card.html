@@ -1,40 +1,49 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
 {% block content %}
+<main>
+<form method="get" action="{% url 'cards:create_card' %}">
 
-<form method="get" action="{% url 'cards:create_card' %}" class="choice-list">
+  <label>{{ form.non_field_errors }}</label>
+  <div>
+    <label>
+      English word:
+      <p>{{ form.english_word }}</p>
+    </label>
+    <span> {{ form.errors.english_word }} </span>
+  </div>
+  <div>
+    <label>
+      Russian word:
+      <p>{{ form.russian_word }}</p>
+    </label>
+    <span> {{ form.errors.russian_word }}</span>
+  </div>
+  <div>
+    <label>
+      Usage:
+      <p>{{ form.word_usage }}</p>
+    </label>
+    <span> {{ form.errors.word_usage }}</span>
+    <p>
+      You can leave this field empty and I'll give you interest fact about China
+      with this word.
+    </p>
+  </div>
+  <div>
+    <label for="collection">Collection:</label>
+    <select name="collection" id="collection">
+      {% for value, label in form.fields.collection.choices %} 
+      <option value="{{ value }}" label="{{ label }}" {% if value == form.cleaned_data.collection %} selected {% endif %}> 
+      {% endfor %}
+    </select>
+    <span> {{ form.errors.collection }} </span>
+  </div>
 
-    {% if form.non_field_errors %}
-    <div>{{ form.non_field_errors }}</div>
-    {% endif %}
-    <div>
-        <label>English word:</label>
-        <br>
-        {{ form.english_word }}
-        <span> {{ form.errors.english_word }} </span>
-    </div>
-    <div>
-        <label>Russian word:</label>
-        <br>
-        {{ form.russian_word }}
-        <span> {{ form.errors.russian_word }}</span>
-    </div>
-    <span>{{ form.non_field_error }}</span>
-    <div>
-        <label>Usage:</label>
-        <br>
-        {{ form.word_usage }}
-        <span> {{ form.errors.word_usage }}</span>
-        <p>You can leave this field empty and I'll give you interest fact about China with this word.</p>
-    </div>
-    <div>
-        <label class="choice_list">Collection:</label>
-        <div class="choice-list"> {{ form.collection }}  </div>
-        <span> {{ form.errors.collection }} </span>
-    </div>
-    <div>
-        <button class="choice_list" type="submit">Create card and add to collection</button>
-        <button type="reset">Reset</button>
-    </div>
+  <div>
+    <button type="submit">Create card and add to collection</button>
+    <button type="reset">Reset</button>
+  </div>
 </form>
+</main>
 {% endblock %}
