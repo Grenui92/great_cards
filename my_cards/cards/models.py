@@ -36,7 +36,7 @@ class Cards(models.Model):
 
 
 class Collections(models.Model):
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cards = models.ManyToManyField('Cards', db_column='card_id')
     order_list = ArrayField(models.IntegerField(), default=list)

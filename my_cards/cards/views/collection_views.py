@@ -133,32 +133,26 @@ class CollectionEditView(View):
         return render(request, self.template_name, context={'collection': collection,
                                                                       'queryset': queryset,
                                                                       'collection_id': collection_id})
-
-class CollectionRenameView(View):
-    template_name = 'cards/edit_collection.html'
-
+    
     def post(self, request, collection_id):
-        """
-        The post function is used to change the name of a collection.
-        It takes in a request and collection_id, then gets the collection by its id.
-        Then it checks if there is anything in new_name, if so it changes the name of
-        that specific collection and saves it. If not, an error message will be displayed.
-
-        :param self: Represent the instance of the class
-        :param request: Get the data from the form
-        :param collection_id: Get the collection from the database
-        :return: The redirect to the edit_collection view
-        """
-
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         new_name = self.request.POST['new_name']
+
         if new_name:
             collection.name = new_name
             collection.save()
 
             return redirect(to='cards:edit_collection', collection_id=collection_id)
+
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        queyset = collection.cards.all()
         return render(request, self.template_name, context={'message': 'Field cant be empty',
-                                                            'collection_id': collection_id})
+                                                            'queryset': queyset,
+                                                            'collection_id': collection_id,
+                                                            'collection': collection})
+
+
+
 
 class CardPositionView(View):
     template_name = 'cards:open_collection'

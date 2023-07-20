@@ -1,88 +1,84 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
+<main class="main-cards">
+  <div class="card">
+    {% for word in page_obj %}
+    <div class="sentence" id="sentence1">
+      <p class="language">English word</p>
+      <img
+        class="card-img"
+        src="{{ word.img.url }}"
+        alt="description of the image"/>
+      <p class="word">{{ word.english_word }}</p>
+      <p class="word-usage">{{ word.word_usage }}</p>
+    </div>
 
-<div class="container-fluent">
-    <div class="d-flex justify-content-center">
-        <div class="col-md-6">
+    <div style="display: none" class="sentence" id="sentence2">
+      <p class="language">Russian word</p>
+      <img
+        class="card-img"
+        src="{{ word.img.url }}"
+        alt="description of the image"/>
+      <p class="word">{{ word.russian_word }}</p>
+      <p class="word-usage">{{ word.word_usage }}</p>
+    </div>
 
-            {% for word in page_obj %}
-            <div class="container my-5" id="sentence1">
-                <div class="row">
-                    <div class="col">
-                        <p>English word</p>
-                        <h4>{{ word.english_word }}</h4>
-                        <img src="{{ word.img.url }}" alt="description of the image" width="200">
-                        <p>{{ word.word_usage }}</p>
-                    </div>
-                </div>
-            </div>
+    <div class="card-buttons">
+      <button class="translate-button" type="button" id="toggleButton">
+        Translate
+      </button>
+      <form
+        method="post"
+        action="{% url 'cards:card_position' collection_id=collection.id word_id=word.id %}">
+        {% csrf_token %}
 
-            <div class="container my-5" id="sentence2" style="display:none;">
-                <div class="row">
-                    <div class="col">
-                        <p>Russian word</p>
-                        <h4>{{ word.russian_word }}</h4>
-                        <img src="{{ word.img.url }}" alt="description of the image">
-                        <p>{{ word.word_usage }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="mb-2">
-                    <button type="button" class="btn btn-primary col-12" id="toggleButton">
-                        Translate
-                    </button>
-                </div>
-                <form method="post" action="{% url 'cards:card_position' collection_id=collection.id word_id=word.id %}">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-6 d-flex justify-content-start">
-                            <button type="submit" name="replace" class="btn btn-primary col-11" value="1" style="background-color: #a0dc2d;">
-                                I know it
-                            </button>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <button type="submit" name="replace" class="btn btn-primary col-11" value="0" style="background-color: #ff6c37;">
-                                Remind
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            {% endfor %}
+        <div class="card-nav">
+          <button class="submit-button" type="submit" name="replace" value="1">
+            I know it
+          </button>
+          <button class="reset-button" type="submit" name="replace" value="0">
+            Remind
+          </button>
         </div>
+      </form>
     </div>
 
-    <div>
-        <div>Collection name: <span style="font-weight: bold;">{{ collection.name }}</span></div>
-        <div>Contain <span style="font-weight: bold;">{{ paginator.num_pages }}</span> words</div>
-    </div>
+    {% endfor %}
+  </div>
 
-    <!-- Подключение скриптов Bootstrap (jQuery и Popper.js) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <div>
+    <p>
+      Collection name:
+      <span style="font-weight: bold">{{ collection.name }}</span>
+    </p>
+    <p>
+      Contain
+      <span style="font-weight: bold">{{ paginator.num_pages }}</span>
+      words
+    </p>
+  </div>
 
-    <!-- JavaScript-код для переключения предложений -->
-    <script>
-    $(document).ready(function() {
-      $('#toggleButton').click(function() {
-        if ($('#sentence1').is(':visible')) {
-          $('#sentence1').hide();
-          $('#sentence2').show();
-          $('#toggleButton').text('Translation to english');
+  <!-- Подключение скриптов Bootstrap (jQuery и Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- JavaScript-код для переключения предложений -->
+  <script>
+    $(document).ready(function () {
+      $("#toggleButton").click(function () {
+        if ($("#sentence1").is(":visible")) {
+          $("#sentence1").hide();
+          $("#sentence2").show();
+          $("#toggleButton").text("Translate");
         } else {
-          $('#sentence2').hide();
-          $('#sentence1').show();
-          $('#toggleButton').text('Translation to russian');
+          $("#sentence2").hide();
+          $("#sentence1").show();
+          $("#toggleButton").text("Translate");
         }
       });
     });
-
-    </script>
-</div>
+  </script>
+</main>
 
 {% endblock %}

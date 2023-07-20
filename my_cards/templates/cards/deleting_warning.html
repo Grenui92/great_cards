@@ -1,10 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 <main class="message-main">
-    <h3 class="message">You want to delete collection "{{collection.name}}"?</h3>
-  <form class="delete-confirm-form"
+  <h3 class="message">You want to delete collection "{{collection.name}}"?</h3>
+  <form
+    class="delete-confirm-form"
     method="post"
-    action="{% url 'cards:delete_collection' collection_id=collection.id %}">
-
+    action="{% url 'cards:delete_collection' collection_id=collection.id %}"
+  >
     {% csrf_token %}
 
     <div class="form-buttons">

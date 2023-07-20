@@ -6,10 +6,17 @@ header {
   box-shadow: 0px 3px 10px rgba(143, 141, 141, 0.356);
   border-radius: 10px;
 }
+
+button {
+  border-radius: 8px;
+}
+
 button:hover {
   cursor: pointer;
 }
+
 button a {
+  color: black;
   display: block;
   text-decoration: none;
 }
@@ -36,23 +43,23 @@ li {
 
 .nav {
   display: flex;
-  width: 50%;
   justify-content: space-between;
+  width: 50%;
   gap: 5px;
 }
 
 .nav li button {
-  width: 100%;
   background-color: rgb(224, 224, 224);
-  width: 150px;
-  box-shadow: 1px 1px 3px rgba(102, 102, 102, 0.233);
-  border-width: 2px;
-  border-color: rgb(180, 180, 180);
-  border-radius: 8px;
-  border-style: solid;
+
+  width: 200px;
   position: relative;
   height: fit-content;
   padding: 2px 0px;
+
+  box-shadow: 1px 1px 3px rgba(102, 102, 102, 0.233);
+  border-width: 2px;
+  border-color: rgb(180, 180, 180);
+  border-style: solid;
 }
 
 .navbar li button:hover {
@@ -131,52 +138,52 @@ li {
   text-align: center;
   gap: 6px;
 
-  margin-top: 0px;
+  margin: 0px;
+}
+
+.pages-button a, .pages-text {
   font-size: 18px;
 }
 
 .pages-text {
-  margin-top: 0px;
+  margin: 0px;
   background-color: grey;
   width: fit-content;
-  padding: 3px 3px;
   border-radius: 10px;
+  padding: 5px 5px;
 }
 
 .pages-button {
   display: flex;
   flex-basis: 45%;
-  height: fit-content;
   justify-content: space-between;
   gap: 6px;
+  
 }
 
-.pages-button a {
+.pages-button button {
   width: 50%;
-  padding: 3px 0px;
-  color: black;
   border-style: solid;
   border-width: 1px;
-  border-radius: 10px;
   text-decoration: none;
 }
 
-.pages-button:nth-child(n + 3) a {
+.next button {
   border-color: rgba(0, 255, 0, 0.395);
-  background-color: rgba(0, 255, 0, 0.315);
+  background-color: rgba(0, 255, 0, 0.253);
 }
 
-.pages-button:nth-child(n + 3) a:hover {
-  background-color: rgba(0, 255, 0, 0.395);
+.next button:hover {
+  background-color: rgba(0, 255, 0, 0.473);
   box-shadow: 1px 1px 1px rgba(0, 255, 0, 0.595);
 }
 
-.pages-button:nth-child(-n + 2) a {
+.prev button {
   border-color: rgba(255, 96, 96, 0.295);
   background-color: rgba(255, 96, 96, 0.116);
 }
 
-.pages-button:nth-child(-n + 2) a:hover {
+.prev button:hover {
   background-color: rgba(255, 96, 96, 0.295);
   box-shadow: rgba(255, 96, 96, 0.495);
 }
@@ -323,7 +330,6 @@ li {
   width: 50%;
   padding: 5px 0px;
   border: 1px solid grey;
-  border-radius: 7px;
 }
 
 .submit-button {
@@ -382,4 +388,151 @@ li {
   flex-direction: column;
   width: 90%;
   padding-left: 18%;
+}
+
+/* delete_warning.html  END */
+
+/* edit_collection.html */
+
+
+.edit-main {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-main section {
+  padding: 3px 3px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
+}
+
+.edit-main section > button {
+  margin-top: 6px;
+  width:30%
+}
+
+.rename-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rename-form button {
+  width: 30%;
+}
+
+.rename-input {
+  width: 22%;
+}
+
+.edit-collection-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(224, 224, 224);
+  border-radius: 10px;
+}
+
+.edit-collection-form:nth-child(2n+1) {
+  background-color: white;
+}
+
+.tow-words {
+  padding: 4px;
+}
+
+.tow-words p {
+  margin: 0;
+  padding: 2px;
+}
+
+.delete-button-edit {
+  padding: 0px 10px;
+  width: 30%;
+}
+
+.delete-button-edit button {
+  padding: 10px;
+  width: 100%;
+}
+
+/* edit_collection.html  END */
+
+/*  */
+/*  */
+/*  */
+/* open_collection.html */
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sentence {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 10px;
+  padding: 50px 10px;
+  margin: 10px;
+}
+
+.sentence:hover {
+  box-shadow: 0px 0px 10px red;
+}
+
+.sentence p {
+  margin: 0
+}
+
+.language {
+  font-size: 18px;
+}
+
+.word {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.word-usage {
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
+
+}
+
+.card-buttons * {
+  font-size: 18px;
+}
+
+.card-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-nav button {
+  width: 45%;
+}
+
+.translate-button {
+  background-color: rgba(142, 193, 252, 0.589);
+}
+
+.translate-button:hover {
+  background-color: rgba(142, 193, 252, 0.822);
+}
+
+.card-img {
+  width: 50px;
 }

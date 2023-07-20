@@ -1,30 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<main class="edit-main">
+  <section>
+    <form class="rename-form"
+        method="POST"
+        action="{% url 'cards:edit_collection' collection_id=collection_id %}">
 
-{% block content %}
-<form method="POST" action="{% url 'cards:rename_collection' collection_id=collection_id %}">
+        {% csrf_token %}
+        <label>
+            Collection name : {{ collection.name }}
+            <input class="rename-input" name="new_name" type="text" placeholder="New name" />
+            <span>{{ message }}</span>
+        </label>
+        <button class="submit-button" type="submit">Rename collection</button>
+    </form>
+
+    <button class="reset-button"><a href="{% url 'cards:create_card' %}">Add new card</a></button>
+  </section>
+  {% for word in queryset %}
+  <form class="edit-collection-form"
+    action="{% url 'cards:remove_card' card_id=word.id collection_id=collection_id %}"
+    method="post">
+
     {% csrf_token %}
-    <div>
-        <h2> Collection name : {{ collection.name }} </h2>
-        <input name="new_name" type="text" placeholder="New name">
-        <div>
-        {% if message %}
-        <span> {{ message }} </span>
-        {% endif %}
-        </div>
-        <button type="submit">Rename collection</button>
+    <div class="tow-words">
+      <p>English word: {{ word.english_word }}</p>
+      <p>Russian word: {{ word.russian_word }}</p>
     </div>
-</form>
-<div>
-    <label>
-        <a href="{% url 'cards:create_card' %}">Add new card</a>
-    </label>
-</div>
-{% for word in queryset %}
-<form action="{% url 'cards:remove_card' card_id=word.id collection_id=collection_id %}" method="post">
-    {% csrf_token %}
-    <div>{{ word.english_word }}, {{ word.russian_word }}
-        <button type="submit">Delete card from collection</button>
+    <div class="delete-button-edit">
+      <button class="reset-button" type="submit">Delete card from collection</button>
     </div>
-</form>
-{% endfor %}
+  </form>
+  {% endfor %}
+</main>
 {% endblock %}
