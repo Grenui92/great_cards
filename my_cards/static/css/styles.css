@@ -604,3 +604,77 @@ li {
 .user-input button {
   width: 15%;
 }
+
+/* achat.html END */
+/*  */
+/*  */
+/* times.html */
+.times-main {
+  margin-top: 10px;
+  border: 1px solid black;
+}
+.one-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  min-height: 200px;
+}
+
+.one-time > * {
+  padding: 5px;
+  margin: 0;
+  border: 1px solid black;
+}
+
+.one-time > p {
+  text-align: left;
+}
+
+.time-name-width {
+  width: 10%;
+}
+
+.rule-width {
+  width: 15%;
+}
+.sentence-width {
+  width: 35%;
+}
+
+.times-form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.times-form textarea {
+  display: block;
+  height: 100%;
+  margin: 2px;
+}
+
+.verbs {
+  width: 20%;
+  padding: 0;
+}
+
+.time-verbs {
+  display: flex;
+  height: 50%;
+}
+.time-verbs:nth-child(1) {
+  border-bottom: 0.5px solid grey;
+}
+.time-verbs p {
+  padding: 4px 0px 0px 6px;
+  margin: 0px;
+}
+
+.verb {
+  width: 85%;
+}
+
+.pronoun {
+  width: 15%;
+  border-right: 0.5px solid grey;
+}
