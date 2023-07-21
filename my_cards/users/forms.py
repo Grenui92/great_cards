@@ -19,7 +19,7 @@ class RegistrationForm(UserCreationForm):
 
     password2 = forms.CharField(max_length=50,
                                 required=True,
-                                widget=forms.TextInput())
+                                widget=forms.PasswordInput())
 
     class Meta:
         model = User

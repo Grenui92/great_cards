@@ -461,9 +461,8 @@ li {
 
 /*  */
 /*  */
-/*  */
-/* open_collection.html */
 
+/* open_collection.html */
 
 .card {
   display: flex;
@@ -535,4 +534,40 @@ li {
 
 .card-img {
   width: 50px;
+}
+
+/* open_collection.html  END */
+/*  */
+/*  */
+/* signup.html */
+
+.user-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.user-main div label{
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.user-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-buttons button {
+  width: 45%;
 }

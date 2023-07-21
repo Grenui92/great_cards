@@ -1,30 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
-
-<div>
-    <h2>Login</h2>
-</div>
-<form method="post" action="{% url 'users:login' %}">
+<main class="user-main">
+  <h2>Login</h2>
+  <form class="user-form" method="post" action="{% url 'users:login' %}">
     {% csrf_token %}
     <div>
-        <label>Username:
-            {{ form.username }}
-        </label>
-        <span> {{ form.errors.username }} </span>
+      <label>
+        <span>Username:</span>
+        <span>{{ form.username }}</span>
+      </label>
+      <span> {{ form.errors.username }} </span>
     </div>
     <div>
-        <label>Password:
-            {{ form.password }}
-        </label>
-        <span> {{ form.errors.password }}</span>
+      <label>
+        <span>Password:</span>
+        <span>{{ form.password }}</span>
+      </label>
+      <span> {{ form.errors.password }}</span>
     </div>
-    <div>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+    <div class="user-buttons">
+      <button class="submit-button" type="submit">Submit</button>
+      <button class="reset-button" type="reset">Reset</button>
     </div>
-    <div class="small text-left mt-2">
-        <a href="{% url 'users:password_reset' %}" class="text-center"><i>Forgot Password?</i></a>
-    </div>
-</form>
+  </form>
+  <a href="{% url 'users:password_reset' %}" class="forgot-password">
+    Forgot Password?
+  </a>
+</main>
 {% endblock %}
