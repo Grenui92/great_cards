@@ -24,5 +24,6 @@ urlpatterns = [
     path('cards/', include('cards.urls')),
     path('users/', include('users.urls')),
     path('chat/', include('chat.urls')),
+    path('times/', include('times.urls'))
     # path('storage/', include('files_storage.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

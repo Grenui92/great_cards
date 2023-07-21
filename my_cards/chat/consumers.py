@@ -26,7 +26,7 @@ class ChatConsumer(WebsocketConsumer):
         self.bot_messages.append({"role": "system",
                          "content": "Show linguistic mistakes in user message."
                                     "Tell about this mistakes in message."
-                                    "Then answer user request."})
+                                    "Then answer user message."})
         self.bot_messages.append({"role": "user", "content": message})
 
         response_role, response_content = chat_bot(self.bot_messages)

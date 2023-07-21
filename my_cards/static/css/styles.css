@@ -571,3 +571,36 @@ li {
 .user-buttons button {
   width: 45%;
 }
+
+/* signup.html END */
+/*  */
+/*  */
+/* achat.html */
+
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.chat-main > textarea {
+  height: 400px;
+}
+
+.chat-main textarea {
+  border-radius: 5px;
+}
+
+.user-input {
+  display: flex;
+  gap: 5px;
+}
+
+.user-input textarea {
+  width: 85%
+}
+
+.user-input button {
+  width: 15%;
+}

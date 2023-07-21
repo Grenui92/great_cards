@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<main class="chat-main">
+  <textarea id="chat-log" class="form-control" rows="20"></textarea>
+  <div class="user-input">
+    <textarea id="chat-message-input" type="text"></textarea>
+    <button class="submit-button" id="chat-message-submit" type="button">Send</button>
+  </div>
+  {% block script %} {% endblock%}
+</main>
+{% endblock %}

@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'users',
     'chat',
     'news',
-    # 'files_storage'
+    'times'
+# 'files_storage'
 ]
 CSRF_COOKIE_SECURE = False
 MIDDLEWARE = [

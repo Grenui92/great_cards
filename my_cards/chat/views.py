@@ -12,7 +12,7 @@ class ChatView(View):
         :param request: Get the request object
         :return: The chat_ai.html render
         """
-        return render(request, 'chat/chat.html')
+        return render(request, 'chat/chat_scr.html')
 
 class CorrectorView(View):
 
@@ -25,14 +25,14 @@ class CorrectorView(View):
         :param request: Pass the request object to the view
         :return: A rendered template chat/text_correction.html
         """
-        return render(request, 'chat/corrector.html')
+        return render(request, 'chat/corrector_scr.html')
 
 class EnRuTranslateView(View):
 
     def get(self, request):
-        return render(request, 'chat/en_ru_translate.html')
+        return render(request, 'chat/en_ru_translate_scr.html')
 
 class RuEnTranslateView(View):
 
     def get(self, request):
-        return render(request, 'chat/ru_en_translate.html')
+        return render(request, 'chat/ru_en_translate_scr.html')
