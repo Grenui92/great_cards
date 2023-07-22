@@ -1,14 +1,15 @@
 from django.db.models import Case, When
 from django.shortcuts import render
 from django.views.generic import ListView, View
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+
+
 
 from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
 from cards.forms import CardForm, CollectionForm
 from cards.models import Collections
 from tools.mixins import MessageMixin
+from tools.decorators import class_login_required
 
 class CardsListView(ListView):
     """Return all  cards when you open collection."""
@@ -57,7 +58,7 @@ class CreateCardView(View, MessageMixin):
     template_name = 'cards/create_card.html'
     confirm_create_template = 'cards/confirm_card_create.html'
 
-    @method_decorator(login_required)
+    @class_login_required
     def get(self, request):
         """
         The post function is used to create a new card.
@@ -92,6 +93,7 @@ class CreateCardView(View, MessageMixin):
 
         return render(request, self.template_name, context={'form': form})
 
+    @class_login_required
     def post(self, request):
 
         english = request.POST.get('english')
@@ -107,7 +109,7 @@ class CreateCardView(View, MessageMixin):
 class CardDeleteView(View):
     template_name = 'cards/edit_collection.html'
 
-    @method_decorator(login_required)
+    @class_login_required
     def post(self, request, card_id, collection_id):
 
         """

@@ -22,8 +22,8 @@
       {% endfor %}
 
     </div>  
-    <div class="sentence-width">
-
+    <div class="table-sentence">
+      <div>
       {% for sentence in time.examples %}
       <p>- {{ sentence }}</p>
       {% endfor %}
@@ -31,18 +31,28 @@
       {% for search_time, sentences in examples.items %}
         {% if search_time == time.name %}
           {% for sentence in sentences %}
+          <div class="delete-sentence">
             <p>- {{ sentence.text }}</p>
+            <form method="post" action="{% url 'times:delete_sentence' sentence_id=sentence.id %}">
+              {% csrf_token %}
+              <button type="submit" title="Delete sentence '{{ sentence.text }}'">D</button>
+            </form>  
+          </div>  
           {% endfor %}
         {% endif %}
       {% endfor %}
-
+      </div>
+      <div class="add">
+        <button title="Добавить свое предложение в данное окно.">Add</button>
+        <form class="times-form" method="post" action="{% url 'times:times_post' time_id=time.id %}">
+          {% csrf_token %}
+          <textarea name="sentence"></textarea>
+          <button class="submit-button" type="submit">Add sentence</button>
+        </form>
+      </div>
     </div>
 
-    <form class="times-form new-width" method="post" action="{% url 'times:times_post' time_id=time.id %}">
-        {% csrf_token %}
-        <textarea name="sentence"></textarea>
-        <button class="submit-button" type="submit">Add sentence</button>
-    </form>
+
 
   </div>
   {% endfor %}

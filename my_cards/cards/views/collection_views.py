@@ -9,6 +9,7 @@ from cards.forms import CollectionForm
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
 from tools.mixins import MessageMixin
+from tools.decorators import class_login_required
 
 class CollectionListView(ListView):
     model = Collections
@@ -31,7 +32,7 @@ class CollectionListView(ListView):
 class CollectionCreateView(View, MessageMixin):
     template_name = 'cards/create_collection.html'
 
-    @method_decorator(login_required)
+    @class_login_required
     def get(self, request):
         """
         The get function is used to render the form on the page.
@@ -45,6 +46,7 @@ class CollectionCreateView(View, MessageMixin):
         form = CollectionForm()
         return render(request, self.template_name, context={'form': form})
 
+    @class_login_required
     def post(self, request):
         """
         The post function is used to create a new collection.
@@ -78,6 +80,7 @@ class CollectionCreateView(View, MessageMixin):
 class CollectionDeleteView(View):
     template_name = 'cards/deleting_warning.html'
 
+    @class_login_required
     def get(self, request, collection_id):
         """
         The get function is used to retrieve a collection from the database.
@@ -93,6 +96,7 @@ class CollectionDeleteView(View):
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         return render(request, self.template_name, context={'collection': collection})
 
+    @class_login_required
     def post(self, request, collection_id):
         """
         The post function is used to delete a collection.
@@ -112,6 +116,7 @@ class CollectionDeleteView(View):
 class CollectionEditView(View):
     template_name = 'cards/edit_collection.html'
 
+    @class_login_required
     def get(self, request, collection_id):
         """
         The get function is used to render the editor page for a specific collection.
@@ -134,6 +139,7 @@ class CollectionEditView(View):
                                                                       'queryset': queryset,
                                                                       'collection_id': collection_id})
     
+    @class_login_required
     def post(self, request, collection_id):
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         new_name = self.request.POST['new_name']
@@ -156,6 +162,8 @@ class CollectionEditView(View):
 
 class CardPositionView(View):
     template_name = 'cards:open_collection'
+
+    @class_login_required
     def post(self, request, collection_id: Collections, word_id):
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         replace = int(request.POST.get('replace'))
