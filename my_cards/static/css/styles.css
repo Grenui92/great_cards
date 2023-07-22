@@ -620,40 +620,36 @@ li {
 }
 .one-time {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: stretch;
-  min-height: 200px;
+
 }
 
 .one-time > * {
-  padding: 5px;
-  margin: 0;
   border: 1px solid black;
+  width: 100%;
 }
 
-.one-time > p {
+.one-time p {
   text-align: left;
+  padding: 5px 5px;
+  margin: 0;
 }
 
-.time-name-width {
-  width: 10%;
-}
-
-.rule-width {
-  width: 15%;
-}
 .table-sentence {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35%;
 }
-
+.time-name-width {
+  width: 50%;
+}
+.rule-width {
+  width: 50%;
+}
 .table-sentence p{
   margin: 5px 0px;
 }
-
-
 
 .delete-sentence {
   display: flex;
@@ -668,12 +664,14 @@ li {
 .add {
   width: 1%;
   justify-self: end;
+  padding: 5px;
 }
 
 .times-form {
   display: none;
   position: absolute;
 }
+
 .add:hover {
   width: 100%;
 }
@@ -686,32 +684,27 @@ li {
   height: fit-content;
   padding: 2px 20px 20px 20px;
 }
+.add:hover .times-form textarea {
+  height: 100px;
+}
 
 .verbs {
-  width: 40%;
-  padding: 0;
-}
-
-.time-verbs {
   display: flex;
-  height: 50%;
+  flex-direction: column;
+  justify-content:center;
+  padding: 0px;
 }
 
-.time-verbs:nth-child(1) {
+.verbs > div {
+  display: flex;
+}
+
+.verbs > div:not(:last-child) {
   border-bottom: 0.5px solid grey;
 }
 
-.time-verbs p {
-  padding: 4px 0px 0px 6px;
-  margin: 0px;
-}
-
-.verb {
-  width: 83%;
-}
-
 .pronoun {
-  width: 17%;
+  width: fit-content;
+  min-width: 15%;
   border-right: 0.5px solid grey;
 }
-

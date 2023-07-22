@@ -2,30 +2,35 @@
 <main class="times-main">
   {% for time, verbs in times %}
   <div class="one-time">
+
     <p class="time-name-width">{{ time.name }}</p>
     <p class="rule-width">{{ time.rule }}</p>
+
     <div class="verbs">
 
-      {% for verb, triger in verbs %}
-        <div class="time-verbs">
+      {% for pron, verb in verbs %}
+
+        <div>
           <div class="pronoun">
-          {% for key in verb %}
-            <p>{{ key }}</p> 
-          {% endfor %}
-          </div>
-          <div class="verb">
-            {% for key in triger %}
-              <p>B: {{ key }}</p> 
+            {% for word in pron %}
+              <p>{{ word }}</p>
             {% endfor %}
-          </div>  
+          </div>
+          <div>
+            {% for sent in verb %}
+              <p>{{ sent }}</p>
+            {% endfor %}
+          </div>
         </div>  
+
       {% endfor %}
 
     </div>  
     <div class="table-sentence">
       <div>
+
       {% for sentence in time.examples %}
-      <p>- {{ sentence }}</p>
+        <p>- {{ sentence }}</p>
       {% endfor %}
 
       {% for search_time, sentences in examples.items %}
@@ -41,20 +46,26 @@
           {% endfor %}
         {% endif %}
       {% endfor %}
+
       </div>
       <div class="add">
+
         <button title="Добавить свое предложение в данное окно.">Add</button>
         <form class="times-form" method="post" action="{% url 'times:times_post' time_id=time.id %}">
           {% csrf_token %}
           <textarea name="sentence"></textarea>
           <button class="submit-button" type="submit">Add sentence</button>
         </form>
+
       </div>
     </div>
 
-
-
+    <div>
+      <p>Time selectors</p>
+    </div>  
+    
   </div>
+
   {% endfor %}
 </main>
 {% endblock %}
