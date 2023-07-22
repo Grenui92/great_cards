@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from times.models import Sentences, Times
-from times.management.commands.create_times_tables import verbs
 from tools.decorators import class_login_required
 
 
@@ -17,7 +16,7 @@ class TimesView(View):
             sentences = Sentences.objects.filter(time=time.id, owner=request.user.id)
             examples[time.name] = sentences
 
-        return render(request, self.template_name, context={"times": zip(times, verbs.values()),
+        return render(request, self.template_name, context={"times": times,
                                                             "examples": examples})
     @class_login_required
     def post(self, request, time_id):

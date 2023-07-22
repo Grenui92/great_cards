@@ -621,8 +621,6 @@ li {
 .one-time {
   display: flex;
   justify-content:space-between;
-  align-items: stretch;
-
 }
 
 .one-time > * {
@@ -640,6 +638,10 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.inner-sentences {
+  height:160px;
+  overflow: auto;
 }
 .time-name-width {
   width: 50%;
@@ -688,13 +690,6 @@ li {
   height: 100px;
 }
 
-.verbs {
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  padding: 0px;
-}
-
 .verbs > div {
   display: flex;
 }
@@ -708,3 +703,5 @@ li {
   min-width: 15%;
   border-right: 0.5px solid grey;
 }
+
+/* times.html  END */

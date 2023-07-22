@@ -1,23 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 <main class="times-main">
-  {% for time, verbs in times %}
+  {% for time in times %}
   <div class="one-time">
 
     <p class="time-name-width">{{ time.name }}</p>
     <p class="rule-width">{{ time.rule }}</p>
 
     <div class="verbs">
-
-      {% for pron, verb in verbs %}
-
+    
+      {% for pron in time.verbs.all %}
         <div>
           <div class="pronoun">
-            {% for word in pron %}
+            {% for word in pron.pron %}
               <p>{{ word }}</p>
             {% endfor %}
           </div>
           <div>
-            {% for sent in verb %}
+            {% for sent in pron.verbs %}
               <p>{{ sent }}</p>
             {% endfor %}
           </div>
@@ -27,7 +26,7 @@
 
     </div>  
     <div class="table-sentence">
-      <div>
+      <div class="inner-sentences">
 
       {% for sentence in time.examples %}
         <p>- {{ sentence }}</p>
@@ -63,7 +62,7 @@
     <div>
       <p>Time selectors</p>
     </div>  
-    
+
   </div>
 
   {% endfor %}
