@@ -54,9 +54,11 @@ INSTALLED_APPS = [
     'users',
     'chat',
     'news',
-    'times'
-# 'files_storage'
+    'times',
+    'api',
+    'rest_framework',
 ]
+
 CSRF_COOKIE_SECURE = False
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

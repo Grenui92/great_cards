@@ -26,6 +26,7 @@ channels = "^4.0.0"
 daphne = "^4.0.0"
 django-storages = "^1.13.2"
 dropbox = "^11.36.2"
+djangorestframework = "^3.14.0"
 
 
 [build-system]
