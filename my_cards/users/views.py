@@ -14,8 +14,7 @@ class MyRegistrationView(View):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-
-            logging.info(f'User -{user}- created')
+            
             return redirect(to='news:main')
         return render(request, 'users/signup.html', context={'form': form})
 

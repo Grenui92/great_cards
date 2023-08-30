@@ -3,57 +3,54 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
 
-from django.contrib.auth import login, authenticate, logout
-from django.middleware.csrf import get_token
+from django.contrib.auth import logout
 
 from .serializer import CollectionsSerializer, CardsSerializer
+from .services import user_login, user_create
+
 from cards.models import Collections, Cards
+from cards.services.collections_services import CollectionServices
 
 
-class CollectionsApi(generics.ListAPIView):
-
-    serializer_class = CollectionsSerializer
-    permission_classes = [IsAuthenticated]
-
-    
-    def get_queryset(self):
-        return Collections.objects.all()
-    
-    
-class CardsApi(generics.ListAPIView):
-    
-    serializer_class = CardsSerializer
+class LogingBase(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    
-    def get_queryset(self):
-        print(self.request.headers)
-        if self.request.user.is_authenticated:
-            return Cards.objects.all()
-    
-class LoginApi(APIView):
-    
-    def post(self, request):
-        
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        
-        user = authenticate(request, username=username, password=password)
-        token, *_ = Token.objects.get_or_create(user=user)
-        if user is not None:
-            login(request, user)
 
-            return Response({'username': user.username,
-                             'email': user.email,
-                             'id': user.id,
-                             'token': token.key})
-        else:
-            return Response({'server_message': 'Wrong credentials'})
-            
+
+class CollectionsApi(generics.ListAPIView, LogingBase):
+
+    serializer_class = CollectionsSerializer
+
+    def get_queryset(self):
+        owner_id = self.request.data.get('user_id')
+        result = CollectionServices.get_collections_by_owner(owner_id=owner_id)
+        return result
+
+
+class CardsApi(generics.ListAPIView, LogingBase):
+
+    serializer_class = CardsSerializer
+
+    def get_queryset(self):
+        return Cards.objects.all()
+
+
+class LoginApi(APIView):
+
+    def post(self, request):
+        result = user_login(request=request)
+        return Response(result)
+
+
 class LogoutApi(APIView):
+
     def get(self, request):
         logout(request)
-        return Response({'message': '1'})
-    
+        return Response({'message': 'Succesfully Logout'})
+
+
+class RegistrationApi(APIView):
+    def post(self, request):
+        result = user_create(request=request)
+        return Response(result)

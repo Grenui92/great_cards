@@ -14,4 +14,5 @@ class CardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cards
         fields = ('english_word', 'russian_word', 'word_usage')
+    
         
