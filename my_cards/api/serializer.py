@@ -6,7 +6,7 @@ class CollectionsSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Collections
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'order_list')
         
         
 class CardsSerializer(serializers.ModelSerializer):

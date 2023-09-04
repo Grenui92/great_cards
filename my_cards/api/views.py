@@ -9,7 +9,7 @@ from django.contrib.auth import logout
 from .serializer import CollectionsSerializer, CardsSerializer
 from .services import user_login, user_create
 
-from cards.models import Collections, Cards
+from cards.models import Collections
 from cards.services.collections_services import CollectionServices
 
 
@@ -33,9 +33,10 @@ class CardsApi(generics.ListAPIView, LogingBase):
     serializer_class = CardsSerializer
 
     def get_queryset(self):
-        return Cards.objects.all()
-
-
+        collection = Collections.objects.get(id=self.request.data.get('collection_id'))
+        result = CollectionServices.get_all_cards(collection=collection)
+        return result
+   
 class LoginApi(APIView):
 
     def post(self, request):
