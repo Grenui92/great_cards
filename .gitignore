@@ -9,7 +9,7 @@ env
 .env
 # Backup files #
 *.bak
-
+great_cards.code-workspace
 # If you are using PyCharm #
 # User-specific stuff
 .idea/**/workspace.xml
