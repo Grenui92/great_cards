@@ -13,7 +13,7 @@ def fact_generator(prompt):
         model="text-davinci-003",
         prompt=f'Write me an interesting fact about Python using this word:\n\n {prompt}',
         temperature=0,
-        max_tokens=60,
+        max_tokens=4000,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0
