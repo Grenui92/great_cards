@@ -165,15 +165,10 @@ class CardPositionView(View):
 
     @class_login_required
     def post(self, request, collection_id: Collections, word_id):
+
         collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         replace = int(request.POST.get('replace'))
-        collection.order_list.remove(word_id)
-
-        if replace:
-            collection.order_list.append(word_id)
-        else:
-            collection.order_list.insert(4, word_id)
-
-        collection.save()
+        
+        CollectionServices.change_card_position(collection=collection, replace=replace, word_id=word_id)
 
         return redirect(to=self.template_name, collection_id=collection_id)

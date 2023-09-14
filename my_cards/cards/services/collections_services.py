@@ -35,3 +35,15 @@ class CollectionServices:
         """
         cards = collection.cards.all()
         return cards
+    
+    @staticmethod
+    def change_card_position(collection, replace, word_id):
+
+        collection.order_list.remove(word_id)
+
+        if replace:
+            collection.order_list.append(word_id)
+        else:
+            collection.order_list.insert(4, word_id)
+
+        collection.save()

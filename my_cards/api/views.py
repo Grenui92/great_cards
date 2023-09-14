@@ -55,3 +55,16 @@ class RegistrationApi(APIView):
     def post(self, request):
         result = user_create(request=request)
         return Response(result)
+
+class ChangeCardsOrder(LogingBase):
+    
+    def post(self, request):
+        collection_id = int(request.data.get('collection_id'))
+        replace = int(request.data.get('replace'))
+        word_id = int(request.data.get('word_id'))
+        collection = Collections.objects.get(id=collection_id)
+        
+        CollectionServices.change_card_position(collection=collection, replace=replace, word_id=word_id)
+        
+        s_collection = CollectionsSerializer(collection)
+        return Response({'new_collection': s_collection.data})
