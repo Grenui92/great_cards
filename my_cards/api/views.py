@@ -11,6 +11,9 @@ from .services import user_login, user_create
 
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
+from cards.services.cards_services import CardsServices
+
+60
 
 
 class LogingBase(APIView):
@@ -33,10 +36,12 @@ class CardsApi(generics.ListAPIView, LogingBase):
     serializer_class = CardsSerializer
 
     def get_queryset(self):
-        collection = Collections.objects.get(id=self.request.data.get('collection_id'))
+        collection = Collections.objects.get(
+            id=self.request.data.get('collection_id'))
         result = CollectionServices.get_all_cards(collection=collection)
         return result
-   
+
+
 class LoginApi(APIView):
 
     def post(self, request):
@@ -56,15 +61,39 @@ class RegistrationApi(APIView):
         result = user_create(request=request)
         return Response(result)
 
-class ChangeCardsOrder(LogingBase):
-    
+
+class ChangeCardsOrderApi(LogingBase):
+
     def post(self, request):
         collection_id = int(request.data.get('collection_id'))
         replace = int(request.data.get('replace'))
         word_id = int(request.data.get('word_id'))
         collection = Collections.objects.get(id=collection_id)
-        
-        CollectionServices.change_card_position(collection=collection, replace=replace, word_id=word_id)
-        
+
+        CollectionServices.change_card_position(
+            collection=collection, replace=replace, word_id=word_id)
+
         s_collection = CollectionsSerializer(collection)
         return Response({'new_collection': s_collection.data})
+
+
+class CreateCardApi(LogingBase):
+
+    def post(self, request):
+        english_word = request.data.get('english_word')
+        russian_word = request.data.get('russian_word')
+        word_usage = request.data.get('word_usage')
+        collection = CollectionServices.get_collection_by_id(id=request.data.get('collection_id'))
+        
+        english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english_word,
+                                                                             russian_word=russian_word,
+                                                                             word_usage=word_usage)
+        
+        new_card = CardsServices.get_new_card(english=english_word, 
+                                              russian=russian_word, 
+                                              usage=word_usage,
+                                              collection=collection)
+        
+        s_card = CardsSerializer(new_card)
+        s_collection = CollectionsSerializer(collection)
+        return Response({'new_card': s_card, 'colleciton': s_collection})
