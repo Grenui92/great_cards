@@ -65,3 +65,4 @@ class Collections(models.Model):
             new_img = (50, 50)
             img.thumbnail(new_img)
             img.save(self.img.path)
+            

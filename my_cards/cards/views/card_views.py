@@ -101,9 +101,9 @@ class CreateCardView(View, MessageMixin):
         usage = request.POST.get('usage')
         collection = CollectionServices.get_collection_by_id(int(request.POST.get('collection_id')))
 
-        message = CardsServices.get_new_card(english=english, russian=russian, usage=usage, collection=collection)
+        card = CardsServices.get_new_card(english=english, russian=russian, usage=usage, collection=collection)
 
-        return render(request, self.message_template, context=message)
+        return render(request, self.message_template, context={'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'},)
 
 
 class CardDeleteView(View):

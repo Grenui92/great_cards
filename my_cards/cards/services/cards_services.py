@@ -111,4 +111,4 @@ class CardsServices:
             collection.order_list.insert(0, card.id)
             collection.save()
 
-        return {'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'}
+        return card

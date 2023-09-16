@@ -83,17 +83,27 @@ class CreateCardApi(LogingBase):
         english_word = request.data.get('english_word')
         russian_word = request.data.get('russian_word')
         word_usage = request.data.get('word_usage')
-        collection = CollectionServices.get_collection_by_id(id=request.data.get('collection_id'))
-        
-        english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english_word,
-                                                                             russian_word=russian_word,
-                                                                             word_usage=word_usage)
-        
-        new_card = CardsServices.get_new_card(english=english_word, 
-                                              russian=russian_word, 
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=request.data.get('collection_id'))
+
+        new_card = CardsServices.get_new_card(english=english_word,
+                                              russian=russian_word,
                                               usage=word_usage,
                                               collection=collection)
-        
         s_card = CardsSerializer(new_card)
         s_collection = CollectionsSerializer(collection)
-        return Response({'new_card': s_card, 'colleciton': s_collection})
+        return Response({'new_card': s_card.data, 'colleciton': s_collection.data})
+
+
+class GetCardInformation(LogingBase):
+
+    def post(self, request):
+        english_word = request.data.get('english_word')
+        russian_word = request.data.get('russian_word')
+        word_usage = request.data.get('word_usage')
+        new_english_word, new_russian_word, new_word_usage = CardsServices.get_card_data(english_word=english_word,
+                                                                                         russian_word=russian_word,
+                                                                                         word_usage=word_usage)
+        return Response({'english_word': new_english_word,
+                         'russian_word': new_russian_word,
+                         'word_usage': new_word_usage})
