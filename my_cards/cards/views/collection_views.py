@@ -11,6 +11,7 @@ from cards.services.collections_services import CollectionServices
 from tools.mixins import MessageMixin
 from tools.decorators import class_login_required
 
+
 class CollectionListView(ListView):
     model = Collections
     template_name = 'cards/study_cards.html'
@@ -61,21 +62,16 @@ class CollectionCreateView(View, MessageMixin):
 
         form = CollectionForm(request.POST, request.FILES)
         if form.is_valid():
-            collection = form.save(commit=False)
 
-            if Collections.objects.filter(name=collection.name).exists():
-                return render(request, self.message_template,
-                              context={'message': f'Collection with name "{collection.name}" already exist, '
-                                                  f'choice another name!'})
-
-            collection.owner = request.user
-            collection.save()
-            form.save_m2m()
-
+            collection_name = form.data['name']
+            user = request.user
+            message = CollectionServices.create_collection(user=user,
+                                                           collection_name=collection_name)
             return render(request, self.message_template,
-                          context={'message': f'Collection "{collection.name}" successfully created.'})
+                          context={'message': message})
 
         return render(request, self.template_name, context={'form': form})
+
 
 class CollectionDeleteView(View):
     template_name = 'cards/deleting_warning.html'
@@ -93,7 +89,8 @@ class CollectionDeleteView(View):
         :return: A render function
         """
 
-        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=collection_id)
         return render(request, self.template_name, context={'collection': collection})
 
     @class_login_required
@@ -109,9 +106,11 @@ class CollectionDeleteView(View):
         :return: A redirect to the study_cards view
         """
 
-        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=collection_id)
         collection.delete()
         return redirect(to='cards:study_cards')
+
 
 class CollectionEditView(View):
     template_name = 'cards/edit_collection.html'
@@ -132,16 +131,19 @@ class CollectionEditView(View):
         :return: A render function
         """
 
-        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=collection_id)
         queryset = collection.cards.all()
-        logging.info(f'User -{request.user.id}- open editor for collection -{collection_id}- ')
+        logging.info(
+            f'User -{request.user.id}- open editor for collection -{collection_id}- ')
         return render(request, self.template_name, context={'collection': collection,
-                                                                      'queryset': queryset,
-                                                                      'collection_id': collection_id})
-    
+                                                            'queryset': queryset,
+                                                            'collection_id': collection_id})
+
     @class_login_required
     def post(self, request, collection_id):
-        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=collection_id)
         new_name = self.request.POST['new_name']
 
         if new_name:
@@ -150,14 +152,13 @@ class CollectionEditView(View):
 
             return redirect(to='cards:edit_collection', collection_id=collection_id)
 
-        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=collection_id)
         queyset = collection.cards.all()
         return render(request, self.template_name, context={'message': 'Field cant be empty',
                                                             'queryset': queyset,
                                                             'collection_id': collection_id,
                                                             'collection': collection})
-
-
 
 
 class CardPositionView(View):
@@ -166,9 +167,11 @@ class CardPositionView(View):
     @class_login_required
     def post(self, request, collection_id: Collections, word_id):
 
-        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=collection_id)
         replace = int(request.POST.get('replace'))
-        
-        CollectionServices.change_card_position(collection=collection, replace=replace, word_id=word_id)
+
+        CollectionServices.change_card_position(
+            collection=collection, replace=replace, word_id=word_id)
 
         return redirect(to=self.template_name, collection_id=collection_id)

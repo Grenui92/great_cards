@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 
 from .serializer import CollectionsSerializer, CardsSerializer
 from .services import user_login, user_create
@@ -12,8 +13,6 @@ from .services import user_login, user_create
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
 from cards.services.cards_services import CardsServices
-
-60
 
 
 class LogingBase(APIView):
@@ -107,3 +106,15 @@ class GetCardInformation(LogingBase):
         return Response({'english_word': new_english_word,
                          'russian_word': new_russian_word,
                          'word_usage': new_word_usage})
+
+
+class CreateCollecitonApi(LogingBase):
+    
+    def post(self, request):
+        user = User.objects.get(username=request.data.get('username'))
+        print(user, 'aaaaaaaaaaaaaaaaaaaaaaaaaaa')
+        collection_name = request.data.get('collection_name')
+        print(collection_name, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+        message = CollectionServices.create_collection(user=user, collection_name=collection_name)
+        return Response({'message': message})
+    

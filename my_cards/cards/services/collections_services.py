@@ -47,3 +47,16 @@ class CollectionServices:
             collection.order_list.insert(4, word_id)
 
         collection.save()
+        
+    @staticmethod
+    def create_collection(user, collection_name):
+
+
+        if Collections.objects.filter(name=collection_name).exists():
+            return False, f'Collection with name "{collection_name}" already exist, choice another name!'
+
+        collection = Collections.objects.create(name=collection_name,
+                                                owner=user)
+        collection.save()
+        
+        return f'Collection "{collection_name}" successfully created.'
