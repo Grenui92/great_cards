@@ -7,6 +7,7 @@ from chat.services.checking_sentences import text_generator
 from chat.services.translate import translate_ru_en, translate_en_ru
 MAX_AI_PHRASES_MEMORY = 20
 
+
 class ChatConsumer(WebsocketConsumer):
 
     def connect(self):
@@ -24,16 +25,19 @@ class ChatConsumer(WebsocketConsumer):
         message = text_data_json['message']
 
         self.bot_messages.append({"role": "system",
-                         "content": "Show linguistic mistakes in user message."
-                                    "Tell about this mistakes in message."
-                                    "Then answer user message."})
+                                  "content": "Show linguistic mistakes in user message."
+                                  "Tell about this mistakes in message."
+                                  "Then answer user message."})
         self.bot_messages.append({"role": "user", "content": message})
 
         response_role, response_content = chat_bot(self.bot_messages)
 
-        self.bot_messages.append({"role": response_role, "content": response_content})
+        self.bot_messages.append(
+            {"role": response_role, "content": response_content})
 
-        self.send(text_data=json.dumps({'message': f'{response_role.capitalize()}:  {response_content} \n \n'}))
+        self.send(text_data=json.dumps(
+            {'message': f'{response_role.capitalize()}:  {response_content} \n \n'}))
+
 
 class CorrectorConsumer(WebsocketConsumer):
 
@@ -49,7 +53,9 @@ class CorrectorConsumer(WebsocketConsumer):
 
         corrector_response = text_generator(message)
 
-        self.send(text_data=json.dumps({'message': f'Correct: {corrector_response.strip()} \n \n'}))
+        self.send(text_data=json.dumps(
+            {'message': f'Correct: {corrector_response.strip()} \n \n'}))
+
 
 class RuEnTranslateConsumer(WebsocketConsumer):
 
@@ -65,7 +71,9 @@ class RuEnTranslateConsumer(WebsocketConsumer):
 
         corrector_response = translate_ru_en(message)
 
-        self.send(text_data=json.dumps({'message': f'Answer: {corrector_response.strip()} \n \n'}))
+        self.send(text_data=json.dumps(
+            {'message': f'Answer: {corrector_response.strip()} \n \n'}))
+
 
 class EnRuTranslateConsumer(WebsocketConsumer):
 
@@ -81,4 +89,5 @@ class EnRuTranslateConsumer(WebsocketConsumer):
 
         corrector_response = translate_en_ru(message)
 
-        self.send(text_data=json.dumps({'message': f'Answer: {corrector_response.strip()} \n \n'}))
+        self.send(text_data=json.dumps(
+            {'message': f'Answer: {corrector_response.strip()} \n \n'}))
