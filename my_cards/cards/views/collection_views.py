@@ -49,14 +49,14 @@ class CollectionCreateView(View, MessageMixin):
     def post(self, request):
         """
         The post function is used to create a new collection.
-        It takes the request and form as parameters, validates the form, saves it if it's valid and returns a message
-        with success or error.
+            It takes the following arguments:
+                request - The HTTP request object that contains the data for creating a new collection.
 
         :param self: Represent the instance of the class
-        :param request: Get the data from the form
-        :return: A render function that renders the template message_template
-        :doc-author: Trelent
+        :param request: Get the user who is logged in
+        :return: A render function
         """
+
         owner = request.user
         img = request.FILES.get('collection_img')
         collection_name = request.POST.get('collection_name')
@@ -72,8 +72,6 @@ class CollectionCreateView(View, MessageMixin):
 
         return render(request, self.message_template,
                         context={'message': message})
-
-        # return render(request, self.template_name, context={'form': form})
 
 
 class CollectionDeleteView(View):
