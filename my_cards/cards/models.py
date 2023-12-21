@@ -40,7 +40,7 @@ class Collections(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cards = models.ManyToManyField('Cards', db_column='card_id')
     order_list = ArrayField(models.IntegerField(), default=list)
-    img = models.ImageField(default='1.jpg', upload_to='avatars')
+    img = models.ImageField(upload_to='avatars')
 
     def save(self, *args, **kwargs):
         """

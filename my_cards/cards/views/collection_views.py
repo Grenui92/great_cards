@@ -1,11 +1,10 @@
 import logging
+from datetime import datetime
 
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.utils.decorators import method_decorator
 from django.views.generic import ListView, View
+from django.core.files.storage import FileSystemStorage
 
-from cards.forms import CollectionForm
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
 from tools.mixins import MessageMixin
@@ -43,9 +42,8 @@ class CollectionCreateView(View, MessageMixin):
         :param request: Pass the request object to the view
         :return: A form object to the template
         """
-
-        form = CollectionForm()
-        return render(request, self.template_name, context={'form': form})
+        
+        return render(request, self.template_name)
 
     @class_login_required
     def post(self, request):
@@ -59,18 +57,23 @@ class CollectionCreateView(View, MessageMixin):
         :return: A render function that renders the template message_template
         :doc-author: Trelent
         """
+        owner = request.user
+        img = request.FILES.get('collection_img')
+        collection_name = request.POST.get('collection_name')
+        if img:
+            
+            fs = FileSystemStorage()
+            img_name = fs.save(f'avatars/{datetime.now()}{img.name.replace(" ", "_")}', img)
+        else:
+            img_name = '1.jpg'
+        message = CollectionServices.create_collection(owner=owner,
+                                                       collection_name=collection_name,
+                                                       collection_img=img_name)
 
-        form = CollectionForm(request.POST, request.FILES)
-        if form.is_valid():
+        return render(request, self.message_template,
+                        context={'message': message})
 
-            collection_name = form.data['name']
-            user = request.user
-            message = CollectionServices.create_collection(user=user,
-                                                           collection_name=collection_name)
-            return render(request, self.message_template,
-                          context={'message': message})
-
-        return render(request, self.template_name, context={'form': form})
+        # return render(request, self.template_name, context={'form': form})
 
 
 class CollectionDeleteView(View):
@@ -89,8 +92,7 @@ class CollectionDeleteView(View):
         :return: A render function
         """
 
-        collection = CollectionServices.get_collection_by_id(
-            collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         return render(request, self.template_name, context={'collection': collection})
 
     @class_login_required
@@ -106,8 +108,7 @@ class CollectionDeleteView(View):
         :return: A redirect to the study_cards view
         """
 
-        collection = CollectionServices.get_collection_by_id(
-            collection_id=collection_id)
+        collection = CollectionServices.get_collection_by_id(collection_id=collection_id)
         collection.delete()
         return redirect(to='cards:study_cards')
 

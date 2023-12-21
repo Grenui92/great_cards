@@ -49,14 +49,16 @@ class CollectionServices:
         collection.save()
         
     @staticmethod
-    def create_collection(user, collection_name):
+    def create_collection(owner, collection_name, collection_img):
 
 
         if Collections.objects.filter(name=collection_name).exists():
             return False, f'Collection with name "{collection_name}" already exist, choice another name!'
 
         collection = Collections.objects.create(name=collection_name,
-                                                owner=user)
+                                                owner=owner,
+                                                img=collection_img)
+        
         collection.save()
         
         return f'Collection "{collection_name}" successfully created.'

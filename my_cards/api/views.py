@@ -115,6 +115,6 @@ class CreateCollecitonApi(LogingBase):
         print(user, 'aaaaaaaaaaaaaaaaaaaaaaaaaaa')
         collection_name = request.data.get('collection_name')
         print(collection_name, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
-        message = CollectionServices.create_collection(user=user, collection_name=collection_name)
+        message = CollectionServices.create_collection(owner=user, collection_name=collection_name)
         return Response({'message': message})
     

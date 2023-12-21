@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form class="form-class" method="POST" action="{% url 'cards:create_collection' %}">
+<form class="form-class" method="POST" action="{% url 'cards:create_collection' %}" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
         <label>
             <span class="form-label">Name of collection:</span>
-            <p>{{ form.name }}</>
+            <input type="text" name="collection_name" placeholder="Collection name" required>
         </label>
-        <span> {{ form.errors.name }}</span>
     </div>
     <div>
         <label>
             <span class="form-label">Collection image:</span>
-            {{ form.img }}
+            <input type="file" name="collection_img">
         </label>
-        <span> {{form.errors.img }}</span>
     </div>
     <div class="form-buttons">
         <button class="submit-button" type="submit">Submit</button>
