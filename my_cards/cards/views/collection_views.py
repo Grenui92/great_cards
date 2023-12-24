@@ -61,7 +61,6 @@ class CollectionCreateView(View, MessageMixin):
         img = request.FILES.get('collection_img')
         collection_name = request.POST.get('collection_name')
         if img:
-            
             fs = FileSystemStorage()
             img_name = fs.save(f'avatars/{datetime.now()}{img.name.replace(" ", "_")}', img)
         else:

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <form class="form-class" method="POST" action={% url 'tube:upload_video'%}>
+        {% csrf_token %}
+        <div class="form-sector">
+            <label class="form-label">
+                <span>Put URL from YT here.</span>
+            </label>
+            <input type="text" name="yt_url" required>
+        </div>
+        <div class="form-buttons">
+            <button class="submit-button" type="submit">Upload</button>
+            <button class="reset-button" type="reset">Reset</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

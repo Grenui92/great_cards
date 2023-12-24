@@ -1,38 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <main>
-  <section>
-    <ul class="news-list">
-      {% for news in page_obj %}
-      <li class="news-el">
-        <img class="news-img" src="{{news.image}}" />
-        <a class="news-title" href="{{news.url}}" target="_blank">
-          {{news.title}}
-        </a>
-        <p class="news-text">{{news.description}}</p>
-        <a class="news-link" href="{{news.url}}" target="_blank">Link</a>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
-
-  <section class="pages">
-    <div class="pages-button prev">
-      {% if page_obj.has_previous %}
-      <button><a href="?page=1">&lsaquo;&lsaquo; First</a></button>
-      <button><a href="?page={{ page_obj.previous_page_number }}">&lsaquo; Previous</a></button>
-      {% endif %}
-    </div>
-    <p class="pages-text">
-      &lsaquo;&lsaquo; Page № {{ page_obj.number }} &rsaquo;&rsaquo;
-    </p>
-    <div class="pages-button next">
-      {% if page_obj.has_next %}
-      <button><a href="?page={{ page_obj.next_page_number }}"> Next &rsaquo;</a></button>
-      <button><a href="?page={{ page_obj.paginator.num_pages }}">Last &rsaquo;&rsaquo;</a></button>
-      {% endif %}
-    </div>
-  </section>
+<span> {{ video }} </span>
 </main>
 
 {% endblock %}

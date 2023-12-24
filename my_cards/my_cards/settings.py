@@ -10,7 +10,7 @@ import openai
 BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv.load_dotenv()
 env = environ.Env()
-environ.Env.read_env(BASE_DIR / '.env')
+# environ.Env.read_env(BASE_DIR / '.env')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 openai.api_key = env('GPT_API_KEY')
@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'chat',
     'news',
     'times',
-    'api'
+    'api',
+    'tube'
 ]
 
 CSRF_COOKIE_SECURE = False

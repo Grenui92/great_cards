@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main>
+    <div class="video-container">
+      <video class="video-player" id="video" controls>
+        <source src="{{ video_path.url }}" type="video/mp4" />
+      </video>
+      <div class="subtitles"></div>
+    </div>
+    <script>
+      // Получаем ссылки на видео и элемент для субтитров
+      const video = document.querySelector('video')
+      const subtitlesDisplay = document.querySelector('.subtitles')
+      
+      // Путь к файлу субтитров
+      const subtitlesFilePath = '{{ video_subs.url }}' // Измените на путь к вашему файлу субтитров
+      let prevTime = 0;
+      // Загрузка и отображение субтитров
+      fetch(subtitlesFilePath)
+        .then((response) => response.text())
+        .then((data) => {
+          const subtitles = parseVTT(data) // Разбор файла VTT
+          video.addEventListener('timeupdate', () => {
+            const currentTime = video.currentTime
+            if (currentTime === prevTime) {
+              return
+            }
+            prevTime = currentTime;
+            const currentSubtitle = subtitles.find((subtitle) => {
+              return currentTime >= subtitle.start && currentTime <= subtitle.end
+            })
+            // Если найден соответствующий субтитр, отобразите его текст
+            if (currentSubtitle) {
+              console.log(currentSubtitle)
+              const formattedTime = formatTime(currentTime)
+              if (!subtitlesDisplay.textContent.includes(currentSubtitle.text)) {
+                const subtitleElement = document.createElement('div')
+                subtitleElement.classList.add('subtitle') // Класс для стилей субтитров
+                const timecodeElement = document.createElement('span')
+                timecodeElement.classList.add('timecode') // Класс для стилей таймкодов
+                timecodeElement.textContent = formattedTime
+                const textElement = document.createElement('span')
+                textElement.classList.add('text') // Класс для стилей текста субтитров
+                textElement.textContent = '  ' + currentSubtitle.text
+                subtitleElement.appendChild(timecodeElement)
+                subtitleElement.appendChild(textElement)
+                subtitlesDisplay.appendChild(subtitleElement)
+                subtitlesDisplay.scrollTop = subtitlesDisplay.scrollHeight
+              }
+            } else {
+              subtitlesDisplay.textContent = '' // Если нет подходящего субтитра, очистите отображение
+            }
+          })
+        })
+      
+      // Функция для разбора файла субтитров в формате SRT
+      function parseVTT(data) {
+        const subtitleBlocks = data.split('\n\n')
+        return subtitleBlocks
+          .map((block) => {
+            const lines = block.split('\n').filter((line) => line.trim())
+      
+            if (lines.length < 2) return null // Пропуск пустых или некорректных блоков
+      
+            const timecode = lines.shift() // Получаем первую строку временной метки
+      
+            const timeParts = timecode.split(' --> ')
+            if (timeParts.length !== 2) return null // Пропуск некорректных временных меток
+            const startPart = timeParts[0]
+            const endPart = timeParts[1].split(' ')[0]
+      
+            const startTime = startPart.split('.')[0].split(':').map(parseFloat)
+            const startMillis = startPart.split('.')[1]
+      
+            const endHHMMSS = endPart.split('.')[0].split(':').map(parseFloat)
+            const endMillis = endPart.split('.')[1]
+      
+            const startSeconds = startTime[0] * 3600 + startTime[1] * 60 + startTime[2] + startMillis / 1000
+            const endSeconds = endHHMMSS[0] * 3600 + endHHMMSS[1] * 60 + endHHMMSS[2] + endMillis / 1000
+            const text = lines.join('\n')
+            console.log(startSeconds, endSeconds)
+            return { start: startSeconds, end: endSeconds, text }
+          })
+          .filter((subtitle) => subtitle !== null) // Фильтрация пустых значений
+      }
+      
+      function formatTime(currentTime) {
+        const hours = Math.floor(currentTime / 3600)
+        const minutes = Math.floor((currentTime - hours * 3600) / 60)
+        const seconds = Math.floor(currentTime - hours * 3600 - minutes * 60)
+      
+        const formattedHours = String(hours).padStart(2, '0')
+        const formattedMinutes = String(minutes).padStart(2, '0')
+        const formattedSeconds = String(seconds).padStart(2, '0')
+      
+        return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
+      }
+    </script>
+  </main>
+{% endblock %}
