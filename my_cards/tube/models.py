@@ -9,7 +9,7 @@ class Videos(models.Model):
     owner = models.ManyToManyField(User, db_column='owner_id')
     video_prev = models.ImageField(max_length=255, default=1)
     video_subs = models.FileField(max_length=255, default=1)
-    vieo_path = models.FileField(max_length=255, default=1)
+    video_path = models.FileField(max_length=255, default=1)
     yt_id = models.CharField(max_length=255, default=1)
     yt_url = models.CharField(max_length=255, default=1)
     

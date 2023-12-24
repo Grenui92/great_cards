@@ -2,10 +2,10 @@
 {% block content %}
   <main>
     <div class="video-container">
-      <video class="video-player" id="video" controls>
+      <video class="video-player" controls preload="auto" playsinline>
         <source src="{{ video_path.url }}" type="video/mp4" />
       </video>
-      <div class="subtitles"></div>
+      <div class="subtitles">{{ video_path.url }} <br> {{ video_audi.url }}</div>
     </div>
     <script>
       // Получаем ссылки на видео и элемент для субтитров
@@ -78,7 +78,7 @@
             const startSeconds = startTime[0] * 3600 + startTime[1] * 60 + startTime[2] + startMillis / 1000
             const endSeconds = endHHMMSS[0] * 3600 + endHHMMSS[1] * 60 + endHHMMSS[2] + endMillis / 1000
             const text = lines.join('\n')
-            console.log(startSeconds, endSeconds)
+
             return { start: startSeconds, end: endSeconds, text }
           })
           .filter((subtitle) => subtitle !== null) // Фильтрация пустых значений
