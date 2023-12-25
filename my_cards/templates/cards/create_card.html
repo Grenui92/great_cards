@@ -9,21 +9,21 @@
   <div class="form-sector">
     <label class="form-label">
       <span>English word:</span>
-      <p>{{ form.english_word }}</p>
+      <input type="text" class="text-input" name="english_word" value="{{ original }}">
     </label>
   </div>
 
   <div>
     <label class="form-label">
       <span class="">Russian word:</span>
-      <p>{{ form.russian_word }}</p>
+      <input type="text" class="text-input" name="russian_word" value="{{ translit }}">
     </label>
   </div>
 
   <div>
     <label>
       <span class="form-label">Usage:</span>
-      <p>{{ form.word_usage }}</p>
+      <input type="text" class="text-input" name="word_usage">
     </label>
     <p class="form-details">
       You can leave this field empty and I'll give you interest fact about China
@@ -35,11 +35,10 @@
     <label class="form-label" for="collection">
         <span>Collection:</span>
     </label>
-    <select name="collection" id="collection">
-      {% for value, label in form.fields.collection.choices %} 
-      <option value="{{ value }}" label="{{ label }}" {% if value == form.cleaned_data.collection %} selected {% endif %}> 
+    <select name="collection_choice" id="collection_choice">
+      {% for collection in collections %} 
+      <option value="{{ collection.id }}" label="{{ collection.name }}" name="collection_choice"> 
       {% endfor %}
-      <span> {{ form.errors.collection }} </span>
     </select>
   </div>
 

@@ -9,7 +9,7 @@ import logging
 class CardsServices:
 
     @classmethod
-    def get_information_from_forms(cls, form):
+    def get_information_from_forms(cls, request):
         """
         The get_information_from_forms function is a helper function that returns the information from the form.
         It takes in one argument, which is a form object. It then returns four attributes: english_word, russian_word, word_usage and collection.
@@ -19,10 +19,10 @@ class CardsServices:
         :return: The following:
         """
 
-        english_word = form.cleaned_data['english_word']
-        russian_word = form.cleaned_data['russian_word']
-        word_usage = form.cleaned_data['word_usage']
-        collection = CollectionServices.get_collection_by_id(collection_id=form.cleaned_data['collection'])
+        english_word = request.GET['english_word']
+        russian_word = request.GET['russian_word']
+        word_usage = request.GET['word_usage']
+        collection = CollectionServices.get_collection_by_id(collection_id=request.GET['collection_choice'])
         return english_word, russian_word, word_usage, collection
 
     @classmethod

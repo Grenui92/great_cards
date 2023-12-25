@@ -1,12 +1,13 @@
 from django.db.models import Case, When
 from django.shortcuts import render
 from django.views.generic import ListView, View
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 
 from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
-from cards.forms import CardForm, CollectionForm
+from cards.forms import CollectionForm
 from cards.models import Collections
 from tools.mixins import MessageMixin
 from tools.decorators import class_login_required
@@ -71,27 +72,34 @@ class CreateCardView(View, MessageMixin):
         :param request: Get the information from the form
         :return: A render function
         """
-        form = CardForm(request.GET, user_id=request.user.id)
 
-        if form.is_valid():
-            form.save(commit=False)
-            try:
-                english, russian, usage, collection = CardsServices.get_information_from_forms(form)
-                english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english,
-                                                                                    russian_word=russian,
-                                                                                    word_usage=usage)
-            except ValueError as exc:
-                return render(request, self.message_template, context={'message': exc})
-            
-            message = {
-                'russian': russian_word,
-                'english': english_word,
-                'usage': word_usage,
-                'collection': collection}
 
-            return render(request, self.confirm_create_template, context=message)
+        collections = CollectionServices.get_collections_by_owner(owner_id=request.user.id)
+        selected = request.GET.get('hidden_select')
+        if selected:
+            original, translit = selected.split('<br><br>')
+            original = ' '.join(original.split(':')[1:]).strip()
+            translit = ' '.join(translit.split(':')[1:]).strip()
+            return render(request, self.template_name, context={'collections': collections,
+                                                                'original': original,
+                                                                'translit':translit})
+        try:
+            english, russian, usage, collection = CardsServices.get_information_from_forms(request=request)
+            english_word, russian_word, word_usage = CardsServices.get_card_data(english_word=english,
+                                                                                russian_word=russian,
+                                                                                word_usage=usage)
+        except MultiValueDictKeyError:
+            return render(request, self.template_name, context={'collections': collections})
+        
+        message = {
+            'russian': russian_word,
+            'english': english_word,
+            'usage': word_usage,
+            'collection': collection}
 
-        return render(request, self.template_name, context={'form': form})
+        return render(request, self.confirm_create_template, context=message)
+
+        
 
     @class_login_required
     def post(self, request):
