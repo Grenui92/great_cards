@@ -2,15 +2,29 @@
 {% block content %}
   <main>
     <div class="video-container">
+      <div class="subtitles" id="selectedText">{{ video_path.url }}</div>
       <video class="video-player" controls preload="auto" playsinline>
         <source src="{{ video_path.url }}" type="video/mp4" />
       </video>
-      <div class="subtitles">{{ video_path.url }} <br> {{ video_audi.url }}</div>
+      
     </div>
+
+    <div class="hide-translate-subs" id="pops">
+        <form class="" method="get" action="{% url 'cards:create_card' %}" target="blank" id="popsContent">
+            {% csrf_token %}
+            <div class="selected-text" name="from_selection"></div>
+            <input type="hidden" id="hiddenSelection" name='hidden_select' value="">
+            <button class="submit-button" type="submit">Create Card</button>
+        </form>
+    </div>
+
     <script>
       // Получаем ссылки на видео и элемент для субтитров
       const video = document.querySelector('video')
       const subtitlesDisplay = document.querySelector('.subtitles')
+      const translateWindow = document.querySelector('.selected-text')
+      var pops = document.getElementById("pops");
+      var popsContent = document.getElementById("popsContent")
       
       // Путь к файлу субтитров
       const subtitlesFilePath = '{{ video_subs.url }}' // Измените на путь к вашему файлу субтитров
@@ -37,11 +51,11 @@
                 const subtitleElement = document.createElement('div')
                 subtitleElement.classList.add('subtitle') // Класс для стилей субтитров
                 const timecodeElement = document.createElement('span')
-                timecodeElement.classList.add('timecode') // Класс для стилей таймкодов
+                timecodeElement.classList.add('inner-time') // Класс для стилей таймкодов
                 timecodeElement.textContent = formattedTime
                 const textElement = document.createElement('span')
-                textElement.classList.add('text') // Класс для стилей текста субтитров
-                textElement.textContent = '  ' + currentSubtitle.text
+                textElement.classList.add('inner-text') // Класс для стилей текста субтитров
+                textElement.textContent = currentSubtitle.text
                 subtitleElement.appendChild(timecodeElement)
                 subtitleElement.appendChild(textElement)
                 subtitlesDisplay.appendChild(subtitleElement)
@@ -95,6 +109,53 @@
       
         return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
       }
+
+
+
+      document.addEventListener('mouseup', function () {
+        var selectedText = window.getSelection().toString().trim();
+        if (selectedText !== '') {
+    
+            var selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                var range = selection.getRangeAt(0);
+                var rect = range.getBoundingClientRect();
+    
+                pops.style.top = (rect.bottom + window.scrollY) + 'px';
+                pops.style.left = (rect.left + window.scrollX) + 'px';
+            }
+    
+            // Отправка данных на сервер
+            fetch('http://127.0.0.1:8000/api/v1/chat/translate_sentences/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ selected_text: selectedText })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ошибка при отправке данных');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                translateWindow.innerHTML = "English: " + selectedText + "<br><br>";
+                translateWindow.innerHTML += "Russian: " + data.message;
+                document.getElementById('hiddenSelection').value = translateWindow.innerHTML;
+                pops.classList.remove('hide-translate-subs');
+                pops.classList.add('look-translate-subs');
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);});
+
+        } else {
+            selectedText = ''
+            pops.classList.remove('look-translate-subs');
+            pops.classList.add('hide-translate-subs');
+        }
+    });
     </script>
   </main>
 {% endblock %}

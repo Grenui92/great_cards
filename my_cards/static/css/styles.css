@@ -710,15 +710,44 @@ li {
 
 .video-container {
   display: flex;
+  justify-content: space-around;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .subtitles {
-  width: 50%;
+  width: 40%;
   height: 600px;
   border: 1px solid black;
   overflow-y: auto;
 }
 
 .video-player {
-  width: 50%;
+  width: 40%;
+}
+
+.look-translate-subs {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 9999;
+  background-color: red;
+  padding: 10px;
+  border: 2px solid black;
+  height: auto;
+  width: auto;
+}
+
+.hide-translate-subs {
+  display: none;
+  position: absolute;
+
+}
+
+.inner-time {
+  padding-left: 20px;
+  margin-top: 10%;
+}
+.inner-text {
+  padding-left: 20px;
 }
