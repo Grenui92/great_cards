@@ -7,7 +7,6 @@ from django.utils.datastructures import MultiValueDictKeyError
 
 from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
-from cards.forms import CollectionForm
 from cards.models import Collections
 from tools.mixins import MessageMixin
 from tools.decorators import class_login_required
@@ -143,5 +142,4 @@ class CardDeleteView(View):
 
         return render(request, self.template_name, context={'collection': collection,
                                                                       'queryset': queryset,
-                                                                      'collection_id': collection_id,
-                                                                      'form': CollectionForm()})
+                                                                      'collection_id': collection_id})
