@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import CollectionsApi, CardsApi, LoginApi, LogoutApi, RegistrationApi, ChangeCardsOrderApi
-from .views import CreateCardApi, GetCardInformation, CreateCollecitonApi
+from .views import CreateCardApi, GetCardInformation, CreateCollecitonApi, TranslateSentencesApi
 
 urlpatterns = [
     path('collections/', CollectionsApi.as_view(), name='collections_api'),
@@ -11,7 +11,8 @@ urlpatterns = [
     path('cards/change_position/', ChangeCardsOrderApi.as_view(), name='change_order'),
     path('cards/create_card/', CreateCardApi.as_view(), name='create_card'),
     path('cards/get_card_information/', GetCardInformation.as_view(), name='get_card_information'),
-    path('cards/create_collection/', CreateCollecitonApi.as_view(), name='create_collection')
+    path('cards/create_collection/', CreateCollecitonApi.as_view(), name='create_collection'),
+    path('chat/translate_sentences/', TranslateSentencesApi.as_view(), name='translate_sentences')
 ]
 
 
