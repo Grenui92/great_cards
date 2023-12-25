@@ -8,15 +8,13 @@ class Verbs(models.Model):
     pron = ArrayField(models.CharField())
     verbs = ArrayField(models.CharField())
 
-# Create your models here.
+
 class Times(models.Model):
     name = models.CharField(max_length=255)
     rule = models.CharField()
     examples = ArrayField(models.CharField())
     verbs = models.ManyToManyField(Verbs, db_column='verbs_id')
 
-
-    
 
 class Sentences(models.Model):
     text = models.TextField()
