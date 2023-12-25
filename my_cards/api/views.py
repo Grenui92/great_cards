@@ -13,6 +13,7 @@ from .services import user_login, user_create
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
 from cards.services.cards_services import CardsServices
+from chat.services.translate import translate_en_ru
 
 
 class LogingBase(APIView):
@@ -117,4 +118,11 @@ class CreateCollecitonApi(LogingBase):
         print(collection_name, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
         message = CollectionServices.create_collection(owner=user, collection_name=collection_name)
         return Response({'message': message})
+    
+class TranslateSentencesApi(APIView):
+    def post(self, request):
+        text = request.data.get('selected_text')
+        print(type(text))
+        result = translate_en_ru(prompt=text)
+        return Response({'message': result})
     
