@@ -8,7 +8,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 from .serializer import CollectionsSerializer, CardsSerializer
-from .services import user_login, user_create
+from .services import user_login, user_create, parse_promt
 
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
@@ -122,7 +122,10 @@ class CreateCollecitonApi(LogingBase):
 class TranslateSentencesApi(APIView):
     def post(self, request):
         text = request.data.get('selected_text')
-        print(type(text))
+        from_site = request.data.get('from_site')
+        print(from_site)
+        if from_site:
+            text = parse_promt(text)
         result = translate_en_ru(prompt=text)
         return Response({'message': result})
     

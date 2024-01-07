@@ -6,13 +6,15 @@
       <a href="{% url 'tube:upload_video' %}">Upload video from YT</a>
     </li>
   </ul>
-  {% if collections %}
-  {% for video in collections %}
-
-  <img src="{{ video.video_prev.url }}" alt="Image"/>
-  <a href={% url 'tube:watch_video' video_id=video.id %}> {{ video.video_name }}</a>
-
-  {% endfor %}
-  {% endif %}
+  <ul class="video-list">
+    {% if collections %}
+    {% for video in collections %}
+      <li class="video-container">
+        <img class="video-img" src="{{ video.video_prev.url }}" alt="Image"/>
+        <span><a class="video-name" href={% url 'tube:watch_video' video_id=video.id %}> {{ video.video_name }}</a></span>
+      </li>
+    {% endfor %}
+    {% endif %}
+  </ul>
 </main>
 {% endblock %}

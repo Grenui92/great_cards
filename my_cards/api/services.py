@@ -1,3 +1,5 @@
+import re
+
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
 
@@ -28,3 +30,9 @@ def user_create(request):
         user = form.save()
         return {'message': f'User {form.data["username"]} succesfully registred'}
     return {'message': 'Wrong credentials.'}
+
+
+def parse_promt(text):
+    pattern = re.compile(r'\d{2}:\d{2}:\d{2}')
+    new_text = pattern.sub('', text)
+    return new_text

@@ -10,8 +10,6 @@ import openai
 BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv.load_dotenv()
 env = environ.Env()
-# environ.Env.read_env(BASE_DIR / '.env')
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 openai.api_key = env('GPT_API_KEY')
 
@@ -110,6 +108,8 @@ DATABASES = {
         'PORT': env('POSTGRES_PORT')
     }
 }
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -160,4 +160,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+MEDIA_ABSOLUTE_PATH = f'{Path(__file__).absolute().parent.parent}/media'
 

@@ -1,79 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
   <main>
-    <div class="video-container">
-      <div class="subtitles" id="selectedText">{{ video_path.url }}</div>
-      <video class="video-player" controls preload="auto" playsinline>
-        <source src="{{ video_path.url }}" type="video/mp4" />
-      </video>
-      
-    </div>
+    <div class="video-with-translate">
+      <div class="watch-video">
+        <div class="subtitles" id="selectedText"></div>
+        <div id="player"></div>
+      </div>
 
-    <div class="hide-translate-subs" id="pops">
-        <form class="" method="get" action="{% url 'cards:create_card' %}" target="blank" id="popsContent">
-            {% csrf_token %}
-            <div class="selected-text" name="from_selection"></div>
-            <input type="hidden" id="hiddenSelection" name='hidden_select' value="">
-            <button class="submit-button" type="submit">Create Card</button>
-        </form>
+      <form class="look-translate-subs" method="get" action="{% url 'cards:create_card' %}" target="blank" id="hiddenSelection">
+          {% csrf_token %}
+          <input type="hidden" id="hiddenSelection" name='hidden_select' value="">
+          <div class="selected-text" name="from_selection"></div>
+          <div><button class="submit-button" type="submit">Create Card</button></div>
+      </form>
     </div>
-
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
       // Получаем ссылки на видео и элемент для субтитров
-      const video = document.querySelector('video')
+
+      const video = document.querySelector('.video-player');
+      let player;
       const subtitlesDisplay = document.querySelector('.subtitles')
       const translateWindow = document.querySelector('.selected-text')
-      var pops = document.getElementById("pops");
-      var popsContent = document.getElementById("popsContent")
-      
-      // Путь к файлу субтитров
-      const subtitlesFilePath = '{{ video_subs.url }}' // Измените на путь к вашему файлу субтитров
-      let prevTime = 0;
-      // Загрузка и отображение субтитров
-      fetch(subtitlesFilePath)
-        .then((response) => response.text())
-        .then((data) => {
-          const subtitles = parseVTT(data) // Разбор файла VTT
-          video.addEventListener('timeupdate', () => {
-            const currentTime = video.currentTime
-            if (currentTime === prevTime) {
-              return
-            }
-            prevTime = currentTime;
-            const currentSubtitle = subtitles.find((subtitle) => {
-              return currentTime >= subtitle.start && currentTime <= subtitle.end
-            })
-            // Если найден соответствующий субтитр, отобразите его текст
-            if (currentSubtitle) {
-              console.log(currentSubtitle)
-              const formattedTime = formatTime(currentTime)
-              if (!subtitlesDisplay.textContent.includes(currentSubtitle.text)) {
-                const subtitleElement = document.createElement('div')
-                subtitleElement.classList.add('subtitle') // Класс для стилей субтитров
-                const timecodeElement = document.createElement('span')
-                timecodeElement.classList.add('inner-time') // Класс для стилей таймкодов
-                timecodeElement.textContent = formattedTime
-                const textElement = document.createElement('span')
-                textElement.classList.add('inner-text') // Класс для стилей текста субтитров
-                textElement.textContent = currentSubtitle.text
-                subtitleElement.appendChild(timecodeElement)
-                subtitleElement.appendChild(textElement)
-                subtitlesDisplay.appendChild(subtitleElement)
-                subtitlesDisplay.scrollTop = subtitlesDisplay.scrollHeight
-              }
-            } else {
-              subtitlesDisplay.textContent = '' // Если нет подходящего субтитра, очистите отображение
-            }
-          })
-        })
-      
+      const subtitlesFilePath = '{{ video_subs.url }}' 
+
       // Функция для разбора файла субтитров в формате SRT
       function parseVTT(data) {
         const subtitleBlocks = data.split('\n\n')
         return subtitleBlocks
           .map((block) => {
             const lines = block.split('\n').filter((line) => line.trim())
-      
             if (lines.length < 2) return null // Пропуск пустых или некорректных блоков
       
             const timecode = lines.shift() // Получаем первую строку временной метки
@@ -110,8 +66,6 @@
         return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
       }
 
-
-
       document.addEventListener('mouseup', function () {
         var selectedText = window.getSelection().toString().trim();
         if (selectedText !== '') {
@@ -120,9 +74,6 @@
             if (selection.rangeCount > 0) {
                 var range = selection.getRangeAt(0);
                 var rect = range.getBoundingClientRect();
-    
-                pops.style.top = (rect.bottom + window.scrollY) + 'px';
-                pops.style.left = (rect.left + window.scrollX) + 'px';
             }
     
             // Отправка данных на сервер
@@ -131,7 +82,8 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ selected_text: selectedText })
+                body: JSON.stringify({ selected_text: selectedText,
+                                       from_site: true })
             })
             .then(response => {
                 if (!response.ok) {
@@ -140,22 +92,71 @@
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+
                 translateWindow.innerHTML = "English: " + selectedText + "<br><br>";
                 translateWindow.innerHTML += "Russian: " + data.message;
                 document.getElementById('hiddenSelection').value = translateWindow.innerHTML;
-                pops.classList.remove('hide-translate-subs');
-                pops.classList.add('look-translate-subs');
             })
             .catch(error => {
                 console.error('Ошибка:', error);});
-
-        } else {
-            selectedText = ''
-            pops.classList.remove('look-translate-subs');
-            pops.classList.add('hide-translate-subs');
         }
     });
+
+  
+      // Функция вызывается после загрузки API
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: "{{ yt_id }}",
+          width: '850',
+          height: '500',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+  
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+  
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+          setInterval(() => {
+            const currentTime = player.getCurrentTime();
+            fetch(subtitlesFilePath)
+              .then((response) => response.text())
+              .then((data) => {
+                const subtitles = parseVTT(data); // Разбор файла VTT
+      
+                const currentSubtitle = subtitles.find((subtitle) => {
+                  return currentTime >= subtitle.start && currentTime <= subtitle.end;
+                });
+      
+                if (currentSubtitle) {
+                  const formattedTime = formatTime(currentTime);
+                  if (!subtitlesDisplay.textContent.includes(currentSubtitle.text)) {
+                    const subtitleElement = document.createElement('div');
+                    subtitleElement.classList.add('inner-text');
+      
+                    const timecodeElement = document.createElement('span');
+                    timecodeElement.classList.add('inner-time');
+                    timecodeElement.textContent = formattedTime;
+      
+                    const textElement = document.createElement('span');
+                    textElement.classList.add('text'); // Класс для стилей текста субтитров
+                    textElement.textContent = '  ' + currentSubtitle.text;
+      
+                    subtitleElement.appendChild(timecodeElement);
+                    subtitleElement.appendChild(textElement);
+                    subtitlesDisplay.appendChild(subtitleElement);
+                    subtitlesDisplay.scrollTop = subtitlesDisplay.scrollHeight;
+                  }
+                }
+              });
+          }, 1000); // Выполняем каждую секунду
+        }
+      }
     </script>
   </main>
 {% endblock %}
