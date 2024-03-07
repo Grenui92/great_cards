@@ -21,12 +21,13 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL, OUTPUT_FILENAME, url, user_id
         try:
             os.makedirs(f'{ABSOLUTE_UPLOAD_URL}{yt_id}')
             command = ['yt-dlp', 
-                '-o', file_path, 
+                '-o', file_path,
+                '--skip-download',
                 '--restrict-filenames', '--write-thumbnail', 
                 '--write-sub', '--write-auto-sub', url]
             
             result = subprocess.run(command, capture_output=True, text=True, check=True)
-            video_path, prev_path, subs_path, file_name = VideoServices.get_pathes_from_result(result=result)
+            prev_path, subs_path, file_name = VideoServices.get_pathes_from_result(result=result)
             
             create_sbtt(sub_path=subs_path)
             
@@ -34,7 +35,6 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL, OUTPUT_FILENAME, url, user_id
                 video_name=file_name,
                 video_prev=prev_path,
                 video_subs=subs_path,
-                video_path=video_path,
                 yt_id=yt_id,
                 yt_url=url
             )

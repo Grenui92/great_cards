@@ -9,14 +9,14 @@ def fact_generator(prompt):
     :param prompt: Pass in a word that the model will use to generate a fact about china
     :return: A string
     """
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f'Write me an interesting fact about Python using this word:\n\n {prompt}',
-        temperature=0,
-        max_tokens=4000,
-        top_p=1.0,
-        frequency_penalty=0.0,
-        presence_penalty=0.0
-    )
 
-    return response.choices[0].text.strip()
+    messages = [{
+     'role': 'system',
+     'content': f'Write me an interesting fact about Python using this word:\n\n {prompt}. Use no more 100 chars.'   
+    }]
+    
+    response = openai.ChatCompletion.create(
+        model='gpt-3.5-turbo',
+        messages=messages
+    )
+    return response.choices[0].message.content

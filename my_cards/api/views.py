@@ -123,7 +123,6 @@ class TranslateSentencesApi(APIView):
     def post(self, request):
         text = request.data.get('selected_text')
         from_site = request.data.get('from_site')
-        print(from_site)
         if from_site:
             text = parse_promt(text)
         result = translate_en_ru(prompt=text)

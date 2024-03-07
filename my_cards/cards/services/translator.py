@@ -13,19 +13,16 @@ def translator(text, from_l, to_l):
     :param to_l: Specify the language to translate into
     :return: A string
     """
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"Translate this from {from_l} into {to_l}:\n\n {text}",
-        temperature=0.3,
-        max_tokens=100,
-        top_p=1.0,
-        frequency_penalty=0.0,
-        presence_penalty=0.0)
-
-    return response['choices'][0].text
 
 
+    messages = [{
+     'role': 'system',
+     'content': f"Translate this from {from_l} into {to_l}:\n\n {text}"   
+    }]
+    
+    response = openai.ChatCompletion.create(
+        model='gpt-3.5-turbo',
+        messages=messages
+    )
+    return response.choices[0].message.content
 
-
-if __name__ == '__main__':
-    print(translator('улица', from_l=ru, to_l=en))

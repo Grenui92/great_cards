@@ -9,7 +9,6 @@ class Videos(models.Model):
     owner = models.ManyToManyField(User, db_column='owner_id')
     video_prev = models.ImageField(max_length=255, default=1)
     video_subs = models.FileField(max_length=255, default=1)
-    video_path = models.FileField(max_length=255, default=1)
     yt_id = models.CharField(max_length=255, default=1)
     yt_url = models.CharField(max_length=255, default=1)
     
@@ -21,7 +20,7 @@ class Videos(models.Model):
         
         img = Image.open(absolute_img_path)
         if img.height > 100 or img.width > 100:
-            new_img = (100, 100)
+            new_img = (300, 300)
             img.thumbnail(new_img)
             img.save(absolute_img_path)
             

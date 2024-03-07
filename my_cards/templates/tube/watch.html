@@ -9,7 +9,7 @@
 
       <form class="look-translate-subs" method="get" action="{% url 'cards:create_card' %}" target="blank" id="hiddenSelection">
           {% csrf_token %}
-          <input type="hidden" id="hiddenSelection" name='hidden_select' value="">
+          <input type="hidden" id="hiddenSelectionText" name='hidden_select'>
           <div class="selected-text" name="from_selection"></div>
           <div><button class="submit-button" type="submit">Create Card</button></div>
       </form>
@@ -21,6 +21,7 @@
       const video = document.querySelector('.video-player');
       let player;
       const subtitlesDisplay = document.querySelector('.subtitles')
+      const creatCardText = document.getElementById('hiddenSelectionText')
       const translateWindow = document.querySelector('.selected-text')
       const subtitlesFilePath = '{{ video_subs.url }}' 
 
@@ -95,7 +96,9 @@
 
                 translateWindow.innerHTML = "English: " + selectedText + "<br><br>";
                 translateWindow.innerHTML += "Russian: " + data.message;
-                document.getElementById('hiddenSelection').value = translateWindow.innerHTML;
+                console.log(translateWindow.innerHTML);
+                creatCardText.value = translateWindow.innerHTML;
+                console.log()
             })
             .catch(error => {
                 console.error('Ошибка:', error);});
@@ -115,46 +118,52 @@
           }
         });
       }
-  
+
       function onPlayerReady(event) {
         event.target.playVideo();
+        console.log('Timeout');
       }
-  
+
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING) {
           setInterval(() => {
-            const currentTime = player.getCurrentTime();
+            currentTime = player.getCurrentTime();
             fetch(subtitlesFilePath)
               .then((response) => response.text())
               .then((data) => {
-                const subtitles = parseVTT(data); // Разбор файла VTT
       
-                const currentSubtitle = subtitles.find((subtitle) => {
-                  return currentTime >= subtitle.start && currentTime <= subtitle.end;
-                });
-      
-                if (currentSubtitle) {
-                  const formattedTime = formatTime(currentTime);
-                  if (!subtitlesDisplay.textContent.includes(currentSubtitle.text)) {
-                    const subtitleElement = document.createElement('div');
-                    subtitleElement.classList.add('inner-text');
-      
-                    const timecodeElement = document.createElement('span');
-                    timecodeElement.classList.add('inner-time');
-                    timecodeElement.textContent = formattedTime;
-      
-                    const textElement = document.createElement('span');
-                    textElement.classList.add('text'); // Класс для стилей текста субтитров
-                    textElement.textContent = '  ' + currentSubtitle.text;
-      
-                    subtitleElement.appendChild(timecodeElement);
-                    subtitleElement.appendChild(textElement);
-                    subtitlesDisplay.appendChild(subtitleElement);
-                    subtitlesDisplay.scrollTop = subtitlesDisplay.scrollHeight;
-                  }
-                }
+                // Вызываем функцию для обработки субтитров
+                handleSubtitles(currentTime, data, subtitlesDisplay);
               });
-          }, 1000); // Выполняем каждую секунду
+          }, 1000);
+        }
+      }
+
+      function handleSubtitles(currentTime, data, subtitlesDisplay) {
+        const subtitles = parseVTT(data);
+        const currentSubtitle = subtitles.find((subtitle) => {
+          return currentTime >= subtitle.start && currentTime <= subtitle.end;
+        });
+      
+        if (currentSubtitle) {
+          const formattedTime = formatTime(currentTime);
+          if (!subtitlesDisplay.textContent.includes(currentSubtitle.text)) {
+            const subtitleElement = document.createElement('div');
+            subtitleElement.classList.add('inner-text');
+      
+            const timecodeElement = document.createElement('span');
+            timecodeElement.classList.add('inner-time');
+            timecodeElement.textContent = formattedTime;
+      
+            const textElement = document.createElement('span');
+            textElement.classList.add('text');
+            textElement.textContent = '  ' + currentSubtitle.text;
+      
+            subtitleElement.appendChild(timecodeElement);
+            subtitleElement.appendChild(textElement);
+            subtitlesDisplay.appendChild(subtitleElement);
+            subtitlesDisplay.scrollTop = subtitlesDisplay.scrollHeight;
+          }
         }
       }
     </script>

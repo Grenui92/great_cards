@@ -42,9 +42,7 @@ class WatchVideoView(View):
 
     def get(self, request, video_id):
         video = Videos.objects.get(id=video_id)
-        video_path = video.video_path
         video_subs = video.video_subs
         yt_id = video.yt_id
-        return render(request, self.template_name, context={'video_path': video_path,
-                                                            'video_subs': video_subs,
+        return render(request, self.template_name, context={'video_subs': video_subs,
                                                             'yt_id': yt_id})
