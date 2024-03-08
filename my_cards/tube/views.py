@@ -3,6 +3,7 @@ from django.views import View
 
 
 from tools.mixins import MessageMixin
+from tools.decorators import class_login_required
 from tube.models import Videos
 from tube.services.video_services import VideoServices
 from tube.tasks import download_and_create_video
@@ -11,6 +12,7 @@ from tube.tasks import download_and_create_video
 class VideoCollectionsListView(View):
     template_name = 'tube/video_list.html'
 
+    @class_login_required
     def get(self, request):
         collections = Videos.objects.filter(owner=request.user.id)
         return render(request, self.template_name, context={'collections': collections})
@@ -22,9 +24,11 @@ class UploadVideoView(View, MessageMixin):
     OUTPUT_FILENAME = "%(title)s.%(ext)s"
     template_name = 'tube/upload_video.html'
 
+    @class_login_required
     def get(self, request):
         return render(request, self.template_name)
 
+    @class_login_required
     def post(self, request):
 
         url = request.POST.get('yt_url').split('&')[0]
@@ -40,6 +44,7 @@ class UploadVideoView(View, MessageMixin):
 class WatchVideoView(View):
     template_name = 'tube/watch.html'
 
+    @class_login_required
     def get(self, request, video_id):
         video = Videos.objects.get(id=video_id)
         video_subs = video.video_subs

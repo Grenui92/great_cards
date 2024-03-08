@@ -21,12 +21,15 @@ class MyRegistrationView(View):
     def get(self, request):
         return render(request, 'users/signup.html', context={'form': RegistrationForm()})
 
+
 class MyLoginView(LoginView):
     template_name = 'users/login.html'
     next_page = reverse_lazy('news:main')
 
+
 class MyLogoutView(LogoutView):
     next_page = reverse_lazy('news:main')
+
 
 class MyResetPasswordView(PasswordResetView):
     template_name = 'users/password_reset.html'

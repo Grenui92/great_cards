@@ -22,7 +22,8 @@ class CardsServices:
         english_word = request.GET['english_word']
         russian_word = request.GET['russian_word']
         word_usage = request.GET['word_usage']
-        collection = CollectionServices.get_collection_by_id(collection_id=request.GET['collection_choice'])
+        collection = CollectionServices.get_collection_by_id(
+            collection_id=request.GET['collection_choice'])
         return english_word, russian_word, word_usage, collection
 
     @classmethod
@@ -40,15 +41,18 @@ class CardsServices:
         """
 
         try:
-            card: Cards = cls.get_card_from_collection(english=english_word, russian=russian_word)
+            card: Cards = cls.get_card_from_collection(
+                english=english_word, russian=russian_word)
             return card.english_word, card.russian_word, card.word_usage
 
         except Cards.DoesNotExist:
             if not english_word:
-                english_word = translator(text=russian_word, from_l=ru, to_l=en).strip()
+                english_word = translator(
+                    text=russian_word, from_l=ru, to_l=en).strip()
 
             elif not russian_word:
-                russian_word = translator(text=english_word, from_l=en, to_l=ru).strip()
+                russian_word = translator(
+                    text=english_word, from_l=en, to_l=ru).strip()
 
             if not word_usage:
                 word_usage = fact_generator(english_word).strip()
@@ -90,9 +94,9 @@ class CardsServices:
 
         try:
 
-            card = cls.get_card_from_collection(english=english, russian=russian)
+            card = cls.get_card_from_collection(
+                english=english, russian=russian)
             collection.cards.add(card)
-
 
             # Если не нашли - сохранем форму в БД
         except Cards.DoesNotExist as exc:
@@ -103,9 +107,7 @@ class CardsServices:
             collection.cards.add(card)
 
         except Exception as exc:
-            logging.info(exc)
             return {'message': f'Something goes wrong!!!\n {exc}'}
-
 
         if card.id not in collection.order_list:
             collection.order_list.insert(0, card.id)
