@@ -18,7 +18,6 @@
     <script>
       // Получаем ссылки на видео и элемент для субтитров
 
-      const video = document.querySelector('.video-player');
       let player;
       const subtitlesDisplay = document.querySelector('.subtitles')
       const creatCardText = document.getElementById('hiddenSelectionText')
@@ -113,7 +112,12 @@
           width: '850',
           height: '500',
           events: {
-            'onReady': onPlayerReady,
+            'onReady': function(event) {
+              // Save current playback time to localStorage when the video is playing
+              event.target.playVideo();
+              const currentTime = player.getCurrentTime();
+              localStorage.setItem("savedTime", currentTime);
+            },
             'onStateChange': onPlayerStateChange
           }
         });
@@ -166,6 +170,16 @@
           }
         }
       }
+      document.addEventListener("DOMContentLoaded", function() {
+        const savedTime = localStorage.getItem("savedTime");
+        if (savedTime !== null) {
+          player.seekTo(savedTime);
+        }
+      });
+      window.addEventListener("beforeunload", function() {
+        const currentTime = player.getCurrentTime();
+        localStorage.setItem("savedTime", currentTime);
+      });
     </script>
   </main>
 {% endblock %}
