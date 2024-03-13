@@ -18,7 +18,13 @@ great_cards.code-workspace
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+  • Installing rfc3986 (1.5.0)
+  • Installing httpx (0.13.3)
+  • Installing stone (3.3.1)
+  • Installing dropbox (11.36.2)
+  • Installing environ (1.0)
+  • Installing googletrans (3.0.0)
+  • Installing python-dotenv (1.0.0)
 # AWS User-specific
 .idea/**/aws.xml
 

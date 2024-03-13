@@ -1,36 +1,19 @@
 import os.path
 from pathlib import Path
-
-import dotenv
-import environ
+from decouple import config
 import openai
 
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-dotenv.load_dotenv()
-env = environ.Env()
-SECRET_KEY = env('SECRET_KEY')
-openai.api_key = env('GPT_API_KEY')
 
-DROPBOX_APP_KEY=env('DROPBOX_APP_KEY')
-DROPBOX_APP_SECRET=env('DROPBOX_APP_SECRET')
-DROPBOX_OAUTH2_REFRESH_TOKEN=env('DROPBOX_OAUTH2_REFRESH_TOKEN')
-DROPBOX_ROOT_PATH = "/"
-DROPBOX_STORAGE = 'storages.backends.files_storage.DropBoxStorage'
+SECRET_KEY = config('SECRET_KEY')
+openai.api_key = config('GPT_API_KEY')
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = env('EMAIL_HOST')
-# EMAIL_PORT = env('EMAIL_PORT')
-# EMAIL_STARTTLS = False
-# EMAIL_USE_SSL = True
-# EMAIL_USE_TLS = False
-# EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
+
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
@@ -58,7 +41,7 @@ INSTALLED_APPS = [
     'tube'
 ]
 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -101,11 +84,11 @@ ASGI_APPLICATION = 'my_cards.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('POSTGRES_PORT')
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('POSTGRES_PORT')
     }
 }
 CELERY_BROKER_URL = "redis://localhost:6379"
