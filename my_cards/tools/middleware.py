@@ -11,7 +11,8 @@ def simple_middleware(get_response):
         try: 
             response = get_response(request)
             logger.debug('Succes')
-            logger.debug(response.body)
+            logger.debug(response.status_code)
+            logger.debug(response.content)
             return response
         except Exception as exc:
             logger.debug(exc.args)
