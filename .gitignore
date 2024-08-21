@@ -2,19 +2,21 @@
 *.log
 *.pot
 *.pyc
-my_cards/.env server
-my_cards/.env copy
-my_cards/.env local
-my_cards/.env server
-my_cards/my_cards/settings_prod.py
-my_cards/tools/ga.json
-my_cards/my_cards/settings_local.py
 __pycache__
-db.sqlite3
+my_cards/my_cards/settings_local.py
+
+#ENV
+my_cards/.env
+my_cards/.env server
+
+#LOGS
+my_cards/logs/*
+!my_cards/logs/ex
+
+#MEDIA
 my_cards/media/*
-!/media/
-env
-.env
+!my_cards/media/ex
+
 # Backup files #
 *.bak
 great_cards.code-workspace
@@ -112,7 +114,7 @@ celerybeat-schedule.*
 *.sage.py
 
 # Environments
-my_cards/.env
+
 .venv
 env/
 venv/
