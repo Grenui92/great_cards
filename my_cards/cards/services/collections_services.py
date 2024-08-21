@@ -51,8 +51,8 @@ class CollectionServices:
     @staticmethod
     def create_collection(owner, collection_name, collection_img):
 
-
-        if Collections.objects.filter(name=collection_name).exists():
+        if Collections.objects.filter(name=collection_name,
+                                      owner_id=owner.id).exists():
             return False, f'Collection with name "{collection_name}" already exist, choice another name!'
 
         collection = Collections.objects.create(name=collection_name,

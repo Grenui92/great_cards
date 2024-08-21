@@ -2,7 +2,7 @@
 *.log
 *.pot
 *.pyc
-
+my_cards/.env server
 my_cards/.env copy
 my_cards/.env local
 my_cards/.env server
