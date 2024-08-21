@@ -36,7 +36,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'my_cards/logs/logging'
+            'filename': 'logs/logging'
         }
             
     },

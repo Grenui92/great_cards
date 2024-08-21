@@ -10,8 +10,8 @@ my_cards/.env
 my_cards/.env server
 
 #LOGS
-my_cards/logs/*
-!my_cards/logs/ex
+/logs/*
+!/logs/ex
 
 #MEDIA
 my_cards/media/videos/
