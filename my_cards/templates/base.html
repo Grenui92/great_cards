@@ -63,21 +63,6 @@
             </button>
           </li>
           {% else %}
-          <button><a class="nav-dropdown-link" href="#"> GPT </a></button>
-          <ul class="nav-dropdown-ul">
-            <li>
-              <button><a href="{% url 'chat:text_correction' %}">Sentences</a></button>
-            </li>
-            <li>
-              <button><a href="{% url 'chat:chat_ai' %}">Chat with GPT-3</a></button>
-            </li>
-            <li>
-              <button><a href="{% url 'chat:translate_to_ru' %}">To Russian</a></button>
-            </li>
-            <li>
-              <button><a href="{% url 'chat:translate_to_en' %}">To English</a></button>
-            </li>
-          </ul>
           <li>
             <button>
             <a href="{% url 'users:signup' %}" class="" style="color: green">
