@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 import time
 
 from tools.logger import logger
@@ -10,11 +10,11 @@ def simple_middleware(get_response):
 
         try: 
             response = get_response(request)
-            logger.info((time.time() - now))
-            logger.debug(response)
+            logger.debug('Succes')
+            logger.debug(*response)
             return response
         except Exception as exc:
-            logger.info(exc)
+            logger.debug(exc.args)
             return render(request, 'message.html', context={'message': 'Sorry, something went wrong.'})
 
     return middleware
