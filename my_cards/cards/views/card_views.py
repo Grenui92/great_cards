@@ -75,7 +75,7 @@ class CreateCardView(View, MessageMixin):
 
         collections = CollectionServices.get_collections_by_owner(owner_id=request.user.id)
         selected = request.GET.get('hidden_select')
-        print(selected)
+
         if selected:
             original, translit = selected.split('<br><br>')
             original = ' '.join(original.split(':')[1:]).strip()

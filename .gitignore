@@ -15,7 +15,8 @@ my_cards/logs/*
 
 #MEDIA
 my_cards/media/*
-!my_cards/media/ex
+!my_cards/media/collection.jpg
+!my_cards/media/card.jpg
 
 # Backup files #
 *.bak

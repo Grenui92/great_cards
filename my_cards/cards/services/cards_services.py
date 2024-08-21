@@ -98,7 +98,6 @@ class CardsServices:
                 english=english, russian=russian)
             collection.cards.add(card)
 
-            # Если не нашли - сохранем форму в БД
         except Cards.DoesNotExist as exc:
 
             card = Cards.objects.create(english_word=english,

@@ -64,7 +64,7 @@ class CollectionCreateView(View, MessageMixin):
             fs = FileSystemStorage()
             img_name = fs.save(f'avatars/{datetime.now()}{img.name.replace(" ", "_")}', img)
         else:
-            img_name = '1.jpg'
+            img_name = 'collection.jpg'
         message = CollectionServices.create_collection(owner=owner,
                                                        collection_name=collection_name,
                                                        collection_img=img_name)

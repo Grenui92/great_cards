@@ -17,6 +17,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'dontlosehope.website',
     '91.227.41.51',
+    'www.dontlosehope.website',
 ]
 
 

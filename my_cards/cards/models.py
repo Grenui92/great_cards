@@ -8,7 +8,7 @@ class Cards(models.Model):
     english_word = models.CharField(max_length=255)
     russian_word = models.CharField(max_length=255)
     word_usage = models.TextField()
-    img = models.ImageField(default='golub.jpg', upload_to='words_image')
+    img = models.ImageField(default='card.jpg', upload_to='words_image')
 
     def save(self, *args, **kwargs):
         """
@@ -40,7 +40,7 @@ class Collections(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cards = models.ManyToManyField('Cards', db_column='card_id')
     order_list = ArrayField(models.IntegerField(), default=list)
-    img = models.ImageField(upload_to='avatars')
+    img = models.ImageField(default='collection.jpg', upload_to='avatars')
 
     def save(self, *args, **kwargs):
         """
