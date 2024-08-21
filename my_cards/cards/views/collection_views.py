@@ -60,14 +60,10 @@ class CollectionCreateView(View, MessageMixin):
         owner = request.user
         img = request.FILES.get('collection_img')
         collection_name = request.POST.get('collection_name')
-        if img:
-            fs = FileSystemStorage()
-            img_name = fs.save(f'avatars/{datetime.now()}{img.name.replace(" ", "_")}', img)
-        else:
-            img_name = 'collection.jpg'
+
         message = CollectionServices.create_collection(owner=owner,
                                                        collection_name=collection_name,
-                                                       collection_img=img_name)
+                                                       collection_img=img)
 
         return render(request, self.message_template,
                         context={'message': message})

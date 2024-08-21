@@ -54,10 +54,14 @@ class CollectionServices:
         if Collections.objects.filter(name=collection_name,
                                       owner_id=owner.id).exists():
             return False, f'Collection with name "{collection_name}" already exist, choice another name!'
-
-        collection = Collections.objects.create(name=collection_name,
-                                                owner=owner,
-                                                img=collection_img)
+        
+        if collection_img:
+            collection = Collections.objects.create(name=collection_name,
+                                                    owner=owner,
+                                                    img=collection_img)
+        else:
+            collection = Collections.objects.create(name=collection_name,
+                                                    owner=owner)
         
         collection.save()
         
