@@ -8,7 +8,9 @@
   <script>
 
       var mainPath = window.location.pathname
+      console.log(mainPath)
       var wsPath = mainPath.replace("chat", "ws")
+      console.log(wsPath)
       const chatSocket = new WebSocket(
         "wss://" + window.location.host + wsPath + "/"
       );
