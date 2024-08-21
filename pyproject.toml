@@ -26,6 +26,7 @@ yt-dlp = "^2023.11.16"
 celery = "^5.3.6"
 webvtt-py = "^0.4.6"
 python-decouple = "^3.8"
+gunicorn = "^22.0.0"
 
 
 [build-system]
