@@ -12,8 +12,7 @@ def simple_middleware(get_response):
             response = get_response(request)
             logger.debug('Succes')
             logger.debug(response.status_code)
-            for k, v in response.content.items:
-                logger.debug(f'{k}-------------{v}')
+            logger.debug(response)
             return response
         except Exception as exc:
             logger.debug(exc.args)
