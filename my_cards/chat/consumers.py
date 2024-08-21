@@ -5,6 +5,8 @@ from channels.generic.websocket import WebsocketConsumer
 from chat.services.conversation import chat_bot
 from chat.services.checking_sentences import text_generator
 from chat.services.translate import translate_ru_en, translate_en_ru
+from tools.logger import logger
+
 MAX_AI_PHRASES_MEMORY = 20
 
 
@@ -18,6 +20,7 @@ class ChatConsumer(WebsocketConsumer):
         self.bot_messages = []
 
     def receive(self, text_data=None, bytes_data=None):
+        logger.info('Chat')
         if len(self.bot_messages) >= MAX_AI_PHRASES_MEMORY:
             self.bot_messages = self.bot_messages[1:]
 
@@ -48,6 +51,7 @@ class CorrectorConsumer(WebsocketConsumer):
         pass
 
     def receive(self, text_data=None, bytes_data=None):
+        logger.info('Corrector')
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
@@ -66,6 +70,7 @@ class RuEnTranslateConsumer(WebsocketConsumer):
         pass
 
     def receive(self, text_data=None, bytes_data=None):
+        logger.info('RuEn')
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
@@ -84,6 +89,7 @@ class EnRuTranslateConsumer(WebsocketConsumer):
         pass
 
     def receive(self, text_data=None, bytes_data=None):
+        logger.info('EnRu')
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 

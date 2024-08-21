@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render
-import logging
 import time
 
-logger = logging.getLogger('django')
+from tools.logger import logger
+
 def simple_middleware(get_response):
 
     def middleware(request):
@@ -10,7 +10,6 @@ def simple_middleware(get_response):
 
         try: 
             response = get_response(request)
-            print(time.time() - now)
             logger.info((time.time() - now))
             return response
         except Exception as exc:
