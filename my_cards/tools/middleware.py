@@ -11,6 +11,7 @@ def simple_middleware(get_response):
         try: 
             response = get_response(request)
             logger.info((time.time() - now))
+            logger.debug(response)
             return response
         except Exception as exc:
             logger.info(exc)
