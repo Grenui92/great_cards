@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
-
+import logging
 import time
+
+logger = logging.getLogger('django')
 def simple_middleware(get_response):
 
     def middleware(request):
@@ -9,8 +11,10 @@ def simple_middleware(get_response):
         try: 
             response = get_response(request)
             print(time.time() - now)
+            logger.info((time.time() - now))
             return response
-        except:
+        except Exception as exc:
+            logger.info(exc)
             return render(request, 'message.html', context={'message': 'Sorry, something went wrong.'})
 
     return middleware

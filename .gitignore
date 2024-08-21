@@ -11,7 +11,7 @@ my_cards/.env server
 
 #LOGS
 /logs/*
-!/logs/ex
+
 #LOGS
 my_cards/logs/*
 !my_cards/logs/ex
