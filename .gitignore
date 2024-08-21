@@ -14,9 +14,16 @@ my_cards/logs/*
 !my_cards/logs/ex
 
 #MEDIA
-my_cards/media/*
-!my_cards/media/collection.jpg
-!my_cards/media/card.jpg
+my_cards/media/videos/
+
+my_cards/media/words_img/*
+!my_cards/media/words_img/card.png
+
+my_cards/media/collections_img/*
+!my_cards/media/collections_img/collection.webp
+
+#MIGRATIONS
+my_cards/*/migrations/
 
 # Backup files #
 *.bak
