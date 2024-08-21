@@ -10,7 +10,8 @@ my_cards/tools/ga.json
 my_cards/my_cards/settings_local.py
 __pycache__
 db.sqlite3
-media
+my_cards/media/*
+!/media/
 env
 .env
 # Backup files #
