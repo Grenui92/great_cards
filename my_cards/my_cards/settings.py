@@ -146,3 +146,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 MEDIA_ABSOLUTE_PATH = f'{Path(__file__).absolute().parent.parent}/media'
 
+try:
+    from .settings_local import *
+except ImportError:
+    pass
