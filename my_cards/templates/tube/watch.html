@@ -23,7 +23,7 @@
       const creatCardText = document.getElementById('hiddenSelectionText')
       const translateWindow = document.querySelector('.selected-text')
       const subtitlesFilePath = '{{ video_subs.url }}' 
-
+      const chatSocket = new WebSocket("wss://dontlosehope.website/ws/translate_to_ru/");
       // Функция для разбора файла субтитров в формате SRT
       function parseVTT(data) {
         const subtitleBlocks = data.split('\n\n')
@@ -65,46 +65,63 @@
       
         return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
       }
-
-      document.addEventListener('mouseup', function () {
+      
+    // Обработчик открытия соединения
+      chatSocket.addEventListener('open', () => {
+        console.log('WebSocket соединение установлено');
+    });
+    
+    // Обработчик получения сообщения от сервера
+    chatSocket.addEventListener('message', (event) => {
+        try {
+            // Парсим полученные данные
+            const data = JSON.parse(event.data);
+            
+            // Обрабатываем данные
+            translateWindow.innerHTML = "English: " + selectedText + "<br><br>";
+            translateWindow.innerHTML += "Russian: " + data.message;
+            console.log(translateWindow.innerHTML);
+            creatCardText.value = translateWindow.innerHTML;
+            console.log();
+        } catch (error) {
+            console.error('Ошибка при обработке сообщения:', error);
+        }
+    });
+    
+    // Обработчик ошибок WebSocket
+    chatSocket.addEventListener('error', (error) => {
+        console.error('Ошибка WebSocket:', error);
+    });
+    
+    // Обработчик закрытия соединения
+    chatSocket.addEventListener('close', () => {
+        console.log('WebSocket соединение закрыто');
+    });
+    
+    // Обработчик выделения текста
+    document.addEventListener('mouseup', function () {
         var selectedText = window.getSelection().toString().trim();
         if (selectedText !== '') {
-    
+        
             var selection = window.getSelection();
             if (selection.rangeCount > 0) {
                 var range = selection.getRangeAt(0);
                 var rect = range.getBoundingClientRect();
             }
-    
-            // Отправка данных на сервер
-            fetch('https://127.0.0.1:8000/ws/translate_to_ru/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ text_data: selectedText,
-                                       from_site: true })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Ошибка при отправке данных');
-                }
-                return response.json();
-            })
-            .then(data => {
-
-                translateWindow.innerHTML = "English: " + selectedText + "<br><br>";
-                translateWindow.innerHTML += "Russian: " + data.message;
-                console.log(translateWindow.innerHTML);
-                creatCardText.value = translateWindow.innerHTML;
-                console.log()
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);});
+        
+            // Отправка данных на сервер через WebSocket
+            if (chatSocket.readyState === WebSocket.OPEN) {
+                chatSocket.send(JSON.stringify({ text_data: selectedText, from_site: true }));
+            } else {
+                console.error('WebSocket соединение не установлено');
+            }
         }
     });
-
   
+
+
+
+
       // Функция вызывается после загрузки API
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
