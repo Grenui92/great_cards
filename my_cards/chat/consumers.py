@@ -90,7 +90,7 @@ class EnRuTranslateConsumer(WebsocketConsumer):
 
     def receive(self, text_data=None, bytes_data=None, *args, **kwargs):
         text_data_json = json.loads(text_data)
-        print(text_data_json)
+        logger.debug(text_data_json)
         message = text_data_json['message']
 
         corrector_response = translate_en_ru(message)
