@@ -65,7 +65,7 @@
       
         return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
       }
-      
+
     // Обработчик открытия соединения
       chatSocket.addEventListener('open', () => {
         console.log('WebSocket соединение установлено');
@@ -111,7 +111,7 @@
         
             // Отправка данных на сервер через WebSocket
             if (chatSocket.readyState === WebSocket.OPEN) {
-                chatSocket.send(JSON.stringify({ text_data: selectedText, from_site: true }));
+                chatSocket.send(JSON.stringify({ message: selectedText, from_site: true }));
             } else {
                 console.error('WebSocket соединение не установлено');
             }
