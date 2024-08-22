@@ -163,3 +163,4 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+my_cards/templates/tube/test.html
