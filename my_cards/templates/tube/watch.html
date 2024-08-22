@@ -77,12 +77,12 @@
             }
     
             // Отправка данных на сервер
-            fetch('http://127.0.0.1:8000/api/v1/chat/translate_sentences/', {
+            fetch('http://127.0.0.1:8000/chat/translate_to_ru/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ selected_text: selectedText,
+                body: JSON.stringify({ text_data: selectedText,
                                        from_site: true })
             })
             .then(response => {
