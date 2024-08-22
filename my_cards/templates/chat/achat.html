@@ -12,7 +12,7 @@
       var wsPath = mainPath.replace("chat", "ws")
       console.log(wsPath)
       const chatSocket = new WebSocket(
-        "wss://" + window.location.host + wsPath + "/"
+        "wss://" + window.location.host + wsPath
       );
       console.log(chatSocket)
     
