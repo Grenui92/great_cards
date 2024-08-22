@@ -18,7 +18,7 @@ def translate(language, prompt):
 
     messages = [{
      'role': 'system',
-     'content': f'Translate to {language}:\n\n {prompt}. Give all possible translation meanings of the word. Nothing more.'   
+     'content': f'Translate to {language}:\n\n {prompt}. Offer different translation options, each option starting with *.'   
     }]
     
     response = openai.ChatCompletion.create(
