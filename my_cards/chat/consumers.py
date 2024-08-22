@@ -96,4 +96,6 @@ class EnRuTranslateConsumer(WebsocketConsumer):
         corrector_response = translate_en_ru(message)
 
         self.send(text_data=json.dumps(
-            {'message': f'Answer: {corrector_response.strip()} \n \n'}))
+            {'message': f'Answer: {corrector_response.strip()} \n \n',
+             'english': message,
+             'russian': corrector_response}))

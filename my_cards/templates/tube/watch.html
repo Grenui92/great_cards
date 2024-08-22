@@ -78,8 +78,8 @@
             const data = JSON.parse(event.data);
             
             // Обрабатываем данные
-            translateWindow.innerHTML = "English: " + selectedText + "<br><br>";
-            translateWindow.innerHTML += "Russian: " + data.message;
+            translateWindow.innerHTML = "English: " + data.english + "<br><br>";
+            translateWindow.innerHTML += "Russian: " + data.russian;
             console.log(translateWindow.innerHTML);
             creatCardText.value = translateWindow.innerHTML;
             console.log();
