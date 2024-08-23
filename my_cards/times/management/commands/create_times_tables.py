@@ -1,14 +1,12 @@
-"""
-This module contains command for create files types and files extensions in FileExtension and FileTypes tables from storageapp
+"""This module contains command for create files types and files extensions
+in FileExtension and FileTypes tables from storageapp
 """
 from times.models import Times, Verbs
 from django.core.management.base import BaseCommand
 
 from tools.logger import logger
 
-"""
-This module is used to create tables in the database.
-"""
+"""This module is used to create tables in the database."""
 
 SRC = (
     (
@@ -250,12 +248,11 @@ VERBS = {
 
 
 def create_tables():
-    """
-    The create_tables function creates the tables in the database.
-    It is called by manage.py when you run python manage.py 
+    """The create_tables function creates the tables in the database.
+    It is called by manage.py when you run python manage.py
     create_storageapp_tables
 
-    :return: Nothing
+    :return: None
     """
     for row in SRC:
 
@@ -279,23 +276,22 @@ def create_tables():
 
 
 class Command(BaseCommand):
-    """
-    This class contains command for create files types and 
-    files extensions in FileExtension and FileTypes tables from storageapp
+    """This class contains command for create files types and
+    files extensions in FileExtension and FileTypes tables from storageapp.
+
+    Attributes:
+        help (str): A message that is displayed when you run
+        python manage.py help create_storageapp_tables
     """
 
     help = ""
 
     def handle(self, *args, **options):
-        """
-        The handle function is the entry point for a Django management command.
-        It's called by the manage.py script when you run python 
-        manage.py &lt;command&gt;
-        from your project directory.
+        """The handle function is the entry point for a Django management
+        command.
+        It's called by the manage.py script when you run python
+        manage.py &lt;command&gt; from your project directory.
 
-        :param self: Represent the instance of the class
-        :param args: Pass a variable number of arguments to a function
-        :param options: Pass in the options that are passed to the command
         :return: A string that is printed in the console
         """
         create_tables()
