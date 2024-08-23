@@ -1,20 +1,18 @@
 import openai
 
 
-def text_generator(prompt):
-    """
-    The text_generator function takes a string as an argument and returns the
+def chekicg_sentences(prompt):
+    """The text_generator function takes a string as an argument and returns the
     same string with any spelling errors corrected.
 
     :param prompt: Pass the text that needs to be corrected
     :return: The corrected text
     """
-
     messages = [{
         'role': 'system',
         'content': f'Fix the mistakes in this sentence or rewrite it in proper\
          English: {prompt}. Then translate the text into Russian and write it\
-        in brackets'
+         in brackets'
     }]
 
     response = openai.ChatCompletion.create(
