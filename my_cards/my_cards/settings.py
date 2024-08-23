@@ -4,7 +4,6 @@ from decouple import config
 import openai
 
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
@@ -38,7 +37,7 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'logs/logging'
         }
-            
+
     },
     'loggers': {
         'django': {

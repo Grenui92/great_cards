@@ -1,5 +1,4 @@
-"""
-ASGI config for my_cards project.
+"""ASGI config for my_cards project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

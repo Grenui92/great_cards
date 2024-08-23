@@ -1,5 +1,4 @@
-"""
-WSGI config for my_cards project.
+"""WSGI config for my_cards project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
