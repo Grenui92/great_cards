@@ -7,16 +7,16 @@ import logging
 
 
 class CardsServices:
+    """The CardsServices class provides methods for interacting with cards."""
 
     @classmethod
     def get_information_from_forms(cls, request):
-        """function get_information_from_forms takes in a request object and
+        """Function get_information_from_forms takes in a request object and
         returns the values of the form fields.
 
         :param cls: Refer to the class itself
         :return: A tuple of four values
         """
-
         english_word = request.GET['english_word']
         russian_word = request.GET['russian_word']
         word_usage = request.GET['word_usage']
@@ -40,7 +40,6 @@ class CardsServices:
         :param word_usage: Pass a fact about the word to the function
         :return: A tuple of three values.
         """
-
         try:
             card: Cards = cls.get_card_from_collection(
                 english=english_word, russian=russian_word)
@@ -96,7 +95,6 @@ class CardsServices:
         :param form: Get the information from the form
         :return: A dictionary with a message
         """
-
         try:
             card = cls.get_card_from_collection(
                 english=english, russian=russian)

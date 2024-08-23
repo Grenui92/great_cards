@@ -1,5 +1,5 @@
 from django.urls import path
-from .views.collection_views import CollectionEditView,  CollectionListView, CollectionCreateView, CollectionDeleteView, CardPositionView
+from .views.collection_views import CollectionEditView, CollectionListView, CollectionCreateView, CollectionDeleteView, CardPositionView
 from .views.card_views import CardsListView, CreateCardView, CardDeleteView
 
 app_name = 'cards'

@@ -1,9 +1,7 @@
 import logging
-from datetime import datetime
 
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, View
-from django.core.files.storage import FileSystemStorage
 
 from cards.models import Collections
 from cards.services.collections_services import CollectionServices
@@ -12,55 +10,58 @@ from tools.decorators import class_login_required
 
 
 class CollectionListView(ListView):
+    """The CollectionListView class is a view class that displays a list of
+    collections created by the user.
+    The class inherits from the ListView class, which is a generic view that
+    displays a list of objects.
+
+    The class has the following attributes:
+    - model: a model class that represents the collection
+    - template_name: a string that represents the name of the template file
+    """
+
     model = Collections
     template_name = 'cards/study_cards.html'
 
     def get_queryset(self):
-        """
-        The get_queryset function is used to filter the queryset of objects
-        that will be displayed in the view.
-        In this case, we are filtering by owner (the user who created it).
-        This means that only cards collections
-        created by a specific user will be shown.
+        """The get_queryset function is a built-in function that returns a list
+        of objects that match the given query parameters.
 
-        :param self: Represent the instance of the class
         :return: A list of objects that match the given query parameters
         """
-
         collection = Collections.objects.filter(owner=self.request.user.id)
         return collection
 
 
 class CollectionCreateView(View, MessageMixin):
+    """The CollectionCreateView class is a view class that creates a new
+    collection.
+
+    The class has the following attributes:
+    - template_name: a string that represents the name of the template file
+    """
+
     template_name = 'cards/create_collection.html'
 
     @class_login_required
     def get(self, request):
-        """
-        The get function is used to render the form on the page.
-        It takes in a request and returns a rendered template with context.
+        """The get function is used to render the create collection page.
 
-        :param self: Refer to the current instance of the class, and is used
-        to access variables that belongs to the class
-        :param request: Pass the request object to the view
-        :return: A form object to the template
+        :param request: request object
+        :return: render function
         """
-
         return render(request, self.template_name)
 
     @class_login_required
     def post(self, request):
-        """
-        The post function is used to create a new collection.
-            It takes the following arguments:
-                request - The HTTP request object that contains the data for
-                creating a new collection.
+        """The post function is used to create a new collection. It takes in a
+        request object and creates a new collection with the given name and
+        image. The function then renders the message template with the message
+        returned by the CollectionServices.create_collection function.
 
-        :param self: Represent the instance of the class
-        :param request: Get the user who is logged in
-        :return: A render function
+        :param request: request object
+        :return: render function
         """
-
         owner = request.user
         img = request.FILES.get('collection_img')
         collection_name = request.POST.get('collection_name')
@@ -74,22 +75,24 @@ class CollectionCreateView(View, MessageMixin):
 
 
 class CollectionDeleteView(View):
+    """The CollectionDeleteView class is a view class that deletes a
+    collection.
+
+    The class has the following attributes:
+    - template_name: a string that represents the name of the template file
+    """
+
     template_name = 'cards/deleting_warning.html'
 
     @class_login_required
     def get(self, request, collection_id):
-        """
-        The get function is used to retrieve a collection from the database.
-        It takes in a request and an id of the collection that you want to retrieve.
-        The function then uses CollectionServices to get the collection by its id,
-        and returns it as context for rendering.
+        """The get function is used to render the delete warning page for a
+        specific collection.
 
-        :param self: Represent the instance of the object itself
-        :param request: Get the request object
-        :param collection_id: Get the collection from the database
-        :return: A render function
+        :param request: request object
+        :param collection_id: Collection id
+        :return: render function
         """
-
         collection = CollectionServices.get_collection_by_id(
             collection_id=collection_id)
         return render(request,
@@ -98,18 +101,12 @@ class CollectionDeleteView(View):
 
     @class_login_required
     def post(self, request, collection_id):
-        """
-        The post function is used to delete a collection.
-        It takes in the request and collection_id as parameters.
-        The function then gets the collection by its id, deletes it,
-        and redirects to study cards.
+        """The post function is used to delete a collection.
 
-        :param self: Represent the instance of the object itself
-        :param request: Pass the request object to the view
-        :param collection_id: Get the collection object from the database
-        :return: A redirect to the study_cards view
+        :param request: request object
+        :param collection_id: Collection id
+        :return: redirect function
         """
-
         collection = CollectionServices.get_collection_by_id(
             collection_id=collection_id)
         collection.delete()
@@ -117,26 +114,22 @@ class CollectionDeleteView(View):
 
 
 class CollectionEditView(View):
+    """The CollectionEditView class is a view class that edits a collection.
+
+    The class has the following attributes:
+    - template_name: a string that represents the name of the template file
+    """
+
     template_name = 'cards/edit_collection.html'
 
     @class_login_required
     def get(self, request, collection_id):
-        """
-        The get function is used to render the editor page for
-        a specific collection.
-        It takes in a request and collection_id, then uses
-        the CollectionServices class to get that specific collection.
-        The function then renders the template with context containing:
-        the queryset of cards belonging to that collection,
-        the id of that particular card, and
-        the name of the template being rendered.
+        """The get function is used to render the edit collection page.
 
-        :param self: Represent the instance of the class
-        :param request: Get the request object
-        :param collection_id: Get the collection from the database
-        :return: A render function
+        :param request: request object
+        :param collection_id: Collection id
+        :return: render function
         """
-
         collection = CollectionServices.get_collection_by_id(
             collection_id=collection_id)
         queryset = collection.cards.all()
@@ -150,6 +143,13 @@ class CollectionEditView(View):
 
     @class_login_required
     def post(self, request, collection_id):
+        """The post function is used to edit a collection. It takes in a request
+        object and edits the collection name.
+
+        :param request: request object
+        :param collection_id: Collection id
+        :return: redirect function
+        """
         collection = CollectionServices.get_collection_by_id(
             collection_id=collection_id)
         new_name = self.request.POST['new_name']
@@ -173,16 +173,30 @@ class CollectionEditView(View):
 
 
 class CardPositionView(View):
+    """The CardPositionView class is a view class that changes the position of
+    a card in a collection.
+
+    The class has the following attributes:
+    - template_name: a string that represents the name of the template file
+    """
+
     template_name = 'cards:open_collection'
 
     @class_login_required
-    def post(self, request, collection_id: Collections, word_id):
+    def post(self, request, collection_id: Collections, card_id):
+        """The post function is used to change the position of a card in a
+        collection.
 
+        :param request: request object
+        :param collection_id: Collection id
+        :param card_id: _description_
+        :return: redirect function
+        """
         collection = CollectionServices.get_collection_by_id(
             collection_id=collection_id)
         replace = int(request.POST.get('replace'))
 
         CollectionServices.change_card_position(
-            collection=collection, replace=replace, word_id=word_id)
+            collection=collection, replace=replace, card_id=card_id)
 
         return redirect(to=self.template_name, collection_id=collection_id)
