@@ -28,6 +28,7 @@ webvtt-py = "^0.4.6"
 python-decouple = "^3.8"
 gunicorn = "^22.0.0"
 channels-redis = "^4.2.0"
+flake8 = "^7.1.1"
 
 
 [build-system]

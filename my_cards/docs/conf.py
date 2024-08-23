@@ -8,7 +8,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_cards.settings')
 django.setup()
 
 
-
 project = 'Great Cards'
 copyright = '2023, Grenui92'
 author = 'Grenui92'
@@ -21,7 +20,6 @@ extensions = ['sphinx.ext.autodoc']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
 
 
 # -- Options for HTML output -------------------------------------------------

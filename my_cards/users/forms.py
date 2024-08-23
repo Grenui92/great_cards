@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class RegistrationForm(UserCreationForm):
 
     username = forms.CharField(max_length=20,
-                                required=True,
-                                widget=forms.TextInput())
+                               required=True,
+                               widget=forms.TextInput())
 
     email = forms.CharField(max_length=255,
                             required=True,

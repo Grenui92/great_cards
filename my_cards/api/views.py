@@ -92,7 +92,8 @@ class CreateCardApi(LogingBase):
                                               collection=collection)
         s_card = CardsSerializer(new_card)
         s_collection = CollectionsSerializer(collection)
-        return Response({'new_card': s_card.data, 'colleciton': s_collection.data})
+        return Response({'new_card': s_card.data,
+                         'colleciton': s_collection.data})
 
 
 class GetCardInformation(LogingBase):
@@ -110,15 +111,17 @@ class GetCardInformation(LogingBase):
 
 
 class CreateCollecitonApi(LogingBase):
-    
+
     def post(self, request):
         user = User.objects.get(username=request.data.get('username'))
-        print(user, 'aaaaaaaaaaaaaaaaaaaaaaaaaaa')
+
         collection_name = request.data.get('collection_name')
-        print(collection_name, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
-        message = CollectionServices.create_collection(owner=user, collection_name=collection_name)
+
+        message = CollectionServices.create_collection(owner=user,
+                                                       collection_name=collection_name)
         return Response({'message': message})
-    
+
+
 class TranslateSentencesApi(APIView):
     def post(self, request):
         text = request.data.get('selected_text')
@@ -127,4 +130,3 @@ class TranslateSentencesApi(APIView):
             text = parse_promt(text)
         result = translate_en_ru(prompt=text)
         return Response({'message': result})
-    

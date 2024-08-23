@@ -11,8 +11,11 @@ class CardsServices:
     @classmethod
     def get_information_from_forms(cls, request):
         """
-        The get_information_from_forms function is a helper function that returns the information from the form.
-        It takes in one argument, which is a form object. It then returns four attributes: english_word, russian_word, word_usage and collection.
+        The get_information_from_forms function is a helper function that
+        returns the information from the form.
+        It takes in one argument, which is a form object.
+        It then returns four attributes: english_word, russian_word,
+        word_usage and collection.
 
         :param cls: Get the class of the object
         :param form: Get the data from the form
@@ -29,9 +32,12 @@ class CardsServices:
     @classmethod
     def get_card_data(cls, english_word, russian_word, word_usage):
         """
-        The generate_data function takes in three arguments: english_word, russian_word, and word_usage.
-        If the user does not provide an English word or a Russian word, the function will use Google Translate to translate
-        the provided language into the other language. If no usage is provided by the user, then it will be generated using
+        The generate_data function takes in three arguments: english_word,
+        russian_word, and word_usage.
+        If the user does not provide an English word or a Russian word,
+        the function will use Google Translate to translate the provided
+        language into the other language.
+        If no usage is provided by the user, then it will be generated using
         the fact generator function.
 
         :param english_word: Pass the english word to the function
@@ -60,10 +66,15 @@ class CardsServices:
             return english_word.lower(), russian_word.lower(), word_usage.lower()
 
     @classmethod
-    def get_card_from_collection(cls, english=None, russian=None, card_id=None):
+    def get_card_from_collection(cls,
+                                 english=None,
+                                 russian=None,
+                                 card_id=None):
         """
-        The get_card_from_collection function takes in a string of either an English word or Russian word,
-        and returns the corresponding card object from the database. If no such card exists, it raises a ValueError.
+        The get_card_from_collection function takes in a string of either
+        an English word or Russian word, and returns the corresponding card
+        object from the database.
+        If no such card exists, it raises a ValueError.
 
         :param cls: Specify the model class that is being queried
         :param english: Get the card from the database using its english word
@@ -99,7 +110,7 @@ class CardsServices:
             collection.cards.add(card)
 
         except Cards.DoesNotExist as exc:
-
+            logging.info(exc)
             card = Cards.objects.create(english_word=english,
                                         russian_word=russian,
                                         word_usage=usage)

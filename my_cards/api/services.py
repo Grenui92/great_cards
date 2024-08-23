@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 
 from users.forms import RegistrationForm
 
+
 def user_login(request, created_user=None):
     username = request.data.get('username')
     password = request.data.get('password')
@@ -22,12 +23,13 @@ def user_login(request, created_user=None):
                 'token': token.key}
     else:
         return {'message': 'Wrong credentials'}
-    
+
+
 def user_create(request):
     form = RegistrationForm(request.POST)
 
     if form.is_valid():
-        user = form.save()
+        form.save()
         return {'message': f'User {form.data["username"]} succesfully registred'}
     return {'message': 'Wrong credentials.'}
 

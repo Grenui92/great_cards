@@ -1,5 +1,3 @@
-import logging
-
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import PasswordResetView, LoginView, LogoutView
 from django.views import View
@@ -10,17 +8,18 @@ from .forms import RegistrationForm
 
 class MyRegistrationView(View):
 
-    
     def post(self, request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
 
             return redirect(to='news:main')
         return render(request, 'users/signup.html', context={'form': form})
 
     def get(self, request):
-        return render(request, 'users/signup.html', context={'form': RegistrationForm()})
+        return render(request,
+                      'users/signup.html',
+                      context={'form': RegistrationForm()})
 
 
 class MyLoginView(LoginView):
@@ -37,5 +36,6 @@ class MyResetPasswordView(PasswordResetView):
     email_template_name = 'users/password_reset_email.html'
     html_email_template_name = 'users/password_reset_email.html'
     success_url = reverse_lazy('users:password_reset_done')
-    success_message = "An email with instructions to reset your password has been sent to %(email)s."
+    success_message = """An email with instructions to reset your
+                        password has been sent to %(email)s."""
     subject_template_name = 'users/password_reset_subject.txt'

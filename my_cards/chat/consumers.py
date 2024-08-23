@@ -39,7 +39,7 @@ class ChatConsumer(WebsocketConsumer):
             {"role": response_role, "content": response_content})
 
         self.send(text_data=json.dumps(
-            {'message': f'{response_role.capitalize()}:  {response_content} \n \n'}))
+            {'message': f'{response_role.capitalize()}: {response_content} \n \n'}))
 
 
 class CorrectorConsumer(WebsocketConsumer):

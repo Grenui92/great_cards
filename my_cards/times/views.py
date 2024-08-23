@@ -13,11 +13,15 @@ class TimesView(View):
         times = Times.objects.all()
         examples = {}
         for time in times:
-            sentences = Sentences.objects.filter(time=time.id, owner=request.user.id)
+            sentences = Sentences.objects.filter(
+                time=time.id, owner=request.user.id)
             examples[time.name] = sentences
 
-        return render(request, self.template_name, context={"times": times,
-                                                            "examples": examples})
+        return render(request,
+                      self.template_name,
+                      context={"times": times,
+                               "examples": examples})
+
     @class_login_required
     def post(self, request, time_id):
         time = Times.objects.get(id=time_id)
@@ -26,8 +30,9 @@ class TimesView(View):
             Sentences.objects.create(text=text, owner=request.user, time=time)
         return redirect(to='times:times')
 
+
 class DeleteSentenceView(View):
-    
+
     @class_login_required
     def post(self, request, sentence_id):
         Sentences.objects.get(id=sentence_id).delete()
