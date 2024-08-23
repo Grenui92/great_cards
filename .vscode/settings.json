@@ -3,5 +3,13 @@
         "editor.defaultFormatter": "ms-python.autopep8",
         "editor.rulers": [79, 90]
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "autoDocstring.docstringFormat": "sphinx",  // Set the default docstring format
+    "autoDocstring.generateDocstringOnEnter": false,  // Disable auto generation on pressing Enter
+    "autoDocstring.includeName": true,  // Include function/method name in the docstring
+    "autoDocstring.includeType": true,  // Include parameter types in the docstring
+    "autoDocstring.quoteStyle": "\"\"\"",  // Set the style of quotes used for docstring
+    "python.linting.pylintArgs": [
+        "--disable=C0111"  // Disable the missing docstring check in pylint
+    ]
 }
