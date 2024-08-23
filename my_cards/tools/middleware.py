@@ -4,7 +4,7 @@ from tools.logger import logger
 
 
 def simple_middleware(get_response):
-
+    """A simple middleware that logs the response."""
     def middleware(request):
 
         try:
