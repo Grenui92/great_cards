@@ -7,8 +7,10 @@ from .forms import RegistrationForm
 
 
 class MyRegistrationView(View):
+    """Registration class."""
 
     def post(self, request):
+        """Registres user if form is valid."""
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
@@ -17,21 +19,28 @@ class MyRegistrationView(View):
         return render(request, 'users/signup.html', context={'form': form})
 
     def get(self, request):
+        """Open registration page."""
         return render(request,
                       'users/signup.html',
                       context={'form': RegistrationForm()})
 
 
 class MyLoginView(LoginView):
+    """LogIn class."""
+
     template_name = 'users/login.html'
     next_page = reverse_lazy('news:main')
 
 
 class MyLogoutView(LogoutView):
+    """LogOut class."""
+
     next_page = reverse_lazy('news:main')
 
 
 class MyResetPasswordView(PasswordResetView):
+    """Class for reset password."""
+
     template_name = 'users/password_reset.html'
     email_template_name = 'users/password_reset_email.html'
     html_email_template_name = 'users/password_reset_email.html'

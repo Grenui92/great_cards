@@ -38,9 +38,9 @@ class UploadVideoView(View, MessageMixin):
                                         url=url,
                                         user_id=request.user.id)
 
-        message = 'Загрузка видео может занять какое-то время,'
-        'вы можете пользоваться другими функциями сайта,'
-        'а видео автоматически появится на странице Tube'
+        message = 'Загрузка видео может занять какое-то время,\
+            вы можете пользоваться другими функциями сайта,\
+            а видео автоматически появится на странице Tube'
         return render(request,
                       self.message_template,
                       context={'message': message})

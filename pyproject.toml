@@ -29,6 +29,7 @@ python-decouple = "^3.8"
 gunicorn = "^22.0.0"
 channels-redis = "^4.2.0"
 flake8 = "^7.1.1"
+flake8-docstrings = "^1.7.0"
 
 
 [build-system]

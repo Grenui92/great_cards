@@ -57,14 +57,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
     'cards',
     'users',
     'chat',
     'news',
     'times',
-    'api',
     'tube'
 ]
 
