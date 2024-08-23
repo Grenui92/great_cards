@@ -16,6 +16,17 @@ from .services.video_services import VideoServices
 def download_and_create_video(ABSOLUTE_UPLOAD_URL,
                               OUTPUT_FILENAME, url,
                               user_id):
+    """Download the video from the given URL and create a new video in the
+    database. This function is a celery task. It downloads the video from the
+    given URL and creates a new video in the database. The video is downloaded
+    using the yt-dlp library. The video is saved in the media/videos directory.
+
+    :param ABSOLUTE_UPLOAD_URL: The absolute path to the upload directory.
+    :param OUTPUT_FILENAME: The name of the output file.
+    :param url: The URL of the video.
+    :param user_id: The ID of the User.
+    :return: A message that the video was successfully added.
+    """
     user = User.objects.get(id=user_id)
     if url.startswith('https://www.youtube.com/watch?v='):
         yt_id = re.findall(r'watch\?v=[\w-]+', url)[0].split('=')[1]
@@ -53,6 +64,11 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL,
 
 
 def create_sbtt(sub_path):
+    """Create a new sbtt file from the given vtt file. This function reads the
+    vtt file and creates a new sbtt file and saves it in the same directory.
+
+    :param sub_path: The path to the vtt file.
+    """
     result = []
     file_path = settings.MEDIA_ABSOLUTE_PATH
     old_string = ''

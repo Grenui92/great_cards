@@ -6,6 +6,17 @@ import re
 
 
 class Videos(models.Model):
+    """A class that represents the video model.
+
+    Attributes:
+        video_name (str): The name of the video.
+        owner (User): The owner of the video.
+        video_prev (ImageField): The preview of the video.
+        video_subs (FileField): The subtitles of the video.
+        yt_id (str): The YouTube ID of the video.
+        yt_url (str): The URL of the video.
+    """
+
     video_name = models.CharField(max_length=255, null=True)
     owner = models.ManyToManyField(User, db_column='owner_id')
     video_prev = models.ImageField(max_length=255, default=1)
@@ -14,9 +25,12 @@ class Videos(models.Model):
     yt_url = models.CharField(max_length=255, default=1)
 
     def save(self, *args, **kwargs):
+        """Save the video preview and subtitles. Resize the preview image
+        and remove the tags from the subtitles file.
+        """
         super().save()
-        absolute_img_path = str(settings.BASE_DIR)+self.video_prev.url
-        absolute_subs_path = str(settings.BASE_DIR)+self.video_subs.url
+        absolute_img_path = str(settings.BASE_DIR) + self.video_prev.url
+        absolute_subs_path = str(settings.BASE_DIR) + self.video_subs.url
 
         img = Image.open(absolute_img_path)
         if img.height > 100 or img.width > 100:

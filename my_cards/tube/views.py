@@ -9,10 +9,22 @@ from tube.tasks import download_and_create_video
 
 
 class VideoCollectionsListView(View):
+    """A class-based view for handling the video collections.
+
+    Attributes:
+        template_name (str): The name of the template to be rendered.
+    """
+
     template_name = 'tube/video_list.html'
 
     @class_login_required
     def get(self, request):
+        """Return the video collections page. Get all videos from the database
+        and render the video collections page with the videos.
+
+        :param request: request object
+        :return: render
+        """
         collections = Videos.objects.filter(owner=request.user.id)
         return render(request,
                       self.template_name,
@@ -20,6 +32,13 @@ class VideoCollectionsListView(View):
 
 
 class UploadVideoView(View, MessageMixin):
+    """A class-based view for handling the uploading of videos.
+
+    Attributes:
+        ABSOLUTE_UPLOAD_URL (str): The absolute path to the upload directory.
+        OUTPUT_FILENAME (str): The name of the output file.
+        template_name (str): The name of the template to be
+    """
 
     ABSOLUTE_UPLOAD_URL = 'media/videos/'
     OUTPUT_FILENAME = "%(title)s.%(ext)s"
@@ -27,11 +46,21 @@ class UploadVideoView(View, MessageMixin):
 
     @class_login_required
     def get(self, request):
+        """Return the upload video page.
+
+        :param request: request object
+        :return: render
+        """
         return render(request, self.template_name)
 
     @class_login_required
     def post(self, request):
+        """Download the video from the given URL and create a new video in the
+        database.
 
+        :param request: request object
+        :return: render
+        """
         url = request.POST.get('yt_url').split('&')[0]
         download_and_create_video.delay(ABSOLUTE_UPLOAD_URL=self.ABSOLUTE_UPLOAD_URL,
                                         OUTPUT_FILENAME=self.OUTPUT_FILENAME,
@@ -47,10 +76,22 @@ class UploadVideoView(View, MessageMixin):
 
 
 class WatchVideoView(View):
+    """A class-based view for handling the watching of videos.
+
+    Attributes:
+        template_name (str): The name of the template to be rendered.
+    """
+
     template_name = 'tube/watch.html'
 
     @class_login_required
     def get(self, request, video_id):
+        """Return the watch video page.
+
+        :param request: request object
+        :param video_id: Video id
+        :return: render
+        """
         video = Videos.objects.get(id=video_id)
         video_subs = video.video_subs
         yt_id = video.yt_id
