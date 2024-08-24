@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>times.management.commands.create_times_tables &#8212; Great Cards 0.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/pydoctheme.css?v=41b4f12d" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../../static/pygments_dark.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/custom.css" />
+    
+    <script src="../../../../static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../../static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /><link rel="stylesheet" href="../../../../static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../../static/py.svg" />
+            <script type="text/javascript" src="../../../../static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../../static/menu.js"></script>
+            <script type="text/javascript" src="../../../../static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../../static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../../../static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../../../static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">times.management.commands.create_times_tables</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for times.management.commands.create_times_tables</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;This module contains command for create files types and files extensions</span>
+<span class="sd">in FileExtension and FileTypes tables from storageapp</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">times.models</span> <span class="kn">import</span> <span class="n">Times</span><span class="p">,</span> <span class="n">Verbs</span>
+<span class="kn">from</span> <span class="nn">django.core.management.base</span> <span class="kn">import</span> <span class="n">BaseCommand</span>
+
+<span class="kn">from</span> <span class="nn">tools.logger</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="sd">&quot;&quot;&quot;This module is used to create tables in the database.&quot;&quot;&quot;</span>
+
+<span class="n">SRC</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Past Simple&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершалось/совершилось&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I talked to John yesterday.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I did not talk to John yesterday.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Did you talk to John yesterday?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Past Continuous&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершилос (точное время)&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I was talking to John yrsterday when you called me.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I was not talking to John yesterday when you called me.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Were you talking to John yesterday when I called you?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Past Perfect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершилось ранее другого действия&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I had talked to John by the time you came.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I had not talked to John by the time you cam&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Had you talked to John by the time I came?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Past Perfect Continuous&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Начатое действие продолжалось до (веремени/действия)&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I had been talking to John for two hours by the time you came / by 5 o&#39;clock.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I had not been talking to John for two hours by the time you came / by 5 o&#39;clock.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Had you been talking to John for two hours by the time I came / by 5 o&#39;clock?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Present Simple&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершается постоянно&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I talk to John every day.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I do not talk to John every day.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Do I talk to John every day?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Present Continuous&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершается сейчас&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I am talking to John now.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I am not talking to John now.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Are you talking to John now?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Present Perfect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершилось&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I have talked to John.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I have not talked to John.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Have you talked to John?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Present Perfect Continuous&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Начатое действие продолжается&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I have been talking to John for two hours / since 5 o&#39;clock.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I have not been talking to John for two hours / since 5 o&#39;clock.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Have you been talking to John for two hours / since 5 o&#39;clock?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Future Simple&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершится&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I will talk to John tomorrow.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I will not talk to John tomorrow.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Will you talk to John tomorrow?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Future Continuous&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие будет совершаться (точное время / действие)&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I will be talking to John tomorrow at 5 / when you call me.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I will not be talking to John tomorrow at 5 / when you call me.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Will you be talking to John tomorrow at 5 / when I call you?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Future Perfect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Действие совершится ранее другого действия&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I will have talked to John by time you come.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I will not have talked to John by the time you come.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Will you have talked to John by the time I come?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Future Perfect Continuous&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Начатое действие будет продолжаться до (времен/действия)&quot;</span><span class="p">,</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;I will have been talkin to John for two hours by the time you come / by 5 o&#39;clock.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;I will not have been talking to John for two hours by the time you come / by 5 o&#39;clock.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Will you have been talking to John for two hours by the time I come / by 5 o&#39;clock?&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+
+
+<span class="n">VERBS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Past Simple&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;2nd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;did not&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Did&gt; + &lt;subject&gt; + &lt;1st form of the verb&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;&lt;2nd form of the verb&gt;&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;&lt;did not&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;&lt;Did&gt; + &lt;subject&gt; + &lt;1st form of the verb&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Past Continuous&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;was&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;was not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Was&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;were&gt; &lt;verb+&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;were not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Were&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Past Perfect&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;had&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;had not&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Had&gt; + &lt;subject&gt; + &lt;3rd form of the verb&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;had&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;had not&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Had&gt; + &lt;subject&gt; + &lt;3rd form of the verb&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Past Perfect Continuous&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;had been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;had not been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Had&gt; + &lt;subject&gt; + &lt;been&gt; &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;had been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;had not been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Had&gt; + &lt;subject&gt; + &lt;been&gt; &lt;verb&#39;ing&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Present Simple&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;do not&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Do&gt; + &lt;subject&gt; + &lt;1st form of the verb&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;do not&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Do&gt; + &lt;subject&gt; + &lt;1st form of the verb&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Present Continuous&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;am&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;am not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Am&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;are&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;are not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Are&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;is&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;is not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Is&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Present Perfect&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;have&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;have not&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Have&gt; + &lt;subject&gt; + &lt;3rd form of the verb&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;has&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;has not&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Has&gt; + &lt;subject&gt; + &lt;3rd form of the verb&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Present Perfect Continuous&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;have been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;have not been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Have&gt; + &lt;subject&gt; + &lt;been&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;has been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;has not been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Has&gt; + &lt;subject&gt; + &lt;been&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Future Simple&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;1st form of the verb&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not&gt; + &lt;1st form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;1st form of the verb&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Future Continuous&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will&gt; &lt;verb+&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Future Perfect&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall have&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not have&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;have&gt; + &lt;3rd form of the verb&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall have&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not have&gt; + &lt;3rd form of the verb&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;have&gt; + &lt;3rd form of the verb&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Future Perfect Continuous&quot;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">((</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;We&quot;</span><span class="p">,</span> <span class="s2">&quot;You&quot;</span><span class="p">,</span> <span class="s2">&quot;They&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall have been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not have been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;have been&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">)),</span>
+        <span class="p">((</span><span class="s2">&quot;He&quot;</span><span class="p">,</span> <span class="s2">&quot;She&quot;</span><span class="p">,</span> <span class="s2">&quot;It&quot;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s2">&quot;&lt;will/shall have been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;will/shall not have been&gt; + &lt;verb&#39;ing&gt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;&lt;Will/Shall&gt; + &lt;subject&gt; + &lt;have been&gt; + &lt;verb&#39;ing&gt;?&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="create_tables">
+<a class="viewcode-back" href="../../../../apps/times/command.html#times.management.commands.create_times_tables.create_tables">[docs]</a>
+<span class="k">def</span> <span class="nf">create_tables</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The create_tables function creates the tables in the database.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">SRC</span><span class="p">:</span>
+
+        <span class="n">time</span> <span class="o">=</span> <span class="n">Times</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                    <span class="n">rule</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                    <span class="n">examples</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">VERBS</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">verb</span> <span class="o">=</span> <span class="n">Verbs</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                            <span class="n">pron</span><span class="o">=</span><span class="n">ex</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                            <span class="n">verbs</span><span class="o">=</span><span class="n">ex</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+                <span class="n">verb</span> <span class="o">=</span> <span class="n">Verbs</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                            <span class="n">pron</span><span class="o">=</span><span class="p">[</span><span class="n">ex</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                                            <span class="n">verbs</span><span class="o">=</span><span class="n">ex</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">verbs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">verb</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Command">
+<a class="viewcode-back" href="../../../../apps/times/command.html#times.management.commands.create_times_tables.Command">[docs]</a>
+<span class="k">class</span> <span class="nc">Command</span><span class="p">(</span><span class="n">BaseCommand</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class contains command for create files types and</span>
+<span class="sd">    files extensions in FileExtension and FileTypes tables from storageapp.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - help (str): A message that is displayed when you this command</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;use &#39;python manage.py create_times_tables&#39; to create tables&quot;</span>
+
+<div class="viewcode-block" id="Command.handle">
+<a class="viewcode-back" href="../../../../apps/times/command.html#times.management.commands.create_times_tables.Command.handle">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The handle function is the entry point for a Django management</span>
+<span class="sd">        command.</span>
+
+<span class="sd">        :return: A string that is printed in the console</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">create_tables</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../../../static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">times.management.commands.create_times_tables</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2024, Vasilenko.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cards.views.collection_views &#8212; Great Cards 0.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../../static/pydoctheme.css?v=41b4f12d" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../static/pygments_dark.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../../static/custom.css" />
+    
+    <script src="../../../static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /><link rel="stylesheet" href="../../../static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../static/py.svg" />
+            <script type="text/javascript" src="../../../static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../static/menu.js"></script>
+            <script type="text/javascript" src="../../../static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../../static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../../static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cards.views.collection_views</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cards.views.collection_views</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">ListView</span><span class="p">,</span> <span class="n">View</span>
+
+<span class="kn">from</span> <span class="nn">cards.models</span> <span class="kn">import</span> <span class="n">Collections</span>
+<span class="kn">from</span> <span class="nn">cards.services.collections_services</span> <span class="kn">import</span> <span class="n">CollectionServices</span>
+<span class="kn">from</span> <span class="nn">tools.mixins</span> <span class="kn">import</span> <span class="n">MessageMixin</span>
+<span class="kn">from</span> <span class="nn">tools.decorators</span> <span class="kn">import</span> <span class="n">class_login_required</span>
+
+
+<div class="viewcode-block" id="CollectionListView">
+<a class="viewcode-back" href="../../../apps/cards/views.html#cards.views.collection_views.CollectionListView">[docs]</a>
+<span class="k">class</span> <span class="nc">CollectionListView</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CollectionListView class is a view class that displays a list of</span>
+<span class="sd">    collections created by the user. The class inherits from the ListView</span>
+<span class="sd">    class, which is a generic view that displays a list of objects.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - model: a model class that represents the collection</span>
+<span class="sd">    - template_name: a string that represents the name of the template file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Collections</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;cards/study_cards.html&#39;</span>
+
+<div class="viewcode-block" id="CollectionListView.get_queryset">
+<a class="viewcode-back" href="../../../apps/cards/views.html#cards.views.collection_views.CollectionListView.get_queryset">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The get_queryset function is a built-in function that returns a list</span>
+<span class="sd">        of objects that match the given query parameters.</span>
+
+<span class="sd">        :return: A list of objects that match the given query parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">Collections</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">collection</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="CollectionCreateView">
+<a class="viewcode-back" href="../../../apps/cards/views.html#cards.views.collection_views.CollectionCreateView">[docs]</a>
+<span class="k">class</span> <span class="nc">CollectionCreateView</span><span class="p">(</span><span class="n">View</span><span class="p">,</span> <span class="n">MessageMixin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CollectionCreateView class is a view class that creates a new</span>
+<span class="sd">    collection.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - template_name: a string that represents the name of the template file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;cards/create_collection.html&#39;</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The get function is used to render the create collection page.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :return: render function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">)</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The post function is used to create a new collection. It takes in a</span>
+<span class="sd">        request object and creates a new collection with the given name and</span>
+<span class="sd">        image. The function then renders the message template with the message</span>
+<span class="sd">        returned by the CollectionServices.create_collection function.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :return: render function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">owner</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;collection_img&#39;</span><span class="p">)</span>
+        <span class="n">collection_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;collection_name&#39;</span><span class="p">)</span>
+
+        <span class="n">message</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">create_collection</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span>
+                                                       <span class="n">collection_name</span><span class="o">=</span><span class="n">collection_name</span><span class="p">,</span>
+                                                       <span class="n">collection_img</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">message_template</span><span class="p">,</span>
+                      <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="n">message</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="CollectionDeleteView">
+<a class="viewcode-back" href="../../../apps/cards/views.html#cards.views.collection_views.CollectionDeleteView">[docs]</a>
+<span class="k">class</span> <span class="nc">CollectionDeleteView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CollectionDeleteView class is a view class that deletes a</span>
+<span class="sd">    collection.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - template_name: a string that represents the name of the template file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;cards/deleting_warning.html&#39;</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">collection_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The get function is used to render the delete warning page for a</span>
+<span class="sd">        specific collection.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :param collection_id: Collection id</span>
+<span class="sd">        :return: render function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span>
+                      <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">collection</span><span class="p">})</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">collection_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The post function is used to delete a collection.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :param collection_id: Collection id</span>
+<span class="sd">        :return: redirect function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+        <span class="n">collection</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="s1">&#39;cards:study_cards&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="CollectionEditView">
+<a class="viewcode-back" href="../../../apps/cards/views.html#cards.views.collection_views.CollectionEditView">[docs]</a>
+<span class="k">class</span> <span class="nc">CollectionEditView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CollectionEditView class is a view class that edits a collection.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - template_name: a string that represents the name of the template file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;cards/edit_collection.html&#39;</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">collection_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The get function is used to render the edit collection page.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :param collection_id: Collection id</span>
+<span class="sd">        :return: render function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s1">&#39;User -</span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s1">- open editor for collection -</span><span class="si">{</span><span class="n">collection_id</span><span class="si">}</span><span class="s1">- &#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span>
+                      <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">collection</span><span class="p">,</span>
+                               <span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">,</span>
+                               <span class="s1">&#39;collection_id&#39;</span><span class="p">:</span> <span class="n">collection_id</span><span class="p">})</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">collection_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The post function is used to edit a collection. It takes in a request</span>
+<span class="sd">        object and edits the collection name.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :param collection_id: Collection id</span>
+<span class="sd">        :return: redirect function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+        <span class="n">new_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;new_name&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">new_name</span><span class="p">:</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_name</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="s1">&#39;cards:edit_collection&#39;</span><span class="p">,</span>
+                            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+        <span class="n">queyset</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span>
+                      <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="s1">&#39;Field cant be empty&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;queryset&#39;</span><span class="p">:</span> <span class="n">queyset</span><span class="p">,</span>
+                               <span class="s1">&#39;collection_id&#39;</span><span class="p">:</span> <span class="n">collection_id</span><span class="p">,</span>
+                               <span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">collection</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="CardPositionView">
+<a class="viewcode-back" href="../../../apps/cards/views.html#cards.views.collection_views.CardPositionView">[docs]</a>
+<span class="k">class</span> <span class="nc">CardPositionView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CardPositionView class is a view class that changes the position of</span>
+<span class="sd">    a card in a collection.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - template_name: a string that represents the name of the template file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;cards:open_collection&#39;</span>
+
+    <span class="nd">@class_login_required</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">collection_id</span><span class="p">:</span> <span class="n">Collections</span><span class="p">,</span> <span class="n">card_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The post function is used to change the position of a card in a</span>
+<span class="sd">        collection.</span>
+
+<span class="sd">        :param request: request object</span>
+<span class="sd">        :param collection_id: Collection id</span>
+<span class="sd">        :param card_id: _description_</span>
+<span class="sd">        :return: redirect function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span>
+        <span class="n">replace</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;replace&#39;</span><span class="p">))</span>
+
+        <span class="n">CollectionServices</span><span class="o">.</span><span class="n">change_card_position</span><span class="p">(</span>
+            <span class="n">collection</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span> <span class="n">card_id</span><span class="o">=</span><span class="n">card_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">,</span> <span class="n">collection_id</span><span class="o">=</span><span class="n">collection_id</span><span class="p">)</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../../static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cards.views.collection_views</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2024, Vasilenko.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+
+  </body>
+</html>

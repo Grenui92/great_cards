@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cards.services.cards_services &#8212; Great Cards 0.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../../static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../../static/pydoctheme.css?v=41b4f12d" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../../static/pygments_dark.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../../static/custom.css" />
+    
+    <script src="../../../static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /><link rel="stylesheet" href="../../../static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../../static/py.svg" />
+            <script type="text/javascript" src="../../../static/copybutton.js"></script>
+            <script type="text/javascript" src="../../../static/menu.js"></script>
+            <script type="text/javascript" src="../../../static/search-focus.js"></script>
+            <script type="text/javascript" src="../../../static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../../static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../../static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cards.services.cards_services</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for cards.services.cards_services</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">cards.models</span> <span class="kn">import</span> <span class="n">Cards</span>
+<span class="kn">from</span> <span class="nn">cards.services.collections_services</span> <span class="kn">import</span> <span class="n">CollectionServices</span>
+<span class="kn">from</span> <span class="nn">cards.services.translator</span> <span class="kn">import</span> <span class="n">translator</span><span class="p">,</span> <span class="n">en</span><span class="p">,</span> <span class="n">ru</span>
+<span class="kn">from</span> <span class="nn">cards.services.fact_generator</span> <span class="kn">import</span> <span class="n">fact_generator</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+
+<div class="viewcode-block" id="CardsServices">
+<a class="viewcode-back" href="../../../apps/cards/services.html#cards.services.cards_services.CardsServices">[docs]</a>
+<span class="k">class</span> <span class="nc">CardsServices</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CardsServices class provides methods for interacting with cards.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="CardsServices.get_information_from_forms">
+<a class="viewcode-back" href="../../../apps/cards/services.html#cards.services.cards_services.CardsServices.get_information_from_forms">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_information_from_forms</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Takes in a request object and returns the values of the form fields.</span>
+
+<span class="sd">        :param cls: Refer to the class itself</span>
+<span class="sd">        :return: A tuple of four values</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">english_word</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;english_word&#39;</span><span class="p">]</span>
+        <span class="n">russian_word</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;russian_word&#39;</span><span class="p">]</span>
+        <span class="n">word_usage</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;word_usage&#39;</span><span class="p">]</span>
+        <span class="n">collection</span> <span class="o">=</span> <span class="n">CollectionServices</span><span class="o">.</span><span class="n">get_collection_by_id</span><span class="p">(</span>
+            <span class="n">collection_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;collection_choice&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">english_word</span><span class="p">,</span> <span class="n">russian_word</span><span class="p">,</span> <span class="n">word_usage</span><span class="p">,</span> <span class="n">collection</span></div>
+
+
+<div class="viewcode-block" id="CardsServices.get_card_data">
+<a class="viewcode-back" href="../../../apps/cards/services.html#cards.services.cards_services.CardsServices.get_card_data">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_card_data</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">english_word</span><span class="p">,</span> <span class="n">russian_word</span><span class="p">,</span> <span class="n">word_usage</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function gets the Card from the database and returns a tuple of</span>
+<span class="sd">        three values.</span>
+<span class="sd">        If the user does not provide an English word or a Russian word,</span>
+<span class="sd">        the function will use translator() to translate the provided</span>
+<span class="sd">        language into the other language.</span>
+<span class="sd">        If no usage is provided by the user, then it will be generated using</span>
+<span class="sd">        the fact generator function.</span>
+
+<span class="sd">        :param cls: Refer to the class itself</span>
+<span class="sd">        :param english_word: Pass the english word to the function</span>
+<span class="sd">        :param russian_word: Pass the russian word to the function</span>
+<span class="sd">        :param word_usage: Pass a fact about the word to the function</span>
+<span class="sd">        :return: A tuple of three values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">card</span><span class="p">:</span> <span class="n">Cards</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_card_from_collection</span><span class="p">(</span>
+                <span class="n">english</span><span class="o">=</span><span class="n">english_word</span><span class="p">,</span> <span class="n">russian</span><span class="o">=</span><span class="n">russian_word</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">card</span><span class="o">.</span><span class="n">english_word</span><span class="p">,</span> <span class="n">card</span><span class="o">.</span><span class="n">russian_word</span><span class="p">,</span> <span class="n">card</span><span class="o">.</span><span class="n">word_usage</span>
+
+        <span class="k">except</span> <span class="n">Cards</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">english_word</span><span class="p">:</span>
+                <span class="n">english_word</span> <span class="o">=</span> <span class="n">translator</span><span class="p">(</span>
+                    <span class="n">text</span><span class="o">=</span><span class="n">russian_word</span><span class="p">,</span> <span class="n">from_l</span><span class="o">=</span><span class="n">ru</span><span class="p">,</span> <span class="n">to_l</span><span class="o">=</span><span class="n">en</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">russian_word</span><span class="p">:</span>
+                <span class="n">russian_word</span> <span class="o">=</span> <span class="n">translator</span><span class="p">(</span>
+                    <span class="n">text</span><span class="o">=</span><span class="n">english_word</span><span class="p">,</span> <span class="n">from_l</span><span class="o">=</span><span class="n">en</span><span class="p">,</span> <span class="n">to_l</span><span class="o">=</span><span class="n">ru</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">word_usage</span><span class="p">:</span>
+                <span class="n">word_usage</span> <span class="o">=</span> <span class="n">fact_generator</span><span class="p">(</span><span class="n">english_word</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="n">english_word</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">russian_word</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">word_usage</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CardsServices.get_card_from_collection">
+<a class="viewcode-back" href="../../../apps/cards/services.html#cards.services.cards_services.CardsServices.get_card_from_collection">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_card_from_collection</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                                 <span class="n">english</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                 <span class="n">russian</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                 <span class="n">card_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Takes in a string of either an English word or Russian word, and</span>
+<span class="sd">        returns the corresponding card object from the database.</span>
+<span class="sd">        If no such card exists, it raises a ValueError.</span>
+
+<span class="sd">        :param cls: Refer to the class itself</span>
+<span class="sd">        :param english: Get the card from the database using its english word,\</span>
+<span class="sd">        default is None</span>
+<span class="sd">        :param russian: Get the card from the database, default is None</span>
+<span class="sd">        :param card_id: Get a card by its id, default is None</span>
+<span class="sd">        :return: A Card instance from the database</span>
+<span class="sd">        :raises: ValueError if no card is found</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">english</span><span class="p">:</span>
+            <span class="n">card</span> <span class="o">=</span> <span class="n">Cards</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">english_word</span><span class="o">=</span><span class="n">english</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">russian</span><span class="p">:</span>
+            <span class="n">card</span> <span class="o">=</span> <span class="n">Cards</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">russian_word</span><span class="o">=</span><span class="n">russian</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">card_id</span><span class="p">:</span>
+            <span class="n">card</span> <span class="o">=</span> <span class="n">Cards</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">card_id</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Empty fields &quot;english word&quot; and &quot;russian word&quot;&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">card</span></div>
+
+
+<div class="viewcode-block" id="CardsServices.get_new_card">
+<a class="viewcode-back" href="../../../apps/cards/services.html#cards.services.cards_services.CardsServices.get_new_card">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_new_card</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">english</span><span class="p">,</span> <span class="n">russian</span><span class="p">,</span> <span class="n">usage</span><span class="p">,</span> <span class="n">collection</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the information from the parameters and create a new card</span>
+<span class="sd">        in the database. If the card already exists, it will be added to the</span>
+<span class="sd">        collection.</span>
+
+<span class="sd">        :param cls: Refer to the class itself</span>
+<span class="sd">        :param form: Get the information from the form</span>
+<span class="sd">        :return: A dictionary with a message</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">card</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_card_from_collection</span><span class="p">(</span>
+                <span class="n">english</span><span class="o">=</span><span class="n">english</span><span class="p">,</span> <span class="n">russian</span><span class="o">=</span><span class="n">russian</span><span class="p">)</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">Cards</span><span class="o">.</span><span class="n">DoesNotExist</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+            <span class="n">card</span> <span class="o">=</span> <span class="n">Cards</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">english_word</span><span class="o">=</span><span class="n">english</span><span class="p">,</span>
+                                        <span class="n">russian_word</span><span class="o">=</span><span class="n">russian</span><span class="p">,</span>
+                                        <span class="n">word_usage</span><span class="o">=</span><span class="n">usage</span><span class="p">)</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">cards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;message&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Something goes wrong!!!</span><span class="se">\n</span><span class="s1"> </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">card</span><span class="o">.</span><span class="n">id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">collection</span><span class="o">.</span><span class="n">order_list</span><span class="p">:</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">order_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">card</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">collection</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">card</span></div>
+</div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+          <li><img src="../../../static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">cards.services.cards_services</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2024, Vasilenko.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+
+  </body>
+</html>
