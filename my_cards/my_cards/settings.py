@@ -11,7 +11,7 @@ openai.api_key = config('GPT_API_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = [
     'dontlosehope.website',

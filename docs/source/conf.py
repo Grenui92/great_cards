@@ -23,7 +23,7 @@ extensions = [
     'sphinx.ext.napoleon',
 ]
 
-templates_path = ['_templates']
+templates_path = ['templates']
 exclude_patterns = [
     'logs/logging'
 ]

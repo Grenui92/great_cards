@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=41b4f12d" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=023a5e5a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     
     <script src="../../_static/documentation_options.js?v=2709fde1"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -138,7 +138,7 @@
 <span class="k">class</span> <span class="nc">VideoCollectionsListView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class-based view for handling the video collections.</span>
 
-<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    The class has the following att ributes:</span>
 <span class="sd">    </span>
 <span class="sd">    - template_name (str): The name of the template to be rendered.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -176,17 +176,14 @@
     <span class="n">OUTPUT_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%(title)s</span><span class="s2">.</span><span class="si">%(ext)s</span><span class="s2">&quot;</span>
     <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;tube/upload_video.html&#39;</span>
 
-
-<div class="viewcode-block" id="UploadVideoView.get">
-<a class="viewcode-back" href="../../apps/tube/views.html#tube.views.UploadVideoView.get">[docs]</a>
+    <span class="nd">@class_login_required</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the upload video page.</span>
 
 <span class="sd">        :param request: request object</span>
 <span class="sd">        :return: render</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">)</span></div>
-
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">)</span>
 
     <span class="nd">@class_login_required</span>
     <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
