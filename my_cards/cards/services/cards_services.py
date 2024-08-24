@@ -11,8 +11,7 @@ class CardsServices:
 
     @classmethod
     def get_information_from_forms(cls, request):
-        """Function get_information_from_forms takes in a request object and
-        returns the values of the form fields.
+        """Takes in a request object and returns the values of the form fields.
 
         :param cls: Refer to the class itself
         :return: A tuple of four values
@@ -26,8 +25,8 @@ class CardsServices:
 
     @classmethod
     def get_card_data(cls, english_word, russian_word, word_usage):
-        """The generate_data function takes in three arguments: english_word,
-        russian_word, and word_usage.
+        """This function gets the Card from the database and returns a tuple of
+        three values.
         If the user does not provide an English word or a Russian word,
         the function will use translator() to translate the provided
         language into the other language.
@@ -64,17 +63,16 @@ class CardsServices:
                                  english=None,
                                  russian=None,
                                  card_id=None):
-        """The get_card_from_collection function takes in a string of either
-        an English word or Russian word, and returns the corresponding card
-        object from the database.
+        """Takes in a string of either an English word or Russian word, and
+        returns the corresponding card object from the database.
         If no such card exists, it raises a ValueError.
 
         :param cls: Refer to the class itself
-        :param english: Get the card from the database using its english word,
-        default is None
+        :param english: Get the card from the database using its english word, default is None
         :param russian: Get the card from the database, default is None
         :param card_id: Get a card by its id, default is None
         :return: A Card instance from the database
+        :raises: ValueError if no card is found
         """
         if english:
             card = Cards.objects.get(english_word=english)
@@ -89,7 +87,9 @@ class CardsServices:
 
     @classmethod
     def get_new_card(cls, english, russian, usage, collection):
-        """The get_new_card function takes a form and returns a message.
+        """Get the information from the parameters and create a new card
+        in the database. If the card already exists, it will be added to the
+        collection.
 
         :param cls: Refer to the class itself
         :param form: Get the information from the form
