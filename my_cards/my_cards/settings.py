@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from django.core.management.utils import get_random_secret_key
 
 SECRET_KEY = get_random_secret_key()
-openai.api_key = config('GPT_API_KEY')
+openai.api_key = '4d1b1b7b-7b7b-4b7b-8b7b-7b7b7b7b7b7b'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
