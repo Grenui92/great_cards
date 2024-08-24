@@ -38,8 +38,7 @@ html_css_files = [
     'custom.css',
 ]
 
-a = sys.path.insert(0, os.path.abspath('../../my_cards'))
-print(a)
-os.environ['DJANGO_SETTINGS_MODULE'] = 'my_cards.settings'
-django.setup()
+# a = sys.path.insert(0, os.path.abspath('../../my_cards'))
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'my_cards.settings'
+# django.setup()
 
