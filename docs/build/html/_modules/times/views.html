@@ -135,8 +135,9 @@
 <span class="k">class</span> <span class="nc">TimesView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class-based view for handling times-related functionality.</span>
 <span class="sd">    </span>
-<span class="sd">    Attributes:</span>
-<span class="sd">        template_name (str): The name of the template to be rendered.</span>
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - template_name (str): The name of the template to be rendered.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;times/times.html&#39;</span>
@@ -144,8 +145,7 @@
     <span class="nd">@class_login_required</span>
     <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the times page. Get all times from the database and all</span>
-<span class="sd">        sentences for each time. Render the times page with the times and</span>
-<span class="sd">        sentences.</span>
+<span class="sd">        sentences for each time. </span>
 
 <span class="sd">        :param request: request object</span>
 <span class="sd">        :return: render</span>

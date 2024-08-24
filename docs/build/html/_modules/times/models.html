@@ -129,14 +129,15 @@
 
 
 <div class="viewcode-block" id="Verbs">
-<a class="viewcode-back" href="../../apps/times.html#times.models.Verbs">[docs]</a>
+<a class="viewcode-back" href="../../apps/times/models.html#times.models.Verbs">[docs]</a>
 <span class="k">class</span> <span class="nc">Verbs</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class to represent a verb.</span>
 
-<span class="sd">    Attributes:</span>
-<span class="sd">        name (str): The name of the verb.</span>
-<span class="sd">        pron (list): A list of pronunciations of the verb.</span>
-<span class="sd">        verbs (list): A list of verbs that are similar to the verb.</span>
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - name (str): The name of the verb.</span>
+<span class="sd">    - pron (list): A list of pronunciations of the verb.</span>
+<span class="sd">    - verbs (list): A list of verbs that are similar to the verb.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
@@ -146,15 +147,16 @@
 
 
 <div class="viewcode-block" id="Times">
-<a class="viewcode-back" href="../../apps/times.html#times.models.Times">[docs]</a>
+<a class="viewcode-back" href="../../apps/times/models.html#times.models.Times">[docs]</a>
 <span class="k">class</span> <span class="nc">Times</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class to represent a time.</span>
 
-<span class="sd">    Attributes:</span>
-<span class="sd">        name (str): The name of the time.</span>
-<span class="sd">        rule (str): The rule for the time.</span>
-<span class="sd">        examples (list): A list of examples for the time.</span>
-<span class="sd">        verbs (list): A list of verbs that are used with the time.</span>
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - name (str): The name of the time.</span>
+<span class="sd">    - rule (str): The rule for the time.</span>
+<span class="sd">    - examples (list): A list of examples for the time.</span>
+<span class="sd">    - verbs (list): A list of verbs that are used with the time.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
@@ -165,14 +167,15 @@
 
 
 <div class="viewcode-block" id="Sentences">
-<a class="viewcode-back" href="../../apps/times.html#times.models.Sentences">[docs]</a>
+<a class="viewcode-back" href="../../apps/times/models.html#times.models.Sentences">[docs]</a>
 <span class="k">class</span> <span class="nc">Sentences</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class to represent a sentence.</span>
 
-<span class="sd">    Attributes:</span>
-<span class="sd">        text (str): The text of the sentence.</span>
-<span class="sd">        owner (User): The owner of the sentence.</span>
-<span class="sd">        time (Times): The time of the sentence.</span>
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - text (str): The text of the sentence.</span>
+<span class="sd">    - owner (User): The owner of the sentence.</span>
+<span class="sd">    - time (Times): The time of the sentence.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>

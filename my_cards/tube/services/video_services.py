@@ -10,7 +10,7 @@ class VideoServices:
         the yt-dlp command.
 
         :param result: The result of the yt-dlp command.
-        :return: The path to the previous file, the path to the subtitles file
+        :return: The path to the previous file, the path to the subtitles file\
         and the file name.
         :rtype: tuple
         """

@@ -8,13 +8,14 @@ import re
 class Videos(models.Model):
     """A class that represents the video model.
 
-    Attributes:
-        video_name (str): The name of the video.
-        owner (User): The owner of the video.
-        video_prev (ImageField): The preview of the video.
-        video_subs (FileField): The subtitles of the video.
-        yt_id (str): The YouTube ID of the video.
-        yt_url (str): The URL of the video.
+    The class has the following attributes:
+    
+    - video_name (str): The name of the video.
+    - owner (User): The owner of the video.
+    - video_prev (ImageField): The preview of the video.
+    - video_subs (FileField): The subtitles of the video.
+    - yt_id (str): The YouTube ID of the video.
+    - yt_url (str): The URL of the video.
     """
 
     video_name = models.CharField(max_length=255, null=True)

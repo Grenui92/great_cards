@@ -37,9 +37,10 @@ class MyRegistrationView(View):
 class MyLoginView(LoginView):
     """LogIn class.
 
-    Attributes:
-        template_name (str): The name of the template.
-        next_page (str): The URL to redirect to after a successful login.
+    The class has the following attributes:
+    
+    - template_name (str): The name of the template.
+    - next_page (str): The URL to redirect to after a successful login.
     """
 
     template_name = 'users/login.html'
@@ -49,25 +50,27 @@ class MyLoginView(LoginView):
 class MyLogoutView(LogoutView):
     """LogOut class.
 
-    Attributes:
-        next_page (str): The URL to redirect to after a successful logout.
+    The class has the following attributes:
+    
+    - next_page (str): The URL to redirect to after a successful logout.
     """
 
     next_page = reverse_lazy('news:main')
 
 
 class MyResetPasswordView(PasswordResetView):
-    """Class for reset password.
+    """Class for reset password. NOT WORKING NOW.
 
-    Attributes:
-        template_name (str): The name of the template.
-        email_template_name (str): The name of the email template.
-        html_email_template_name (str): The name of the html email template.
-        success_url (str): The URL to redirect to after a successful
-        password reset.
-        success_message (str): The message that will be displayed after a
-        successful password reset.
-        subject_template_name (str): The name of the subject template.
+    The class has the following attributes:
+    
+    - template_name (str): The name of the template.
+    - email_template_name (str): The name of the email template.
+    - html_email_template_name (str): The name of the html email template.
+    - success_url (str): The URL to redirect to after a successful\
+    password reset.
+    - success_message (str): The message that will be displayed after a\
+    successful password reset.
+    - subject_template_name (str): The name of the subject template.
     """
 
     template_name = 'users/password_reset.html'

@@ -278,7 +278,8 @@ class Command(BaseCommand):
     files extensions in FileExtension and FileTypes tables from storageapp.
 
     The class has the following attributes:
-        help (str): A message that is displayed when you this command
+    
+    - help (str): A message that is displayed when you this command
     """
 
     help = "use 'python manage.py create_times_tables' to create tables"

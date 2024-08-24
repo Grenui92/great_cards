@@ -11,8 +11,9 @@ from tube.tasks import download_and_create_video
 class VideoCollectionsListView(View):
     """A class-based view for handling the video collections.
 
-    Attributes:
-        template_name (str): The name of the template to be rendered.
+    The class has the following att ributes:
+    
+    - template_name (str): The name of the template to be rendered.
     """
 
     template_name = 'tube/video_list.html'
@@ -34,10 +35,11 @@ class VideoCollectionsListView(View):
 class UploadVideoView(View, MessageMixin):
     """A class-based view for handling the uploading of videos.
 
-    Attributes:
-        ABSOLUTE_UPLOAD_URL (str): The absolute path to the upload directory.
-        OUTPUT_FILENAME (str): The name of the output file.
-        template_name (str): The name of the template to be
+    The class has the following attributes:
+    
+    - ABSOLUTE_UPLOAD_URL (str): The absolute path to the upload directory.
+    - OUTPUT_FILENAME (str): The name of the output file.
+    - template_name (str): The name of the template to be
     """
 
     ABSOLUTE_UPLOAD_URL = 'media/videos/'
@@ -78,8 +80,9 @@ class UploadVideoView(View, MessageMixin):
 class WatchVideoView(View):
     """A class-based view for handling the watching of videos.
 
-    Attributes:
-        template_name (str): The name of the template to be rendered.
+    The class has the following attributes:
+    
+    - template_name (str): The name of the template to be rendered.
     """
 
     template_name = 'tube/watch.html'

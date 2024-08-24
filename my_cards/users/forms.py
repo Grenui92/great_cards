@@ -6,11 +6,12 @@ from django.contrib.auth.models import User
 class RegistrationForm(UserCreationForm):
     """User registration form.
 
-    Attributes:
-        username (str): User's username.
-        email (str): User's email.
-        password1 (str): User's password.
-        password2 (str): User's password confirmation.
+    The class has the following attributes:
+    
+    - username (str): User's username.
+    - email (str): User's email.
+    - password1 (str): User's password.
+    - password2 (str): User's password confirmation.
     """
 
     username = forms.CharField(max_length=20,

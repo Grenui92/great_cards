@@ -8,8 +8,9 @@ from tools.decorators import class_login_required
 class TimesView(View):
     """A class-based view for handling times-related functionality.
     
-    Attributes:
-        template_name (str): The name of the template to be rendered.
+    The class has the following attributes:
+    
+    - template_name (str): The name of the template to be rendered.
     """
 
     template_name = 'times/times.html'
@@ -17,8 +18,7 @@ class TimesView(View):
     @class_login_required
     def get(self, request):
         """Return the times page. Get all times from the database and all
-        sentences for each time. Render the times page with the times and
-        sentences.
+        sentences for each time. 
 
         :param request: request object
         :return: render
