@@ -25,3 +25,4 @@ the card for some positions lower). And I want to add voice acting by the neural
 
 And I see that I have bad code. Speaking of program code - my Django and Python learning is in progress.\
 First - I want to rewrite all my views for Django built-in views. Next on the list is creating documentation and tests.
+DOCUMENTATION https://grenui92.github.io/great_cards/
