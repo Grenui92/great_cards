@@ -110,15 +110,15 @@ ASGI_APPLICATION = 'my_cards.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('DATABASE_HOST'),
-        'PORT': config('POSTGRES_PORT')
+        'NAME': '5',
+        'USER': '5',
+        'PASSWORD': '5',
+        'HOST': '5',
+        'PORT': '5'
     }
 }
-CELERY_BROKER_URL = config('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
+CELERY_BROKER_URL = '5'
+CELERY_RESULT_BACKEND = '5'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
