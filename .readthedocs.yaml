@@ -10,7 +10,10 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.12"
-    poetry: "1.5.1"
+  jobs:
+    post_install:
+      - curl -sSL https://install.python-poetry.org | python3 -
+      - ~/.local/bin/poetry install
     # You can also specify other tool versions:
     # nodejs: "19"
     # rust: "1.64"
