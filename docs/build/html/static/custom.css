@@ -1,0 +1,13 @@
+.class {
+    border: 2px solid #f8abab; /*rgb(250, 126, 126)еляет классы горизонтальной линией */
+    padding: 20px;
+}
+
+.method, .function {
+    border: 1px solid #9ff179; /* Легкая линия между методами и функциями */
+    padding: 5px;
+}
+
+.signature {
+    font-style: italic;
+}
