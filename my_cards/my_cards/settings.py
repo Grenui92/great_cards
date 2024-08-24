@@ -6,7 +6,9 @@ import openai
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config('SECRET_KEY')
+from django.core.management.utils import get_random_secret_key
+
+SECRET_KEY = get_random_secret_key()
 openai.api_key = config('GPT_API_KEY')
 
 
