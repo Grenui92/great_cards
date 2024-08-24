@@ -6,10 +6,8 @@ import openai
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-from django.core.management.utils import get_random_secret_key
-
-SECRET_KEY = get_random_secret_key()
-openai.api_key = '4d1b1b7b-7b7b-4b7b-8b7b-7b7b7b7b7b7b'
+SECRET_KEY = config('SECRET_KEY')
+openai.api_key = config('GPT_API_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -110,15 +108,15 @@ ASGI_APPLICATION = 'my_cards.asgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '5',
-        'USER': '5',
-        'PASSWORD': '5',
-        'HOST': '5',
-        'PORT': '5'
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('POSTGRES_PORT')
     }
 }
-CELERY_BROKER_URL = '5'
-CELERY_RESULT_BACKEND = '5'
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
