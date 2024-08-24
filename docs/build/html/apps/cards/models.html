@@ -300,12 +300,14 @@ object the first time, the query is executed.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.models.</span></span><span class="sig-name descname"><span class="pre">Collections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/models.html#Collections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.models.Collections" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
 <p>The Collections class is a model class that represents a collection.</p>
-<p>The class has the following attributes:
-- name: a CharField that stores the name of the collection.
-- owner: a ForeignKey that stores the owner of the collection.
-- cards: a ManyToManyField that stores the cards in the collection.
-- order_list: an ArrayField that stores the order of the cards in the    collection.
-- img: an ImageField that stores the image of the collection.</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>name: a CharField that stores the name of the collection.</p></li>
+<li><p>owner: a ForeignKey that stores the owner of the collection.</p></li>
+<li><p>cards: a ManyToManyField that stores the cards in the collection.</p></li>
+<li><p>order_list: an ArrayField that stores the order of the cards in the    collection.</p></li>
+<li><p>img: an ImageField that stores the image of the collection.</p></li>
+</ul>
 <dl class="py exception">
 <dt class="sig sig-object py" id="cards.models.Collections.DoesNotExist">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#cards.models.Collections.DoesNotExist" title="Link to this definition">¶</a></dt>

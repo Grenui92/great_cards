@@ -11,11 +11,11 @@ from tools.decorators import class_login_required
 
 class CollectionListView(ListView):
     """The CollectionListView class is a view class that displays a list of
-    collections created by the user.
-    The class inherits from the ListView class, which is a generic view that
-    displays a list of objects.
+    collections created by the user. The class inherits from the ListView
+    class, which is a generic view that displays a list of objects.
 
     The class has the following attributes:
+    
     - model: a model class that represents the collection
     - template_name: a string that represents the name of the template file
     """
@@ -38,6 +38,7 @@ class CollectionCreateView(View, MessageMixin):
     collection.
 
     The class has the following attributes:
+    
     - template_name: a string that represents the name of the template file
     """
 
@@ -79,6 +80,7 @@ class CollectionDeleteView(View):
     collection.
 
     The class has the following attributes:
+    
     - template_name: a string that represents the name of the template file
     """
 
@@ -117,6 +119,7 @@ class CollectionEditView(View):
     """The CollectionEditView class is a view class that edits a collection.
 
     The class has the following attributes:
+    
     - template_name: a string that represents the name of the template file
     """
 
@@ -177,6 +180,7 @@ class CardPositionView(View):
     a card in a collection.
 
     The class has the following attributes:
+    
     - template_name: a string that represents the name of the template file
     """
 

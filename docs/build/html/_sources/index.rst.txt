@@ -13,8 +13,6 @@ Great Cards
 
    apps/cards.rst
    apps/chat
-   apps/my_cards
-   apps/news
    apps/times
    apps/tools
    apps/tube

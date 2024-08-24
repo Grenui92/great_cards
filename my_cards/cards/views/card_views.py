@@ -14,6 +14,12 @@ from tools.decorators import class_login_required
 class CardsListView(ListView):
     """The CardsListView class is a class-based view that displays all the
     cards in a collection.
+    
+    The class has the following attributes:
+    
+    - model: a model class that represents the collection
+    - template_name: a string that represents the name of the template file
+    - paginate_by: an integer that represents the number of cards to display
     """
 
     model = Collections
@@ -60,6 +66,12 @@ class CardsListView(ListView):
 class CreateCardView(View, MessageMixin):
     """The CreateCardView class is a class-based view that allows users to
     create a new card.
+    
+    The class has the following attributes:
+    
+    - template_name: a string that represents the name of the template file
+    - confirm_create_template: a string that represents the name of the\
+    template file that confirms the creation of a card
     """
 
     template_name = 'cards/create_card.html'
@@ -132,6 +144,7 @@ class CardDeleteView(View):
     collection.
 
     The class has the following attributes:
+    
     - template_name: a string that represents the name of the template file
     """
 

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Models &#8212; Great Cards 0.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=41b4f12d" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=023a5e5a" />
+    
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Views" href="views.html" />
+    <link rel="prev" title="Command" href="command.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg" />
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#times.models.Sentences"><code class="docutils literal notranslate"><span class="pre">Sentences</span></code></a><ul>
+<li><a class="reference internal" href="#times.models.Sentences.text"><code class="docutils literal notranslate"><span class="pre">Sentences.text</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.owner"><code class="docutils literal notranslate"><span class="pre">Sentences.owner</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.time"><code class="docutils literal notranslate"><span class="pre">Sentences.time</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Sentences.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Sentences.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.id"><code class="docutils literal notranslate"><span class="pre">Sentences.id</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.objects"><code class="docutils literal notranslate"><span class="pre">Sentences.objects</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Sentences.owner</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.owner_id"><code class="docutils literal notranslate"><span class="pre">Sentences.owner_id</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Sentences.text</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Sentences.time</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.time_id"><code class="docutils literal notranslate"><span class="pre">Sentences.time_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#times.models.Times"><code class="docutils literal notranslate"><span class="pre">Times</span></code></a><ul>
+<li><a class="reference internal" href="#times.models.Times.name"><code class="docutils literal notranslate"><span class="pre">Times.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.rule"><code class="docutils literal notranslate"><span class="pre">Times.rule</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.examples"><code class="docutils literal notranslate"><span class="pre">Times.examples</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.verbs"><code class="docutils literal notranslate"><span class="pre">Times.verbs</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Times.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Times.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Times.examples</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.id"><code class="docutils literal notranslate"><span class="pre">Times.id</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Times.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.objects"><code class="docutils literal notranslate"><span class="pre">Times.objects</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Times.rule</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.sentences_set"><code class="docutils literal notranslate"><span class="pre">Times.sentences_set</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Times.verbs</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#times.models.Verbs"><code class="docutils literal notranslate"><span class="pre">Verbs</span></code></a><ul>
+<li><a class="reference internal" href="#times.models.Verbs.name"><code class="docutils literal notranslate"><span class="pre">Verbs.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.pron"><code class="docutils literal notranslate"><span class="pre">Verbs.pron</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.verbs"><code class="docutils literal notranslate"><span class="pre">Verbs.verbs</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Verbs.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Verbs.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.id"><code class="docutils literal notranslate"><span class="pre">Verbs.id</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Verbs.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.objects"><code class="docutils literal notranslate"><span class="pre">Verbs.objects</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">Verbs.pron</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.times_set"><code class="docutils literal notranslate"><span class="pre">Verbs.times_set</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">Verbs.verbs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="command.html"
+                          title="previous chapter">Command</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="views.html"
+                          title="next chapter">Views</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/times/models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Views"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="command.html" title="Command"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../times.html" accesskey="U">TimesApp</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Models</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="py class" id="module-times.models">
+<dt class="sig sig-object py" id="times.models.Sentences">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">times.models.</span></span><span class="sig-name descname"><span class="pre">Sentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/times/models.html#Sentences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#times.models.Sentences" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A class to represent a sentence.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.text">
+<span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#times.models.Sentences.text" title="Link to this definition">¶</a></dt>
+<dd><p>The text of the sentence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.owner">
+<span class="sig-name descname"><span class="pre">owner</span></span><a class="headerlink" href="#times.models.Sentences.owner" title="Link to this definition">¶</a></dt>
+<dd><p>The owner of the sentence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>User</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.time">
+<span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#times.models.Sentences.time" title="Link to this definition">¶</a></dt>
+<dd><p>The time of the sentence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#times.models.Times" title="times.models.Times">Times</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="times.models.Sentences.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#times.models.Sentences.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="times.models.Sentences.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#times.models.Sentences.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#times.models.Sentences.id" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#times.models.Sentences.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">owner</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.owner_id">
+<span class="sig-name descname"><span class="pre">owner_id</span></span><a class="headerlink" href="#times.models.Sentences.owner_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">text</span></span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#id2" title="Link to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Sentences.time_id">
+<span class="sig-name descname"><span class="pre">time_id</span></span><a class="headerlink" href="#times.models.Sentences.time_id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="times.models.Times">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">times.models.</span></span><span class="sig-name descname"><span class="pre">Times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/times/models.html#Times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#times.models.Times" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A class to represent a time.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#times.models.Times.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.rule">
+<span class="sig-name descname"><span class="pre">rule</span></span><a class="headerlink" href="#times.models.Times.rule" title="Link to this definition">¶</a></dt>
+<dd><p>The rule for the time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.examples">
+<span class="sig-name descname"><span class="pre">examples</span></span><a class="headerlink" href="#times.models.Times.examples" title="Link to this definition">¶</a></dt>
+<dd><p>A list of examples for the time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.verbs">
+<span class="sig-name descname"><span class="pre">verbs</span></span><a class="headerlink" href="#times.models.Times.verbs" title="Link to this definition">¶</a></dt>
+<dd><p>A list of verbs that are used with the time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="times.models.Times.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#times.models.Times.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="times.models.Times.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#times.models.Times.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">examples</span></span><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#times.models.Times.id" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#times.models.Times.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">rule</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Times.sentences_set">
+<span class="sig-name descname"><span class="pre">sentences_set</span></span><a class="headerlink" href="#times.models.Times.sentences_set" title="Link to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">verbs</span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="times.models.Verbs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">times.models.</span></span><span class="sig-name descname"><span class="pre">Verbs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/times/models.html#Verbs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#times.models.Verbs" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>A class to represent a verb.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Verbs.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#times.models.Verbs.name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the verb.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Verbs.pron">
+<span class="sig-name descname"><span class="pre">pron</span></span><a class="headerlink" href="#times.models.Verbs.pron" title="Link to this definition">¶</a></dt>
+<dd><p>A list of pronunciations of the verb.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Verbs.verbs">
+<span class="sig-name descname"><span class="pre">verbs</span></span><a class="headerlink" href="#times.models.Verbs.verbs" title="Link to this definition">¶</a></dt>
+<dd><p>A list of verbs that are similar to the verb.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="times.models.Verbs.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#times.models.Verbs.DoesNotExist" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="times.models.Verbs.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#times.models.Verbs.MultipleObjectsReturned" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Verbs.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#times.models.Verbs.id" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#id7" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Verbs.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#times.models.Verbs.objects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">pron</span></span><a class="headerlink" href="#id8" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="times.models.Verbs.times_set">
+<span class="sig-name descname"><span class="pre">times_set</span></span><a class="headerlink" href="#times.models.Verbs.times_set" title="Link to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the forward and reverse sides of
+a many-to-many relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
+instances.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">verbs</span></span><a class="headerlink" href="#id9" title="Link to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#times.models.Sentences"><code class="docutils literal notranslate"><span class="pre">Sentences</span></code></a><ul>
+<li><a class="reference internal" href="#times.models.Sentences.text"><code class="docutils literal notranslate"><span class="pre">Sentences.text</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.owner"><code class="docutils literal notranslate"><span class="pre">Sentences.owner</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.time"><code class="docutils literal notranslate"><span class="pre">Sentences.time</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Sentences.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Sentences.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.id"><code class="docutils literal notranslate"><span class="pre">Sentences.id</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.objects"><code class="docutils literal notranslate"><span class="pre">Sentences.objects</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Sentences.owner</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.owner_id"><code class="docutils literal notranslate"><span class="pre">Sentences.owner_id</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Sentences.text</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Sentences.time</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Sentences.time_id"><code class="docutils literal notranslate"><span class="pre">Sentences.time_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#times.models.Times"><code class="docutils literal notranslate"><span class="pre">Times</span></code></a><ul>
+<li><a class="reference internal" href="#times.models.Times.name"><code class="docutils literal notranslate"><span class="pre">Times.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.rule"><code class="docutils literal notranslate"><span class="pre">Times.rule</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.examples"><code class="docutils literal notranslate"><span class="pre">Times.examples</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.verbs"><code class="docutils literal notranslate"><span class="pre">Times.verbs</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Times.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Times.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Times.examples</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.id"><code class="docutils literal notranslate"><span class="pre">Times.id</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">Times.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.objects"><code class="docutils literal notranslate"><span class="pre">Times.objects</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">Times.rule</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Times.sentences_set"><code class="docutils literal notranslate"><span class="pre">Times.sentences_set</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">Times.verbs</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#times.models.Verbs"><code class="docutils literal notranslate"><span class="pre">Verbs</span></code></a><ul>
+<li><a class="reference internal" href="#times.models.Verbs.name"><code class="docutils literal notranslate"><span class="pre">Verbs.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.pron"><code class="docutils literal notranslate"><span class="pre">Verbs.pron</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.verbs"><code class="docutils literal notranslate"><span class="pre">Verbs.verbs</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Verbs.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Verbs.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.id"><code class="docutils literal notranslate"><span class="pre">Verbs.id</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">Verbs.name</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.objects"><code class="docutils literal notranslate"><span class="pre">Verbs.objects</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">Verbs.pron</span></code></a></li>
+<li><a class="reference internal" href="#times.models.Verbs.times_set"><code class="docutils literal notranslate"><span class="pre">Verbs.times_set</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">Verbs.verbs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="command.html"
+                          title="previous chapter">Command</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="views.html"
+                          title="next chapter">Views</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/times/models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Views"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="command.html" title="Command"
+             >previous</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../times.html" >TimesApp</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Models</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2024, Vasilenko.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+
+  </body>
+</html>

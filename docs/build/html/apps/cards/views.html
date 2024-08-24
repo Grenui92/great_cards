@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=41b4f12d" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c101306" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=023a5e5a" />
     
     <script src="../../_static/documentation_options.js?v=2709fde1"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -216,8 +216,10 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
 <p>The CardDeleteView class is a view class that deletes a card from a
 collection.</p>
-<p>The class has the following attributes:
-- template_name: a string that represents the name of the template file</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>template_name: a string that represents the name of the template file</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.card_views.CardDeleteView.post">
 <span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.card_views.CardDeleteView.post" title="Link to this definition">¶</a></dt>
@@ -236,6 +238,12 @@ collection.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
 <p>The CardsListView class is a class-based view that displays all the
 cards in a collection.</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>model: a model class that represents the collection</p></li>
+<li><p>template_name: a string that represents the name of the template file</p></li>
+<li><p>paginate_by: an integer that represents the number of cards to display</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.card_views.CardsListView.get_context_data">
 <span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/card_views.html#CardsListView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.card_views.CardsListView.get_context_data" title="Link to this definition">¶</a></dt>
@@ -295,6 +303,11 @@ on the order_list of the collection.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MessageMixin</span></code></p>
 <p>The CreateCardView class is a class-based view that allows users to
 create a new card.</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>template_name: a string that represents the name of the template file</p></li>
+<li><p>confirm_create_template: a string that represents the name of the    template file that confirms the creation of a card</p></li>
+</ul>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cards.views.card_views.CreateCardView.confirm_create_template">
 <span class="sig-name descname"><span class="pre">confirm_create_template</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/confirm_card_create.html'</span></em><a class="headerlink" href="#cards.views.card_views.CreateCardView.confirm_create_template" title="Link to this definition">¶</a></dt>
@@ -323,8 +336,10 @@ create a new card.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
 <p>The CardPositionView class is a view class that changes the position of
 a card in a collection.</p>
-<p>The class has the following attributes:
-- template_name: a string that represents the name of the template file</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>template_name: a string that represents the name of the template file</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.collection_views.CardPositionView.post">
 <span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CardPositionView.post" title="Link to this definition">¶</a></dt>
@@ -343,8 +358,10 @@ a card in a collection.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MessageMixin</span></code></p>
 <p>The CollectionCreateView class is a view class that creates a new
 collection.</p>
-<p>The class has the following attributes:
-- template_name: a string that represents the name of the template file</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>template_name: a string that represents the name of the template file</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.collection_views.CollectionCreateView.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionCreateView.get" title="Link to this definition">¶</a></dt>
@@ -368,8 +385,10 @@ collection.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
 <p>The CollectionDeleteView class is a view class that deletes a
 collection.</p>
-<p>The class has the following attributes:
-- template_name: a string that represents the name of the template file</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>template_name: a string that represents the name of the template file</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.collection_views.CollectionDeleteView.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionDeleteView.get" title="Link to this definition">¶</a></dt>
@@ -392,8 +411,10 @@ collection.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CollectionEditView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionEditView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionEditView" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
 <p>The CollectionEditView class is a view class that edits a collection.</p>
-<p>The class has the following attributes:
-- template_name: a string that represents the name of the template file</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>template_name: a string that represents the name of the template file</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.collection_views.CollectionEditView.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionEditView.get" title="Link to this definition">¶</a></dt>
@@ -416,12 +437,13 @@ collection.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CollectionListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionListView" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
 <p>The CollectionListView class is a view class that displays a list of
-collections created by the user.
-The class inherits from the ListView class, which is a generic view that
-displays a list of objects.</p>
-<p>The class has the following attributes:
-- model: a model class that represents the collection
-- template_name: a string that represents the name of the template file</p>
+collections created by the user. The class inherits from the ListView
+class, which is a generic view that displays a list of objects.</p>
+<p>The class has the following attributes:</p>
+<ul class="simple">
+<li><p>model: a model class that represents the collection</p></li>
+<li><p>template_name: a string that represents the name of the template file</p></li>
+</ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="cards.views.collection_views.CollectionListView.get_queryset">
 <span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionListView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionListView.get_queryset" title="Link to this definition">¶</a></dt>

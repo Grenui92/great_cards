@@ -52,6 +52,7 @@ class Collections(models.Model):
     """The Collections class is a model class that represents a collection.
 
     The class has the following attributes:
+    
     - name: a CharField that stores the name of the collection.
     - owner: a ForeignKey that stores the owner of the collection.
     - cards: a ManyToManyField that stores the cards in the collection.

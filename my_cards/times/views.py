@@ -7,6 +7,7 @@ from tools.decorators import class_login_required
 
 class TimesView(View):
     """A class-based view for handling times-related functionality.
+    
     Attributes:
         template_name (str): The name of the template to be rendered.
     """
@@ -55,7 +56,8 @@ class DeleteSentenceView(View):
 
     @class_login_required
     def post(self, request, sentence_id):
-        """Delete the sentence from the database.
+        """
+        Delete the sentence from the database.
 
         :param request: request object
         :param sentence_id: The id of the sentence to be deleted

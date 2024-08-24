@@ -249,8 +249,6 @@ VERBS = {
 
 def create_tables():
     """The create_tables function creates the tables in the database.
-    It is called by manage.py when you run python manage.py
-    create_storageapp_tables
 
     :return: None
     """
@@ -279,18 +277,15 @@ class Command(BaseCommand):
     """This class contains command for create files types and
     files extensions in FileExtension and FileTypes tables from storageapp.
 
-    Attributes:
-        help (str): A message that is displayed when you run
-        python manage.py help create_storageapp_tables
+    The class has the following attributes:
+        help (str): A message that is displayed when you this command
     """
 
-    help = ""
+    help = "use 'python manage.py create_times_tables' to create tables"
 
     def handle(self, *args, **options):
         """The handle function is the entry point for a Django management
         command.
-        It's called by the manage.py script when you run python
-        manage.py &lt;command&gt; from your project directory.
 
         :return: A string that is printed in the console
         """
