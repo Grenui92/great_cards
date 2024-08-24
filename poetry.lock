@@ -1062,6 +1062,20 @@ files = [
 ]
 
 [[package]]
+name = "groundwork-sphinx-theme"
+version = "1.1.1"
+description = "Sphinx theme for groundwork projects (Based on flask_theme)"
+optional = false
+python-versions = "*"
+files = [
+    {file = "groundwork-sphinx-theme-1.1.1.tar.gz", hash = "sha256:5f1217bf34daba5fcd93e8a2a04ef5a6c2b144ec43754aec7ce14de501e23fe4"},
+    {file = "groundwork_sphinx_theme-1.1.1-py2.py3-none-any.whl", hash = "sha256:b4796989ce3cd6d5b5a3c7ebe52a8c9cf848110e9f12c2c88e2b3c0e4e8f0e24"},
+]
+
+[package.dependencies]
+Sphinx = ">=1.6.1"
+
+[[package]]
 name = "gunicorn"
 version = "22.0.0"
 description = "WSGI HTTP Server for UNIX"
@@ -1800,6 +1814,17 @@ python-versions = "*"
 files = [
     {file = "python-decouple-3.8.tar.gz", hash = "sha256:ba6e2657d4f376ecc46f77a3a615e058d93ba5e465c01bbe57289bfb7cce680f"},
     {file = "python_decouple-3.8-py3-none-any.whl", hash = "sha256:d0d45340815b25f4de59c974b855bb38d03151d81b037d9e3f463b0c9f8cbd66"},
+]
+
+[[package]]
+name = "python-docs-theme"
+version = "2024.6"
+description = "The Sphinx theme for the CPython docs and related projects"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python_docs_theme-2024.6-py3-none-any.whl", hash = "sha256:36e38f0f5b227acfe267b54807b1cf93d6047e8f765bb338af50f1e8fb4423bb"},
+    {file = "python_docs_theme-2024.6.tar.gz", hash = "sha256:40492890c77db34120d294c8b0eb2b9f217592d014cc4104d5d2a297c3af7574"},
 ]
 
 [[package]]
@@ -2667,4 +2692,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "1a2283c52e325d968adac306e35acb33a600ee50eebf2d8e1b82a913aebd0f1f"
+content-hash = "e599d1436b9b87feed7168c8d3bb4c9a199973770260d3d238c237769626d375"

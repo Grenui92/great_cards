@@ -1,0 +1,11 @@
+Models
+======
+
+.. toctree::
+   :maxdepth: 0
+   :caption: Contents:
+
+.. automodule:: cards.models
+    :members:
+    :undoc-members:
+    :show-inheritance:

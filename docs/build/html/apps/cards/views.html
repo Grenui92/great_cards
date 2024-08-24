@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Views &#8212; Great Cards 0.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=41b4f12d" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c101306" />
+    
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="Services" href="services.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg" />
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Views</a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CardDeleteView"><code class="docutils literal notranslate"><span class="pre">CardDeleteView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CardDeleteView.post"><code class="docutils literal notranslate"><span class="pre">CardDeleteView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardDeleteView.template_name"><code class="docutils literal notranslate"><span class="pre">CardDeleteView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView"><code class="docutils literal notranslate"><span class="pre">CardsListView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CardsListView.get_context_data()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.get_queryset"><code class="docutils literal notranslate"><span class="pre">CardsListView.get_queryset()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.model"><code class="docutils literal notranslate"><span class="pre">CardsListView.model</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.paginate_by"><code class="docutils literal notranslate"><span class="pre">CardsListView.paginate_by</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.template_name"><code class="docutils literal notranslate"><span class="pre">CardsListView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView"><code class="docutils literal notranslate"><span class="pre">CreateCardView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.confirm_create_template"><code class="docutils literal notranslate"><span class="pre">CreateCardView.confirm_create_template</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.get"><code class="docutils literal notranslate"><span class="pre">CreateCardView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.post"><code class="docutils literal notranslate"><span class="pre">CreateCardView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.template_name"><code class="docutils literal notranslate"><span class="pre">CreateCardView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CardPositionView"><code class="docutils literal notranslate"><span class="pre">CardPositionView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CardPositionView.post"><code class="docutils literal notranslate"><span class="pre">CardPositionView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CardPositionView.template_name"><code class="docutils literal notranslate"><span class="pre">CardPositionView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView.get"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView.post"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView.get"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView.post"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView"><code class="docutils literal notranslate"><span class="pre">CollectionEditView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView.get"><code class="docutils literal notranslate"><span class="pre">CollectionEditView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView.post"><code class="docutils literal notranslate"><span class="pre">CollectionEditView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionEditView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView"><code class="docutils literal notranslate"><span class="pre">CollectionListView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView.get_queryset"><code class="docutils literal notranslate"><span class="pre">CollectionListView.get_queryset()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView.model"><code class="docutils literal notranslate"><span class="pre">CollectionListView.model</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionListView.template_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="services.html"
+                          title="previous chapter">Services</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="models.html"
+                          title="next chapter">Models</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/cards/views.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="services.html" title="Services"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../cards.html" accesskey="U">CardsApp</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Views</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="views">
+<h1>Views<a class="headerlink" href="#views" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="py class" id="module-cards.views.card_views">
+<dt class="sig sig-object py" id="cards.views.card_views.CardDeleteView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.card_views.</span></span><span class="sig-name descname"><span class="pre">CardDeleteView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/card_views.html#CardDeleteView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.card_views.CardDeleteView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<p>The CardDeleteView class is a view class that deletes a card from a
+collection.</p>
+<p>The class has the following attributes:
+- template_name: a string that represents the name of the template file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.card_views.CardDeleteView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.card_views.CardDeleteView.post" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.card_views.CardDeleteView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/edit_collection.html'</span></em><a class="headerlink" href="#cards.views.card_views.CardDeleteView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cards.views.card_views.CardsListView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.card_views.</span></span><span class="sig-name descname"><span class="pre">CardsListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/card_views.html#CardsListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.card_views.CardsListView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
+<p>The CardsListView class is a class-based view that displays all the
+cards in a collection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.card_views.CardsListView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/card_views.html#CardsListView.get_context_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.card_views.CardsListView.get_context_data" title="Link to this definition">¶</a></dt>
+<dd><p>Get the context data for the template and add the collection_id to
+the context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> – Pass a list of arguments to the function</p></li>
+<li><p><strong>object_list</strong> – Pass the list of objects to the template, default        is None</p></li>
+<li><p><strong>kwargs</strong> – Pass keyworded, variable-length argument list</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of data that will be used to render the template</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.card_views.CardsListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/card_views.html#CardsListView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.card_views.CardsListView.get_queryset" title="Link to this definition">¶</a></dt>
+<dd><p>Get all cards from the collection. The collection_id is passed as a
+keyword argument. The collection is retrieved from the database using
+the get_collection_by_id method from the CollectionServices class. The
+cards are then retrieved from the collection using the get_all_cards
+method from the CollectionServices class. The cards are ordered based
+on the order_list of the collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of cards that belong to a certain collection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.card_views.CardsListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#cards.views.card_views.CardsListView.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#cards.models.Collections" title="cards.models.Collections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collections</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.card_views.CardsListView.paginate_by">
+<span class="sig-name descname"><span class="pre">paginate_by</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#cards.views.card_views.CardsListView.paginate_by" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.card_views.CardsListView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/open_collection.html'</span></em><a class="headerlink" href="#cards.views.card_views.CardsListView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cards.views.card_views.CreateCardView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.card_views.</span></span><span class="sig-name descname"><span class="pre">CreateCardView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/card_views.html#CreateCardView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.card_views.CreateCardView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MessageMixin</span></code></p>
+<p>The CreateCardView class is a class-based view that allows users to
+create a new card.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.card_views.CreateCardView.confirm_create_template">
+<span class="sig-name descname"><span class="pre">confirm_create_template</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/confirm_card_create.html'</span></em><a class="headerlink" href="#cards.views.card_views.CreateCardView.confirm_create_template" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.card_views.CreateCardView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.card_views.CreateCardView.get" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.card_views.CreateCardView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.card_views.CreateCardView.post" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.card_views.CreateCardView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/create_card.html'</span></em><a class="headerlink" href="#cards.views.card_views.CreateCardView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-cards.views.collection_views">
+<dt class="sig sig-object py" id="cards.views.collection_views.CardPositionView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CardPositionView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CardPositionView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CardPositionView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<p>The CardPositionView class is a view class that changes the position of
+a card in a collection.</p>
+<p>The class has the following attributes:
+- template_name: a string that represents the name of the template file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CardPositionView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CardPositionView.post" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.collection_views.CardPositionView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards:open_collection'</span></em><a class="headerlink" href="#cards.views.collection_views.CardPositionView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionCreateView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CollectionCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionCreateView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionCreateView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">MessageMixin</span></code></p>
+<p>The CollectionCreateView class is a view class that creates a new
+collection.</p>
+<p>The class has the following attributes:
+- template_name: a string that represents the name of the template file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionCreateView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionCreateView.get" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionCreateView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionCreateView.post" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionCreateView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/create_collection.html'</span></em><a class="headerlink" href="#cards.views.collection_views.CollectionCreateView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionDeleteView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CollectionDeleteView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionDeleteView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionDeleteView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<p>The CollectionDeleteView class is a view class that deletes a
+collection.</p>
+<p>The class has the following attributes:
+- template_name: a string that represents the name of the template file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionDeleteView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionDeleteView.get" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionDeleteView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionDeleteView.post" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionDeleteView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/deleting_warning.html'</span></em><a class="headerlink" href="#cards.views.collection_views.CollectionDeleteView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionEditView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CollectionEditView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionEditView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionEditView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">View</span></code></p>
+<p>The CollectionEditView class is a view class that edits a collection.</p>
+<p>The class has the following attributes:
+- template_name: a string that represents the name of the template file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionEditView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionEditView.get" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionEditView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cards.views.collection_views.CollectionEditView.post" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionEditView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/edit_collection.html'</span></em><a class="headerlink" href="#cards.views.collection_views.CollectionEditView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionListView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.views.collection_views.</span></span><span class="sig-name descname"><span class="pre">CollectionListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionListView" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ListView</span></code></p>
+<p>The CollectionListView class is a view class that displays a list of
+collections created by the user.
+The class inherits from the ListView class, which is a generic view that
+displays a list of objects.</p>
+<p>The class has the following attributes:
+- model: a model class that represents the collection
+- template_name: a string that represents the name of the template file</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/views/collection_views.html#CollectionListView.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.views.collection_views.CollectionListView.get_queryset" title="Link to this definition">¶</a></dt>
+<dd><p>The get_queryset function is a built-in function that returns a list
+of objects that match the given query parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of objects that match the given query parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#cards.views.collection_views.CollectionListView.model" title="Link to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#cards.models.Collections" title="cards.models.Collections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collections</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cards.views.collection_views.CollectionListView.template_name">
+<span class="sig-name descname"><span class="pre">template_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cards/study_cards.html'</span></em><a class="headerlink" href="#cards.views.collection_views.CollectionListView.template_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Views</a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CardDeleteView"><code class="docutils literal notranslate"><span class="pre">CardDeleteView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CardDeleteView.post"><code class="docutils literal notranslate"><span class="pre">CardDeleteView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardDeleteView.template_name"><code class="docutils literal notranslate"><span class="pre">CardDeleteView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView"><code class="docutils literal notranslate"><span class="pre">CardsListView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.get_context_data"><code class="docutils literal notranslate"><span class="pre">CardsListView.get_context_data()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.get_queryset"><code class="docutils literal notranslate"><span class="pre">CardsListView.get_queryset()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.model"><code class="docutils literal notranslate"><span class="pre">CardsListView.model</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.paginate_by"><code class="docutils literal notranslate"><span class="pre">CardsListView.paginate_by</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CardsListView.template_name"><code class="docutils literal notranslate"><span class="pre">CardsListView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView"><code class="docutils literal notranslate"><span class="pre">CreateCardView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.confirm_create_template"><code class="docutils literal notranslate"><span class="pre">CreateCardView.confirm_create_template</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.get"><code class="docutils literal notranslate"><span class="pre">CreateCardView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.post"><code class="docutils literal notranslate"><span class="pre">CreateCardView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.card_views.CreateCardView.template_name"><code class="docutils literal notranslate"><span class="pre">CreateCardView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CardPositionView"><code class="docutils literal notranslate"><span class="pre">CardPositionView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CardPositionView.post"><code class="docutils literal notranslate"><span class="pre">CardPositionView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CardPositionView.template_name"><code class="docutils literal notranslate"><span class="pre">CardPositionView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView.get"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView.post"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionCreateView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionCreateView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView.get"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView.post"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionDeleteView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionDeleteView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView"><code class="docutils literal notranslate"><span class="pre">CollectionEditView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView.get"><code class="docutils literal notranslate"><span class="pre">CollectionEditView.get()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView.post"><code class="docutils literal notranslate"><span class="pre">CollectionEditView.post()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionEditView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionEditView.template_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView"><code class="docutils literal notranslate"><span class="pre">CollectionListView</span></code></a><ul>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView.get_queryset"><code class="docutils literal notranslate"><span class="pre">CollectionListView.get_queryset()</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView.model"><code class="docutils literal notranslate"><span class="pre">CollectionListView.model</span></code></a></li>
+<li><a class="reference internal" href="#cards.views.collection_views.CollectionListView.template_name"><code class="docutils literal notranslate"><span class="pre">CollectionListView.template_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="services.html"
+                          title="previous chapter">Services</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="models.html"
+                          title="next chapter">Models</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/cards/views.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="services.html" title="Services"
+             >previous</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../cards.html" >CardsApp</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Views</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2024, Vasilenko.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+
+  </body>
+</html>

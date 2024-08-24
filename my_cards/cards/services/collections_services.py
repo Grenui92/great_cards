@@ -23,7 +23,7 @@ class CollectionServices:
         collections owned by the user with the given owner_id.
 
         :param owner_id: The id of the owner of the collections
-        :return: A list of collections that belong to the owner with
+        :return: A list of collections that belong to the owner with\
         the given id
         """
         collections = Collections.objects.filter(owner=owner_id)

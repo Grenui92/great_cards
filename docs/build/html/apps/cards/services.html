@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Services &#8212; Great Cards 0.1 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydoctheme.css?v=41b4f12d" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../../_static/pygments_dark.css?v=b20cc3f5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c101306" />
+    
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Views" href="views.html" />
+    <link rel="prev" title="CardsApp" href="../cards.html" /><link rel="stylesheet" href="../../_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="../../_static/py.svg" />
+            <script type="text/javascript" src="../../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../../_static/menu.js"></script>
+            <script type="text/javascript" src="../../_static/search-focus.js"></script>
+            <script type="text/javascript" src="../../_static/themetoggle.js"></script> 
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <nav class="nav-content" role="navigation">
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="../../_static/py.svg" alt="Python logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="../../search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" />
+                <input type="submit" value="Go"/>
+            </form>
+        </span>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Services</a><ul>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices"><code class="docutils literal notranslate"><span class="pre">CardsServices</span></code></a><ul>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_card_data"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_card_data()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_card_from_collection"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_card_from_collection()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_information_from_forms"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_information_from_forms()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_new_card"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_new_card()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices"><code class="docutils literal notranslate"><span class="pre">CollectionServices</span></code></a><ul>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.change_card_position"><code class="docutils literal notranslate"><span class="pre">CollectionServices.change_card_position()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.create_collection"><code class="docutils literal notranslate"><span class="pre">CollectionServices.create_collection()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.get_all_cards"><code class="docutils literal notranslate"><span class="pre">CollectionServices.get_all_cards()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.get_collection_by_id"><code class="docutils literal notranslate"><span class="pre">CollectionServices.get_collection_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.get_collections_by_owner"><code class="docutils literal notranslate"><span class="pre">CollectionServices.get_collections_by_owner()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../cards.html"
+                          title="previous chapter">CardsApp</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="views.html"
+                          title="next chapter">Views</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/cards/services.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </nav>
+    </div>
+</div>
+  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Views"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../cards.html" title="CardsApp"
+             accesskey="P">previous</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../cards.html" accesskey="U">CardsApp</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Services</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="services">
+<h1>Services<a class="headerlink" href="#services" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="py class" id="module-cards.services.cards_services">
+<dt class="sig sig-object py" id="cards.services.cards_services.CardsServices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.services.cards_services.</span></span><span class="sig-name descname"><span class="pre">CardsServices</span></span><a class="reference internal" href="../../_modules/cards/services/cards_services.html#CardsServices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.cards_services.CardsServices" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The CardsServices class provides methods for interacting with cards.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.cards_services.CardsServices.get_card_data">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_card_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">english_word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">russian_word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_usage</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/cards_services.html#CardsServices.get_card_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.cards_services.CardsServices.get_card_data" title="Link to this definition">¶</a></dt>
+<dd><p>This function gets the Card from the database and returns a tuple of
+three values.
+If the user does not provide an English word or a Russian word,
+the function will use translator() to translate the provided
+language into the other language.
+If no usage is provided by the user, then it will be generated using
+the fact generator function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – Refer to the class itself</p></li>
+<li><p><strong>english_word</strong> – Pass the english word to the function</p></li>
+<li><p><strong>russian_word</strong> – Pass the russian word to the function</p></li>
+<li><p><strong>word_usage</strong> – Pass a fact about the word to the function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of three values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.cards_services.CardsServices.get_card_from_collection">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_card_from_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">english</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">russian</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/cards_services.html#CardsServices.get_card_from_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.cards_services.CardsServices.get_card_from_collection" title="Link to this definition">¶</a></dt>
+<dd><p>Takes in a string of either an English word or Russian word, and
+returns the corresponding card object from the database.
+If no such card exists, it raises a ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – Refer to the class itself</p></li>
+<li><p><strong>english</strong> – Get the card from the database using its english word,        default is None</p></li>
+<li><p><strong>russian</strong> – Get the card from the database, default is None</p></li>
+<li><p><strong>card_id</strong> – Get a card by its id, default is None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Card instance from the database</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ValueError if no card is found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.cards_services.CardsServices.get_information_from_forms">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_information_from_forms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/cards_services.html#CardsServices.get_information_from_forms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.cards_services.CardsServices.get_information_from_forms" title="Link to this definition">¶</a></dt>
+<dd><p>Takes in a request object and returns the values of the form fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cls</strong> – Refer to the class itself</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of four values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.cards_services.CardsServices.get_new_card">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_new_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">english</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">russian</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/cards_services.html#CardsServices.get_new_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.cards_services.CardsServices.get_new_card" title="Link to this definition">¶</a></dt>
+<dd><p>Get the information from the parameters and create a new card
+in the database. If the card already exists, it will be added to the
+collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> – Refer to the class itself</p></li>
+<li><p><strong>form</strong> – Get the information from the form</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with a message</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-cards.services.collections_services">
+<dt class="sig sig-object py" id="cards.services.collections_services.CollectionServices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cards.services.collections_services.</span></span><span class="sig-name descname"><span class="pre">CollectionServices</span></span><a class="reference internal" href="../../_modules/cards/services/collections_services.html#CollectionServices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.collections_services.CollectionServices" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The CollectionServices class provides methods for interacting with
+collections.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.collections_services.CollectionServices.change_card_position">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">change_card_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/collections_services.html#CollectionServices.change_card_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.collections_services.CollectionServices.change_card_position" title="Link to this definition">¶</a></dt>
+<dd><p>The change_card_position function takes in a collection, a boolean
+value, and a word_id. It removes the word_id from the collection’s
+order_list and inserts it at the 4th index if replace is False, or
+appends it to the end of the list if replace is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection</strong> – Collection object</p></li>
+<li><p><strong>replace</strong> – Boolean value</p></li>
+<li><p><strong>card_id</strong> – The id of the Card</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.collections_services.CollectionServices.create_collection">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">owner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_img</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/collections_services.html#CollectionServices.create_collection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.collections_services.CollectionServices.create_collection" title="Link to this definition">¶</a></dt>
+<dd><p>The create_collection function takes in an owner, a collection_name,
+and a collection_img, and creates a new collection with the given
+parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>owner</strong> – User object</p></li>
+<li><p><strong>collection_name</strong> – The name of the collection</p></li>
+<li><p><strong>collection_img</strong> (<em>File object</em><em>, </em><em>collection image</em>) – The image of the collection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A message indicating whether the collection was created</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.collections_services.CollectionServices.get_all_cards">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_all_cards</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/collections_services.html#CollectionServices.get_all_cards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.collections_services.CollectionServices.get_all_cards" title="Link to this definition">¶</a></dt>
+<dd><p>The get_all_cards function takes a collection as an argument and
+returns all of the cards in that collection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection</strong> – The collection object</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of all the Cards in a collection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.collections_services.CollectionServices.get_collection_by_id">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_collection_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collection_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/collections_services.html#CollectionServices.get_collection_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.collections_services.CollectionServices.get_collection_by_id" title="Link to this definition">¶</a></dt>
+<dd><p>The get_collection_by_id function takes in a collection_id and
+returns the CardsCollections object with that id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>collection_id</strong> – The id of the collection.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A collection object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cards.services.collections_services.CollectionServices.get_collections_by_owner">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_collections_by_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">owner_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/cards/services/collections_services.html#CollectionServices.get_collections_by_owner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cards.services.collections_services.CollectionServices.get_collections_by_owner" title="Link to this definition">¶</a></dt>
+<dd><p>The get_collections_by_owner function returns a list of all
+collections owned by the user with the given owner_id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>owner_id</strong> – The id of the owner of the collections</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of collections that belong to the owner with        the given id</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Services</a><ul>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices"><code class="docutils literal notranslate"><span class="pre">CardsServices</span></code></a><ul>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_card_data"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_card_data()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_card_from_collection"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_card_from_collection()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_information_from_forms"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_information_from_forms()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.cards_services.CardsServices.get_new_card"><code class="docutils literal notranslate"><span class="pre">CardsServices.get_new_card()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices"><code class="docutils literal notranslate"><span class="pre">CollectionServices</span></code></a><ul>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.change_card_position"><code class="docutils literal notranslate"><span class="pre">CollectionServices.change_card_position()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.create_collection"><code class="docutils literal notranslate"><span class="pre">CollectionServices.create_collection()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.get_all_cards"><code class="docutils literal notranslate"><span class="pre">CollectionServices.get_all_cards()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.get_collection_by_id"><code class="docutils literal notranslate"><span class="pre">CollectionServices.get_collection_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#cards.services.collections_services.CollectionServices.get_collections_by_owner"><code class="docutils literal notranslate"><span class="pre">CollectionServices.get_collections_by_owner()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../cards.html"
+                          title="previous chapter">CardsApp</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="views.html"
+                          title="next chapter">Views</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/cards/services.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Views"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../cards.html" title="CardsApp"
+             >previous</a> |</li>
+          <li><img src="../../_static/py.svg" alt="Python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+              <a href="../../index.html">Great Cards 0.1 documentation</a> &#187;
+              
+          </li>
+          <li class="nav-item nav-item-1"><a href="../cards.html" >CardsApp</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Services</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../../search.html" method="get">
+          <input placeholder="Quick search" aria-label="Quick search" type="search" name="q" id="search-box" />
+          <input type="submit" value="Go" />
+        </form>
+    </div>
+                     |
+                </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; 
+    Copyright
+     2024, Vasilenko.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    
+    
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+    
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    </div>
+
+  </body>
+</html>

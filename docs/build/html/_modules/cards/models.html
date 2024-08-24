@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cards.models &#8212; my_cards 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for cards.models</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.contrib.postgres.fields</span> <span class="kn">import</span> <span class="n">ArrayField</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+
+<div class="viewcode-block" id="Cards">
+<a class="viewcode-back" href="../../apps/cards.html#cards.views.card_views.Cards">[docs]</a>
+<span class="k">class</span> <span class="nc">Cards</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Cards class is a model class that represents a card in the</span>
+<span class="sd">    database.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    </span>
+<span class="sd">    - english_word: a CharField that stores the English word on the card</span>
+<span class="sd">    - russian_word: a CharField that stores the Russian translation of the word</span>
+<span class="sd">    - word_usage: a TextField that stores the usage of the word in a sentence</span>
+<span class="sd">    - img: an ImageField that stores the image of the card</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">english_word</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">russian_word</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">word_usage</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;words_img/card.png&#39;</span><span class="p">,</span>
+                            <span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;words_img&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Cards.save">
+<a class="viewcode-back" href="../../apps/cards.html#cards.views.card_views.Cards.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The save function is a built-in function that saves the image to</span>
+<span class="sd">        the database.</span>
+<span class="sd">        The img variable opens up our image file and stores it as an Image</span>
+<span class="sd">        object. We then check if either height or width of our image is</span>
+<span class="sd">        greater than 50 pixels (our desired size). If so, we create a new_img</span>
+<span class="sd">        tuple with 50 as both values and use it to resize our original img</span>
+<span class="sd">        object using thumbnail(). Finally, we save this resized version back</span>
+<span class="sd">        into its original path.</span>
+
+<span class="sd">        :param args: Send a non-keyworded variable length argument list\</span>
+<span class="sd">        to the function</span>
+<span class="sd">        :param kwargs: Pass keyworded, variable-length argument list\</span>
+<span class="sd">        to a function</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="ow">or</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+            <span class="n">new_img</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Collections">
+<a class="viewcode-back" href="../../apps/cards.html#cards.views.card_views.Collections">[docs]</a>
+<span class="k">class</span> <span class="nc">Collections</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Collections class is a model class that represents a collection.</span>
+
+<span class="sd">    The class has the following attributes:</span>
+<span class="sd">    - name: a CharField that stores the name of the collection.</span>
+<span class="sd">    - owner: a ForeignKey that stores the owner of the collection.</span>
+<span class="sd">    - cards: a ManyToManyField that stores the cards in the collection.</span>
+<span class="sd">    - order_list: an ArrayField that stores the order of the cards in the\</span>
+<span class="sd">    collection.</span>
+<span class="sd">    - img: an ImageField that stores the image of the collection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">owner</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cards</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="s1">&#39;Cards&#39;</span><span class="p">,</span> <span class="n">db_column</span><span class="o">=</span><span class="s1">&#39;card_id&#39;</span><span class="p">)</span>
+    <span class="n">order_list</span> <span class="o">=</span> <span class="n">ArrayField</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;collections_img/collection.webp&#39;</span><span class="p">,</span>
+                            <span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;collections_img&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Collections.save">
+<a class="viewcode-back" href="../../apps/cards.html#cards.views.card_views.Collections.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The save function is a built-in function that saves the image to</span>
+<span class="sd">        the database.</span>
+<span class="sd">        The img variable opens up our image file and stores it as an Image</span>
+<span class="sd">        object. We then check if either height or width of our image is</span>
+<span class="sd">        greater than 50 pixels (our desired size). If so, we create a new_img</span>
+<span class="sd">        tuple with 50 as both values and use it to resize our original img</span>
+<span class="sd">        object using thumbnail(). Finally, we save this resized version back</span>
+<span class="sd">        into its original path.</span>
+
+<span class="sd">        :param args: Send a non-keyworded variable length argument list\</span>
+<span class="sd">        to the function</span>
+<span class="sd">        :param kwargs: Pass keyworded, variable-length argument list\</span>
+<span class="sd">        to a function</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>    
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="ow">or</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+            <span class="n">new_img</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">(</span><span class="n">new_img</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img</span><span class="o">.</span><span class="n">path</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">my_cards</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/cards.html">cards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/chat.html">chat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/my_cards.html">my_cards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/news.html">news</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/times.html">times</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/tools.html">tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/tube.html">tube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/users.html">users</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Vasilenko.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

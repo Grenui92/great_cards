@@ -9,6 +9,7 @@ class Cards(models.Model):
     database.
 
     The class has the following attributes:
+    
     - english_word: a CharField that stores the English word on the card
     - russian_word: a CharField that stores the Russian translation of the word
     - word_usage: a TextField that stores the usage of the word in a sentence
@@ -31,9 +32,9 @@ class Cards(models.Model):
         object using thumbnail(). Finally, we save this resized version back
         into its original path.
 
-        :param args: Send a non-keyworded variable length argument list
+        :param args: Send a non-keyworded variable length argument list\
         to the function
-        :param kwargs: Pass keyworded, variable-length argument list
+        :param kwargs: Pass keyworded, variable-length argument list\
         to a function
         :return: None
         """
@@ -51,14 +52,14 @@ class Collections(models.Model):
     """The Collections class is a model class that represents a collection.
 
     The class has the following attributes:
-    - name: a CharField that stores the name of the collection
-    - owner: a ForeignKey that stores the owner of the collection
-    - cards: a ManyToManyField that stores the cards in the collection
-    - order_list: an ArrayField that stores the order of the cards in the
-    collection
-    - img: an ImageField that stores the image of the collection
+    - name: a CharField that stores the name of the collection.
+    - owner: a ForeignKey that stores the owner of the collection.
+    - cards: a ManyToManyField that stores the cards in the collection.
+    - order_list: an ArrayField that stores the order of the cards in the\
+    collection.
+    - img: an ImageField that stores the image of the collection.
     """
-
+    
     name = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     cards = models.ManyToManyField('Cards', db_column='card_id')
@@ -76,12 +77,12 @@ class Collections(models.Model):
         object using thumbnail(). Finally, we save this resized version back
         into its original path.
 
-        :param args: Send a non-keyworded variable length argument list
+        :param args: Send a non-keyworded variable length argument list\
         to the function
-        :param kwargs: Pass keyworded, variable-length argument list
+        :param kwargs: Pass keyworded, variable-length argument list\
         to a function
         :return: None
-        """
+        """    
         super().save()
 
         img = Image.open(self.img.path)

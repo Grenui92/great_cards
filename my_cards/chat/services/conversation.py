@@ -6,7 +6,7 @@ def chat_bot(messages):
     role (speaker) and content (message) of the first response from OpenAI's
     GPT-3 API. The function is used to generate responses to user input.
 
-    :param messages: A list of messages that the chatbot has received,
+    :param messages: A list of messages that the chatbot has received,\
     including the user's input.
     :return: A tuple of the role and content
     """

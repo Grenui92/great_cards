@@ -9,7 +9,7 @@
 import django
 import sys
 import os
-project = 'my_cards'
+project = 'Great Cards'
 copyright = '2024, Vasilenko'
 author = 'Vasilenko'
 release = '0.1'
@@ -32,9 +32,11 @@ exclude_patterns = [
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+html_theme = 'python_docs_theme'
 html_static_path = ['_static']
-
+html_css_files = [
+    'custom.css',
+]
 
 a = sys.path.insert(0, os.path.abspath('../../my_cards'))
 print(a)

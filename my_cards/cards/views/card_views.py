@@ -41,7 +41,7 @@ class CardsListView(ListView):
         the context.
 
         :param args: Pass a list of arguments to the function
-        :param object_list: Pass the list of objects to the template, default
+        :param object_list: Pass the list of objects to the template, default\
         is None
         :param kwargs: Pass keyworded, variable-length argument list
         :return: A dictionary of data that will be used to render the template

@@ -1,12 +1,10 @@
-cards
-=====
+CardsApp
+=========
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-.. automodule:: cards.services.cards_services
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   cards/services.rst
+   cards/views.rst
+   cards/models.rst

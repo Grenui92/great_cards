@@ -68,7 +68,8 @@ class CardsServices:
         If no such card exists, it raises a ValueError.
 
         :param cls: Refer to the class itself
-        :param english: Get the card from the database using its english word, default is None
+        :param english: Get the card from the database using its english word,\
+        default is None
         :param russian: Get the card from the database, default is None
         :param card_id: Get a card by its id, default is None
         :return: A Card instance from the database
