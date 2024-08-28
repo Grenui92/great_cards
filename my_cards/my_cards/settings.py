@@ -33,22 +33,31 @@ CHANNEL_LAYERS = {
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'filters': {
+        'ignore_file_seen': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': lambda record: 'mtime' not in record.getMessage(),
+        }
+    },
+
     'handlers': {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'logs/logging'
+            'filename': 'logs/logging',
+            'filters': ['ignore_file_seen'],
         }
-
     },
+
     'loggers': {
         'django': {
             'handlers': ['file'],
             'level': 'INFO',
             'propagate': True
-        }
+        },
     }
 }
+
 # Application definition
 INSTALLED_APPS = [
     'daphne',

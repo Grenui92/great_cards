@@ -27,7 +27,7 @@ class VideoServices:
             subs_path = re.findall(r'[^media][\S]+',
                                    re.findall(r'\S+vtt',
                                               result.stdout)[0])[0]
-            sub_fla = True
+            sub_flag = True
         except IndexError:
             file_name = f'--[WITOUT SUBS]--\n {file_name}'
             

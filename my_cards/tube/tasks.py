@@ -10,7 +10,7 @@ from django.conf import settings
 
 from .models import Videos
 from .services.video_services import VideoServices
-
+from tools.logger import logger
 
 @shared_task
 def download_and_create_video(ABSOLUTE_UPLOAD_URL,
@@ -28,8 +28,10 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL,
     :return: A message that the video was successfully added.
     """
     user = User.objects.get(id=user_id)
-    if url.startswith('https://www.youtube.com/watch?v='):
-        yt_id = re.findall(r'watch\?v=[\w-]+', url)[0].split('=')[1]
+    yt_id = re.findall(r'(?:v=|\/)([0-9A-Za-z]{11})', url)[0]
+    logger.info(f'yt_id: {yt_id}')
+    # if url.startswith('https://www.youtube.com/watch?v='):
+    if yt_id:
         file_path = f'{ABSOLUTE_UPLOAD_URL}{yt_id}/{OUTPUT_FILENAME}'
 
         try:
@@ -42,10 +44,13 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL,
 
             result = subprocess.run(
                 command, capture_output=True, text=True, check=True)
-            prev_path, subs_path, file_name, sub_flag = VideoServices.get_pathes_from_result(
+            #Logger
+            logger.info(f'Result: {result}')
+            
+            prev_path, subs_path, file_name, subs_enabled = VideoServices.get_pathes_from_result(
                 result=result)
             
-            if sub_flag:
+            if subs_enabled:
                 create_sbtt(sub_path=subs_path)
 
             video = Videos.objects.create(
@@ -62,6 +67,9 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL,
             video.owner.add(user)
 
         return f'Video named {video.video_name} successfully added.'
+    #Logger
+    logger.error(f'Invalid URL: {url}')
+    return 'Invalid URL'
 
 
 def create_sbtt(sub_path):
