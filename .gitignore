@@ -17,7 +17,8 @@ my_cards/logs/*
 !my_cards/logs/ex
 
 #MEDIA
-my_cards/media/videos/
+my_cards/media/videos/*
+!my_cards/media/videos/out/1.vtt
 
 my_cards/media/words_img/*
 !my_cards/media/words_img/card.png
