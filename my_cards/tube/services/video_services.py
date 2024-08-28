@@ -14,15 +14,23 @@ class VideoServices:
         and the file name.
         :rtype: tuple
         """
-        subs_path = re.findall(r'[^media][\S]+',
-                               re.findall(r'\S+vtt',
-                                          result.stdout)[0])[0]
 
-        prev_path = re.findall(r'[^media][\S]+',
-                               re.findall(r'\S+webp',
-                                          result.stdout)[0])[0]
+        try:
 
-        file_name = re.findall(r'\b[\w-]+\.',
-                               subs_path)[0][:-1].replace('_', ' ')
+            prev_path = re.findall(r'[^media][\S]+',
+                                   re.findall(r'\S+webp',
+                                              result.stdout)[0])[0]
 
-        return prev_path, subs_path, file_name
+            file_name = re.findall(r'\b[\w-]+\.',
+                                   prev_path)[0][:-1].replace('_', ' ')
+
+            subs_path = re.findall(r'[^media][\S]+',
+                                   re.findall(r'\S+vtt',
+                                              result.stdout)[0])[0]
+            sub_fla = True
+        except IndexError:
+            file_name = f'--[WITOUT SUBS]--\n {file_name}'
+            
+            subs_path = '/videos/out/1.vtt'
+            sub_flag = False
+        return prev_path, subs_path, file_name, sub_flag

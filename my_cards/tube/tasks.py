@@ -42,10 +42,11 @@ def download_and_create_video(ABSOLUTE_UPLOAD_URL,
 
             result = subprocess.run(
                 command, capture_output=True, text=True, check=True)
-            prev_path, subs_path, file_name = VideoServices.get_pathes_from_result(
+            prev_path, subs_path, file_name, sub_flag = VideoServices.get_pathes_from_result(
                 result=result)
-
-            create_sbtt(sub_path=subs_path)
+            
+            if sub_flag:
+                create_sbtt(sub_path=subs_path)
 
             video = Videos.objects.create(
                 video_name=file_name,
