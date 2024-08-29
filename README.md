@@ -1,8 +1,8 @@
 # Great Cards
 
-Сайт [dontlosehope.website](dontlosehope.website)\
-Документация [docs](https://grenui92.github.io/great_cards/)\
-Использовано:
+Site [dontlosehope.website](dontlosehope.website)\
+Documentation [docs](https://grenui92.github.io/great_cards/)\
+Technologies used:
 - Python ^3.10
 - Django ^4.2.1
 - Django Channels ^4.0.0
@@ -11,41 +11,34 @@
 - Celery ^5.3.6
 - Postgresql from [elephantsql.com](elephantsql.com)
 
-При написании данного приложения основной моей целью было помочь саому себе в изучении английского языка. Мне не хватало взаимодействия с субтитрами на Ютуб (интерактивного перевода выделеного фрагмента текста), более расширеного взаимодействия с карточками для изучения слов (создание коллекций карточек, самостоятельная настрйока частоты напоминаний), а так же нехватка преподавателя, который будет подсказывать мне как правильно составлять предложения на английском языкке и указывать на мои ошибки.
+The primary purpose of creating this application was to assist myself in learning English. I felt the need for interaction with subtitles on YouTube (interactive translation of highlighted text fragments), more comprehensive interaction with flashcards for learning words (creating collections of flashcards, setting reminder frequencies independently), and a lack of a teacher to guide me on how to construct sentences correctly in English and to identify my errors. 
 
-## Функционал
+## Functionality
 
-### News 
+### News
 
-Здесь появятся новости на английском языке, но с возможностью перевода при выделении текста и добавления выделеного текста в коллекции карточек для заучивания.
-К сожалению как раз эта часть функционала не реализована, так как я пока не смог найти бесплатный доступный API для взаимодействия с новостями в интересующей меня тематике и добавления их на сайт. 
+Here will appear news in English, but with the option to translate text when highlighted and add the highlighted text to flashcard collections for memorization.
+Unfortunately, this part of the functionality is not yet implemented, as I have not been able to find a free accessible API for interacting with news in the topic of interest to me and adding them to the website.
 
 ### Cards
 
-Те самые карточки для заучивания слов. Вы можете создать не ограниченое количество коллекций, добавить не ограниченое количество карточек. При изучении карточки, при нажатии I know it карточка отправляется в конец коллекции, при нажатии Remind - смещается на 4 позиции (напоминание для себя - сделать эту функцию настраиваемой на сдвиг от 4 до 20 карточек).
+Those are the flashcards for learning words. You can create an unlimited number of collections, add an unlimited number of cards. When studying the cards, clicking "I know it" sends the card to the end of the collection, clicking "Remind" moves it by 4 positions (a reminder for yourself – to make this function customizable for a shift from 4 to 20 cards).
 
-Так же тут при создании карточки генерируется интересный факт про Python на английском языке с использованием добавляемого слова, но эта функция ***пробная***, так как нужно улучшить инструкции для ChatGPT и опробовать новые версии доступные черезз API.
+Also, when creating a card, an interesting fact about Python in English is generated using the added word, but this function is ***experimental*** as instructions for ChatGPT need improvement and new versions available via the API need to be tested.
 
 ### GPT
 
 #### Sentences
-Просто функционал - вы даете чату предложение на английском, он, в меру своих возможностей и понимания, старается исправить ваши ошибки и возвращает вам исправленое предложение.
+Simply functionality – you provide the chat with a sentence in English, and it, to the best of its ability and understanding, tries to correct your mistakes and returns the corrected sentence to you.
 #### Chat with GPT-3
-Обычный чат с ChatGPT, но главной его особенностью есть то что он старается обьяснить ваши ошибки. Предпочтительно писать ему на английском языке, он исправит граматику запроса и постарается дать ответ.
+Regular chat with ChatGPT, but its main feature is that it tries to explain your mistakes. It is preferable to write to it in English, it will correct the grammar of the question and try to provide an answer.
 #### To Russian / To English
-Перевод текста на русский / на ангийский язык. С предложением возможных вариантов перевода.
+Translation of text to Russian / to English with proposed translation options.
 
 ### Times
 
-Список времен английского языка, с кратким описанием сути каждого времени, со схематическим построением предложения и с примерами готовых предложений (утверждение, отрицание, вопрос).
+List of English language tenses, with a brief description of the essence of each tense, a schematic sentence structure, and examples of complete sentences (affirmative, negative, question).
 
-### Tube 
+### Tube
 
-Интерактивное взаимодействие с видео Ютуб, точнее с их субтитрами. Добавив видео во вкладе Upload video from YT вы вставляете ссылку с Ютуба и через какое-то время (обычно менее 10 секунд) видео будет добавлено в список ваших видео. Сам просмотр чере iframe_api. Субтитры транслируются так же в отдельном окошке, их можно выделять, переводить выделеный текст, сохранять его в карточки для запоминания.
-
-
-Для 
-
-
-
-DOCUMENTATION 
+Interacting with YouTube videos and their subtitles. By adding a video in the "Upload video from YT" tab, you insert a link from YouTube and after a short time (usually less than 10 seconds), the video will be added to your list of videos. The viewing itself happens through the iframe_api. Subtitles are also displayed in a separate window, where you can select them, translate the selected text, and save it on cards for learning.
