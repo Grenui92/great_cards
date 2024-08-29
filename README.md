@@ -1,28 +1,51 @@
-This app was created because I learn English and I like to learn by using flashcards. But I can't find a good app for this.\
-Somewhere I can't choose cards which I want to learn, somewhere I can't delete them from my collection.\
-Stupid exercises, stupid algorithms... I hate it.\
-So I try to write my app with Django.
+# Great Cards
 
-You can start it like all Django projects with 
->python manage.py runserver
+Сайт [dontlosehope.website](dontlosehope.website)\
+Документация [docs](https://grenui92.github.io/great_cards/)\
+Использовано:
+- Python ^3.10
+- Django ^4.2.1
+- Django Channels ^4.0.0
+- Daphne ^4.0.0
+- Redis ^4.5.5
+- Celery ^5.3.6
+- Postgresql from [elephantsql.com](elephantsql.com)
 
-CHAT GPT
-In .env you need to add your OpenAI API key, the app work with a free version of API.\
-I try to configure GPT like an English teacher or something like this.
+При написании данного приложения основной моей целью было помочь саому себе в изучении английского языка. Мне не хватало взаимодействия с субтитрами на Ютуб (интерактивного перевода выделеного фрагмента текста), более расширеного взаимодействия с карточками для изучения слов (создание коллекций карточек, самостоятельная настрйока частоты напоминаний), а так же нехватка преподавателя, который будет подсказывать мне как правильно составлять предложения на английском языкке и указывать на мои ошибки.
 
-CHAT\
-Bot talk with you in English and show you your mistakes in your sentences, answering your requests like an ordinary GPT.
+## Функционал
 
-In 'English sentences' you give your text to the bot, and he returns the correct text. 
+### News 
 
-CARDS
-- You can create your own collections
-- Create new cards and add them to the collection (cards saved in the Postgres, so if a card already exists it will get\
-from DB if the card does not exist yet GPT will translate this word and add a new record to DB)
-- For every card, GPT write interesting fact using words from this card (this is saved to DB too)\
-I'm working on card sorting and checking answers (if correct - add the card to the end of the collection, if not - send\
-the card for some positions lower). And I want to add voice acting by the neural network. 
+Здесь появятся новости на английском языке, но с возможностью перевода при выделении текста и добавления выделеного текста в коллекции карточек для заучивания.
+К сожалению как раз эта часть функционала не реализована, так как я пока не смог найти бесплатный доступный API для взаимодействия с новостями в интересующей меня тематике и добавления их на сайт. 
 
-And I see that I have bad code. Speaking of program code - my Django and Python learning is in progress.\
-First - I want to rewrite all my views for Django built-in views. Next on the list is creating documentation and tests.
-DOCUMENTATION https://grenui92.github.io/great_cards/
+### Cards
+
+Те самые карточки для заучивания слов. Вы можете создать не ограниченое количество коллекций, добавить не ограниченое количество карточек. При изучении карточки, при нажатии I know it карточка отправляется в конец коллекции, при нажатии Remind - смещается на 4 позиции (напоминание для себя - сделать эту функцию настраиваемой на сдвиг от 4 до 20 карточек).
+
+Так же тут при создании карточки генерируется интересный факт про Python на английском языке с использованием добавляемого слова, но эта функция ***пробная***, так как нужно улучшить инструкции для ChatGPT и опробовать новые версии доступные черезз API.
+
+### GPT
+
+#### Sentences
+Просто функционал - вы даете чату предложение на английском, он, в меру своих возможностей и понимания, старается исправить ваши ошибки и возвращает вам исправленое предложение.
+#### Chat with GPT-3
+Обычный чат с ChatGPT, но главной его особенностью есть то что он старается обьяснить ваши ошибки. Предпочтительно писать ему на английском языке, он исправит граматику запроса и постарается дать ответ.
+#### To Russian / To English
+Перевод текста на русский / на ангийский язык. С предложением возможных вариантов перевода.
+
+### Times
+
+Список времен английского языка, с кратким описанием сути каждого времени, со схематическим построением предложения и с примерами готовых предложений (утверждение, отрицание, вопрос).
+
+### Tube 
+
+Интерактивное взаимодействие с видео Ютуб, точнее с их субтитрами. Добавив видео во вкладе Upload video from YT вы вставляете ссылку с Ютуба и через какое-то время (обычно менее 10 секунд) видео будет добавлено в список ваших видео. Сам просмотр чере iframe_api. Субтитры транслируются так же в отдельном окошке, их можно выделять, переводить выделеный текст, сохранять его в карточки для запоминания.
+
+
+Для 
+
+
+
+DOCUMENTATION 
