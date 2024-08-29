@@ -167,8 +167,8 @@ VERBS = {
           "<Do> + <subject> + <1st form of the verb>?")),
         (("He", "She", "It"),
          ("<1st form of the verb>+s/es",
-          "<do not> + <1st form of the verb>",
-          "<Do> + <subject> + <1st form of the verb>?"))
+          "<does not> + <1st form of the verb>",
+          "<Does> + <subject> + <1st form of the verb>?"))
     ),
     "Present Continuous": (
         (("I"),
