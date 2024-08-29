@@ -166,7 +166,7 @@ VERBS = {
           "<do not> + <1st form of the verb>",
           "<Do> + <subject> + <1st form of the verb>?")),
         (("He", "She", "It"),
-         ("<1st form of the verb>",
+         ("<1st form of the verb>+s/es",
           "<do not> + <1st form of the verb>",
           "<Do> + <subject> + <1st form of the verb>?"))
     ),
