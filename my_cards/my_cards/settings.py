@@ -11,7 +11,7 @@ openai.api_key = config('GPT_API_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'dontlosehope.website',
@@ -33,6 +33,12 @@ CHANNEL_LAYERS = {
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'to_file': {
+            'format': '{levename} - {asctime} - {pathname} - {message}',
+            'style': '{',
+        }
+    },
     'filters': {
         'ignore_file_seen': {
             '()': 'django.utils.log.CallbackFilter',
@@ -46,6 +52,7 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'logs/logging',
             'filters': ['ignore_file_seen'],
+            'formatter': 'to_file'
         }
     },
 
@@ -85,8 +92,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'tools.middleware.simple_middleware'
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
