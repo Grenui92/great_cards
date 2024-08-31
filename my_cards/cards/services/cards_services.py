@@ -3,7 +3,8 @@ from cards.services.collections_services import CollectionServices
 from cards.services.translator import translator, en, ru
 from cards.services.fact_generator import fact_generator
 
-import logging
+from tools.logger import logger
+from tools.exceptions import MessageException
 
 
 class CardsServices:
@@ -82,7 +83,9 @@ class CardsServices:
         elif card_id:
             card = Cards.objects.get(id=card_id)
         else:
-            raise ValueError('Empty fields "english word" and "russian word"')
+            message = 'Empty fields "english word" and "russian word"'
+            logger.error(message)
+            raise MessageException(message=message)
 
         return card
 
@@ -102,7 +105,6 @@ class CardsServices:
             collection.cards.add(card)
 
         except Cards.DoesNotExist as exc:
-            logging.info(exc)
             card = Cards.objects.create(english_word=english,
                                         russian_word=russian,
                                         word_usage=usage)

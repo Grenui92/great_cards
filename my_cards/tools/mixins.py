@@ -6,3 +6,4 @@ class MessageMixin:
     """
     
     message_template = 'message.html'
+    error_500_template = '500.html'

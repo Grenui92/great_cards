@@ -34,8 +34,8 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'to_file': {
-            'format': '{levename} - {asctime} - {pathname} - {message}',
+        'formater_to_file': {
+            'format': '{levelname} - {asctime} - {module} - {message}',
             'style': '{',
         }
     },
@@ -47,18 +47,18 @@ LOGGING = {
     },
 
     'handlers': {
-        'file': {
+        'handler_to_file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'logs/logging',
             'filters': ['ignore_file_seen'],
-            'formatter': 'to_file'
-        }
+            'formatter': 'formater_to_file'
+        },
     },
 
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['handler_to_file'],
             'level': 'INFO',
             'propagate': True
         },

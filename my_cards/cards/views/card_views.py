@@ -7,11 +7,14 @@ from django.utils.datastructures import MultiValueDictKeyError
 from cards.services.cards_services import CardsServices
 from cards.services.collections_services import CollectionServices
 from cards.models import Collections
+
 from tools.mixins import MessageMixin
 from tools.decorators import class_login_required
+from tools.exceptions import MessageException
+from tools.logger import logger
 
 
-class CardsListView(ListView):
+class CardsListView(ListView, MessageMixin):
     """The CardsListView class is a class-based view that displays all the
     cards in a collection.
     
@@ -62,6 +65,13 @@ class CardsListView(ListView):
 
         return context
 
+    def get(self, request, *args, **kwargs):
+        try:
+            return super().get(request, *args, **kwargs)
+        except MessageException as exc:
+            return render(request,
+                          self.error_500_template,
+                          context={'message': exc.message})
 
 class CreateCardView(View, MessageMixin):
     """The CreateCardView class is a class-based view that allows users to
@@ -90,15 +100,15 @@ class CreateCardView(View, MessageMixin):
             owner_id=request.user.id)
         selected = request.GET.get('hidden_select')
 
-        if selected:
-            original, translit = selected.split('<br><br>')
-            original = ' '.join(original.split(':')[1:]).strip()
-            translit = ' '.join(translit.split(':')[1:]).strip()
-            return render(request,
-                          self.template_name,
-                          context={'collections': collections,
-                                   'original': original,
-                                   'translit': translit})
+        # if selected:
+        #     original, translit = selected.split('<br><br>')
+        #     original = ' '.join(original.split(':')[1:]).strip()
+        #     translit = ' '.join(translit.split(':')[1:]).strip()
+        #     return render(request,
+        #                   self.template_name,
+        #                   context={'collections': collections,
+        #                            'original': original,
+        #                            'translit': translit})
         try:
             english, russian, usage, collection = CardsServices.get_information_from_forms(
                 request=request)
@@ -107,7 +117,11 @@ class CreateCardView(View, MessageMixin):
                                                                                  word_usage=usage)
         except MultiValueDictKeyError:
             return render(request, self.template_name, context={'collections': collections})
-
+        except MessageException as exc:
+            logger.error(exc.message)
+            return render(request,
+                          self.error_500_template,
+                          context={'message': exc.message})
         message = {
             'russian': russian_word,
             'english': english_word,
@@ -126,14 +140,19 @@ class CreateCardView(View, MessageMixin):
         english = request.POST.get('english')
         russian = request.POST.get('russian')
         usage = request.POST.get('usage')
-        collection = CollectionServices.get_collection_by_id(
-            int(request.POST.get('collection_id')))
+        try:
+            collection = CollectionServices.get_collection_by_id(
+                int(request.POST.get('collection_id')))
 
-        CardsServices.get_new_card(english=english,
+            CardsServices.get_new_card(english=english,
                                    russian=russian,
                                    usage=usage,
                                    collection=collection)
-
+        except MessageException as exc:
+            return render(request,
+                          self.error_500_template,
+                          context={'message': exc.message})
+            
         return render(request,
                       self.message_template,
                       context={'message': f'Card "{english}" successfully created and added to the collection "{collection.name}"'},)
